@@ -51,6 +51,7 @@
     {{- __('footer.powered', next_url('https://hexo.io', 'Hexo', {class: 'theme-link'}) + ' & ' + next_url(next_site, 'NexT.' + theme.scheme, {class: 'theme-link'})) }}
   </div>
 {%- endif %}
+<dr>
 
 {%- if theme.add_this_id %}
   <div class="addthis_inline_share_toolbox">
@@ -59,3 +60,7 @@
 {%- endif %}
 
 {{- next_inject('footer') }}
+
+<br>
+  <span class="post-count">博客全站共{{ totalcount(site) }}字</span>
+</div>

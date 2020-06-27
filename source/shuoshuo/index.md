@@ -10,7 +10,7 @@ title: 世界
     var per="10";
     var username="Ashley37sky";
     </script>
-    <div id="lazy"></div>
-    <div id="artitalk"></div>
+    <div id="artitalk_main"></div>
     <script type="text/javascript" src="https://unpkg.com/artitalk"></script> 
 </body>
+
