@@ -32,8 +32,6 @@ categories: Arduino
 
 ​					可以用`pinMode(buttonPin,INPUT_PULLUP)`或者物理连接实现
 
-<img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1593272183166&amp;di=af1a7b5270252e45f9a6cd75c61a1209&amp;imgtype=0&amp;src=http%3A%2F%2Ff.hiphotos.baidu.com%2Fzhidao%2Fpic%2Fitem%2Feac4b74543a98226f2cddc348a82b9014a90eb91.jpg" alt="img"  />
-
 #### 电容
 
 ![2.jpg](https://www.arduino.cn/data/attachment/forum/201704/15/202736q9kswuxis5nl825i.jpg)
@@ -75,6 +73,8 @@ categories: Arduino
 #### <img src="https://www.arduino.cn/data/attachment/forum/201803/05/212142at6fw8a8rkx8n6ka.png" alt="img" style="zoom:67%;" />
 
 电阻值随照射光强度增加而下降的电阻
+
+
 
 # 编程基础
 
@@ -141,7 +141,7 @@ categories: Arduino
 
 ## 串口的使用
 
-Arduino与计算机通信最常用的方式就是串口通信。
+Arduino与计算机通信最常用的方式就是串口通信。串口通信时，Arduino控制器上的标有RX/TX的两LED灯会闪烁提示，接收数据时，RX灯会点亮；发送数据时，TX灯会点亮。
 
 1. 使用串口与计算机通信，需要先使用Serial. Begin() 初始化Arduino的串口通信功能
 
