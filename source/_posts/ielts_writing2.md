@@ -506,7 +506,7 @@ map -> diagram / image / picture
 | 连接              | link with, connect, join                         |
 | 面积变大          | extended                                         |
 | 面积变小          | reduced in size                                  |
-| 某地点被去掉/取代 | replaced, demolished,removed, displayced         |
+| 某地点被去掉/取代 | replaced, demolished,removed, displaced          |
 | 某地点转移        | relocated                                        |
 | 新的建筑物        | build/construct/developed/created/added/proposed |
 
@@ -544,7 +544,7 @@ map -> diagram / image / picture
 + （小地图开始）enter the center through the south entrance and see the ... in front of ...
 + `man-made structure`
 + `key facilities`
-+ A is linked with B` by` a vehicle track
++ A is linked with B ` by` a vehicle track
 + the road `runs through` the town `from west to east`
 + `pedestrianisation`
 + ring road

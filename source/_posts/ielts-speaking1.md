@@ -11,17 +11,14 @@ tags: 雅思
 `volcabulary`
 
 + uestc: University of Electronic Science and Technology of China
-+ CE: communication engineering
-  + send and receive signals
-  + design, upgrade and repair conmmucation equipment
 + college entrance examination
 + 5G: fifth generation
-+ south-east 
++ south-west
 
 > study in the morning or night ? (night)
 >
 > + typical night owl /aul/
-> + chanllenging get up early / sleepy
+> + challenging get up early / sleepy
 
 > look forward to working 
 >
@@ -107,3 +104,7 @@ tags: 雅思
 + on a random basis
 + lend something to someone
 + regulate
++ DMV ：department of motor vehicle
++ property company 房地产
++ deal with jet lag  倒时差
++ develope a film 洗照片
