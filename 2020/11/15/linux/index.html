@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linux命令常见 pwd（print working directory）：查看用户的当前目录 cd ： 切换目录 .表示当前目录 .. 表示当前目录的上一级目录（父目录） -表示用 cd 命令切换目录前所在的目录 ~ 表示用户主目录的绝对路径名">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux">
+<meta property="og:url" content="http://yoursite.com/2020/11/15/linux/index.html">
+<meta property="og:site_name" content="Ashley&#39;s blog">
+<meta property="og:description" content="Linux命令常见 pwd（print working directory）：查看用户的当前目录 cd ： 切换目录 .表示当前目录 .. 表示当前目录的上一级目录（父目录） -表示用 cd 命令切换目录前所在的目录 ~ 表示用户主目录的绝对路径名">
+<meta property="og:image" content="https://pic2.zhimg.com/v2-1f6cdbc3e0765ae8484624eaa2a08ab9_b.jpg">
+<meta property="article:published_time" content="2020-11-15T09:01:36.000Z">
+<meta property="article:modified_time" content="2020-11-15T09:04:05.873Z">
+<meta property="article:author" content="Ashley">
+<meta property="article:tag" content="linux">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic2.zhimg.com/v2-1f6cdbc3e0765ae8484624eaa2a08ab9_b.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/11/15/linux/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>linux | Ashley's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ashley's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">话痨</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">6</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">3</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">12</span></a>
+
+  </li>
+        <li class="menu-item menu-item-shuoshuo">
+
+    <a href="/shuoshuo/" rel="section"><i class="fa fa-user fa-fw"></i>世界</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/11/15/linux/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ashley">
+      <meta itemprop="description" content="胡言乱语zzzz">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashley's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          linux
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2020-11-15 17:01:36 / 修改时间：17:04:05" itemprop="dateCreated datePublished" datetime="2020-11-15T17:01:36+08:00">2020-11-15</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index"><span itemprop="name">linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a><strong>Linux命令</strong></h1><h2 id="常见"><a href="#常见" class="headerlink" title="常见"></a>常见</h2><ul>
+<li><code>pwd</code>（print working directory）：查看用户的当前目录</li>
+<li><code>cd</code> ： 切换目录</li>
+<li><code>.</code>表示当前目录</li>
+<li><code>..</code> 表示当前目录的上一级目录（父目录）</li>
+<li><code>-</code>表示用 cd 命令切换目录<strong>前</strong>所在的目录</li>
+<li><code>~</code> 表示<strong>用户主目录</strong>的绝对路径名</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><strong>绝对路径：</strong>以斜线（/）开头 </li>
+<li><strong>相对路径 ：</strong>不以斜线（/）开头</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
+<li><code>ctrl+l</code> clear screen</li>
+<li><code>ctrl+r</code>  查看历史命令</li>
+<li><code>ctrl+q</code> quit</li>
+</ul>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul>
+<li><p><code>rmdir</code>：要求目录为空</p>
+</li>
+<li><p><code>touch</code>：生成一个空文件或更改文件的时间</p>
+</li>
+<li><p><code>cp</code>：复制文件或目录</p>
+</li>
+<li><p><code>mv</code>：移动文件或目录、文件或目录改名</p>
+</li>
+<li><p><code>rm</code>：删除文件或目录</p>
+</li>
+<li><p><code>ln</code>：建立链接文件</p>
+</li>
+<li><p><code>find</code>：查找文件</p>
+</li>
+<li><p><code>file/stat</code>：查看文件类型或文件属性信息</p>
+</li>
+<li><p><code>cat：</code>查看文本文件内容</p>
+</li>
+<li><p><code>more：</code>可以分页看</p>
+</li>
+<li><p><code>less：</code>不仅可以分页，还可以方便地搜索，回翻等操作</p>
+</li>
+<li><p><code>tail -10</code>： 查看文件的尾部的10行</p>
+</li>
+<li><p><code>head -20</code>：查看文件的头部20行</p>
+</li>
+<li><p><code>echo</code>：把内容重定向到指定的文件中 ，有则打开，无则创建</p>
+</li>
+<li><p><code>管道命令 |</code> ：将前面的结果给后面的命令，例如：<code>ls -la | wc</code>，将ls的结果加油wc命令来统计字数</p>
+</li>
+</ul>
+<ul>
+<li><code>重定向 &gt; 是覆盖模式，&gt;&gt; 是追加模式</code>，例如：<code>echo &quot;Java3y,zhen de hen xihuan ni&quot; &gt; qingshu.txt</code>把左边的输出放到右边的文件里去</li>
+</ul>
+<h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩/解压"></a>压缩/解压</h2><ul>
+<li><code>gzip filename</code></li>
+<li><code>bzip2 filename</code></li>
+<li><code>tar -czvf filename</code></li>
+</ul>
+<ul>
+<li><code>gzip -d filename.gz</code></li>
+<li><code>bzip2 -d filename.bz2</code></li>
+<li><code>tar -xzvf filename.tar.gz</code></li>
+</ul>
+<h1 id="linux基础"><a href="#linux基础" class="headerlink" title="linux基础"></a>linux基础</h1><h2 id="1-系统组成"><a href="#1-系统组成" class="headerlink" title="1.系统组成"></a>1.系统组成</h2><ol>
+<li><p><strong>linux内核</strong>（linus 团队管理）</p>
+</li>
+<li><p><strong>shell</strong>：用户与内核交互的接口 </p>
+<p>Shell可以执行：</p>
+<ul>
+<li><strong>内部命令</strong></li>
+<li><strong>应用程序</strong></li>
+<li><strong>shell脚本</strong></li>
+</ul>
+</li>
+<li><p><strong>文件系统</strong>：ext3、ext4等。windows 有 fat32 、ntfs</p>
+</li>
+<li><p><strong>第三方应用软件</strong></p>
+</li>
+</ol>
+<h2 id="2-Linux基本目录结构"><a href="#2-Linux基本目录结构" class="headerlink" title="2.Linux基本目录结构"></a>2.Linux基本目录结构</h2><p><img src="https://pic2.zhimg.com/v2-1f6cdbc3e0765ae8484624eaa2a08ab9_b.jpg" alt="img"></p>
+<ul>
+<li><strong>bin 存放二进制可执行文件(ls,cat,mkdir等)</strong>+</li>
+<li>boot 存放用于系统引导时使用的各种文件+ </li>
+<li>dev 用于存放设备文件</li>
+<li><strong>etc 存放系统配置文件</strong><ul>
+<li>home 存放所有用户文件的根目录</li>
+<li>lib 存放跟文件系统中的程序运行所需要的共享库及内核模块</li>
+</ul>
+</li>
+<li>mnt 系统管理员安装临时文件系统的安装点</li>
+<li><strong>opt 额外安装的可选应用程序包所放置的位置</strong></li>
+<li>proc 虚拟文件系统，存放当前内存的映射</li>
+<li><strong>root 超级用户目录</strong></li>
+<li>sbin 存放二进制可执行文件，只有root才能访问</li>
+<li>tmp 用于存放各种临时文件</li>
+<li>usr 用于存放系统应用程序，比较重要的目录/usr/local 本地管理员软件安装目录</li>
+<li>var 用于存放运行时需要改变数据的文件</li>
+</ul>
+<h2 id="命令-cmd-options-arguments"><a href="#命令-cmd-options-arguments" class="headerlink" title="命令 cmd [options] [arguments]"></a>命令 cmd [options] [arguments]</h2><ul>
+<li>Linux是<strong>区分大小</strong>写的</li>
+<li><strong>单字符</strong>选项前使用<strong>一个</strong><code>减号-</code>。<strong>单词选项</strong>前使用两个<code>减号--</code></li>
+<li><strong>通配符</strong><ul>
+<li>*：匹配任何字符和任何数目的字符</li>
+<li>?：匹配单一数目的任何字符</li>
+<li>[ ]：匹配[ ]之内的任意一个字符</li>
+<li>[! ]：匹配除了[! ]之外的任意一个字符，!表示非的意思</li>
+</ul>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/linux/" rel="tag"><i class="fa fa-tag"></i>
+
+ linux</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/08/07/ielts-speaking1/" rel="prev" title="雅思口语-part1">
+      <i class="fa fa-chevron-left"></i> 雅思口语-part1
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/11/15/conda/" rel="next" title="conda">
+      conda <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux命令"><span class="nav-number">1.</span> <span class="nav-text">Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#常见"><span class="nav-number">1.1.</span> <span class="nav-text">常见</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常用快捷键"><span class="nav-number">1.2.</span> <span class="nav-text">常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件"><span class="nav-number">1.3.</span> <span class="nav-text">文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#压缩-解压"><span class="nav-number">1.4.</span> <span class="nav-text">压缩&#x2F;解压</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#linux基础"><span class="nav-number">2.</span> <span class="nav-text">linux基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-系统组成"><span class="nav-number">2.1.</span> <span class="nav-text">1.系统组成</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Linux基本目录结构"><span class="nav-number">2.2.</span> <span class="nav-text">2.Linux基本目录结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#命令-cmd-options-arguments"><span class="nav-number">2.3.</span> <span class="nav-text">命令 cmd [options] [arguments]</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashley"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashley</p>
+  <div class="site-description" itemprop="description">胡言乱语zzzz</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashley37sky" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashley37sky" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:893822928@qq.com" title="E-Mail → mailto:893822928@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashley</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+<dr>
+
+<br>
+  <span class="post-count">博客全站共14.3k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
