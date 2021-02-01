@@ -245,6 +245,50 @@
       </tags>
   </entry>
   <entry>
+    <title>coursera批量下载</title>
+    <url>/2020/07/15/couseradownload/</url>
+    <content><![CDATA[<blockquote>
+<p><a href="https://github.com/LoganDing/Coursera.org-Downloader" target="_blank" rel="noopener">https://github.com/LoganDing/Coursera.org-Downloader</a></p>
+</blockquote>
+<h1 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h1><a id="more"></a>
+
+<ol>
+<li><p>进入python安装目录下<code>Scripts</code> ，并且将路径添加到系统path中</p>
+<p><code>我的电脑-&gt;属性-&gt;高级系统设置-&gt;高级-&gt;环境变量-&gt;系统变量-&gt;path-&gt;新建</code></p>
+</li>
+<li><p>安装包</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install coursera-dl</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>运行脚本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; &lt;coursename&gt;</span><br></pre></td></tr></table></figure>
+
+<p><em>course_name一般在URL中learn/course_name</em></p>
+</li>
+<li><p>若出现无法登录问题，添加cauth</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; --cauth &lt;cauth&gt; &lt;coursename&gt;</span><br></pre></td></tr></table></figure>
+
+<p>如何获取cauth？<code>f12-&gt;application-&gt;cookies(https://www.coursera.org/)-&gt;CAUTH</code></p>
+</li>
+<li><p>其他操作</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Without -p field:            coursera-dl -u &lt;user&gt; modelthinking-004</span><br><span class="line">Multiple classes:            coursera-dl -u &lt;user&gt; -p &lt;pass&gt; saas historyofrock1-001 algo-2012-002</span><br><span class="line">Filter by section name:      coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -sf &quot;Chapter_Four&quot; crypto-004</span><br><span class="line">Filter by lecture name:      coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -lf &quot;3.1_&quot; ml-2012-002</span><br><span class="line">Download only ppt files:     coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -f &quot;ppt&quot; qcomp-2012-001</span><br><span class="line">Use a ~&#x2F;.netrc file:         coursera-dl -n -- matrix-001</span><br><span class="line">Get the preview classes:     coursera-dl -n -b ni-001</span><br><span class="line">Download videos at 720p:     coursera-dl -n --video-resolution 720p ni-001</span><br><span class="line">Specify download path:       coursera-dl -n --path&#x3D;C:\Coursera\Classes\ comnetworks-002</span><br><span class="line">Display help:                coursera-dl --help</span><br><span class="line"></span><br><span class="line">Maintain a list of classes in a dir:</span><br><span class="line">Initialize:              mkdir -p CURRENT&#x2F;&#123;class1,class2,..classN&#125;</span><br><span class="line">Update:                  coursera-dl -n --path CURRENT &#96;\ls CURRENT&#96;</span><br></pre></td></tr></table></figure>
+
+<p>回复下载</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; --resume sdn1-001</span><br></pre></td></tr></table></figure>
+
+<p><em><code>CTRL+C</code>, partially downloaded files will be deleted from your disk and you have to start the download process from the beginning, other interruptions can use the restore</em></p>
+</li>
+</ol>
+<h1 id="why？？（填坑）"><a href="#why？？（填坑）" class="headerlink" title="why？？（填坑）"></a>why？？（填坑）</h1><p><code>pip</code>：</p>
+<p><code>cookie</code></p>
+<p><code>cauth</code></p>
+<p><code>f12</code></p>
+<p><code>批处理</code></p>
+]]></content>
+      <tags>
+        <tag>hacks</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git命令</title>
     <url>/2020/06/20/git-cheatsheet/</url>
     <content><![CDATA[<h1 id="创建"><a href="#创建" class="headerlink" title="创建"></a>创建</h1><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">git init</span><br></pre></td></tr></table></figure>
@@ -333,272 +377,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>coursera批量下载</title>
-    <url>/2020/07/15/couseradownload/</url>
-    <content><![CDATA[<blockquote>
-<p><a href="https://github.com/LoganDing/Coursera.org-Downloader" target="_blank" rel="noopener">https://github.com/LoganDing/Coursera.org-Downloader</a></p>
-</blockquote>
-<h1 id="methods"><a href="#methods" class="headerlink" title="methods"></a>methods</h1><a id="more"></a>
-
-<ol>
-<li><p>进入python安装目录下<code>Scripts</code> ，并且将路径添加到系统path中</p>
-<p><code>我的电脑-&gt;属性-&gt;高级系统设置-&gt;高级-&gt;环境变量-&gt;系统变量-&gt;path-&gt;新建</code></p>
-</li>
-<li><p>安装包</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">pip install coursera-dl</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>运行脚本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; &lt;coursename&gt;</span><br></pre></td></tr></table></figure>
-
-<p><em>course_name一般在URL中learn/course_name</em></p>
-</li>
-<li><p>若出现无法登录问题，添加cauth</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; --cauth &lt;cauth&gt; &lt;coursename&gt;</span><br></pre></td></tr></table></figure>
-
-<p>如何获取cauth？<code>f12-&gt;application-&gt;cookies(https://www.coursera.org/)-&gt;CAUTH</code></p>
-</li>
-<li><p>其他操作</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Without -p field:            coursera-dl -u &lt;user&gt; modelthinking-004</span><br><span class="line">Multiple classes:            coursera-dl -u &lt;user&gt; -p &lt;pass&gt; saas historyofrock1-001 algo-2012-002</span><br><span class="line">Filter by section name:      coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -sf &quot;Chapter_Four&quot; crypto-004</span><br><span class="line">Filter by lecture name:      coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -lf &quot;3.1_&quot; ml-2012-002</span><br><span class="line">Download only ppt files:     coursera-dl -u &lt;user&gt; -p &lt;pass&gt; -f &quot;ppt&quot; qcomp-2012-001</span><br><span class="line">Use a ~&#x2F;.netrc file:         coursera-dl -n -- matrix-001</span><br><span class="line">Get the preview classes:     coursera-dl -n -b ni-001</span><br><span class="line">Download videos at 720p:     coursera-dl -n --video-resolution 720p ni-001</span><br><span class="line">Specify download path:       coursera-dl -n --path&#x3D;C:\Coursera\Classes\ comnetworks-002</span><br><span class="line">Display help:                coursera-dl --help</span><br><span class="line"></span><br><span class="line">Maintain a list of classes in a dir:</span><br><span class="line">Initialize:              mkdir -p CURRENT&#x2F;&#123;class1,class2,..classN&#125;</span><br><span class="line">Update:                  coursera-dl -n --path CURRENT &#96;\ls CURRENT&#96;</span><br></pre></td></tr></table></figure>
-
-<p>回复下载</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">coursera-dl -u &lt;user&gt; -p &lt;pass&gt; --resume sdn1-001</span><br></pre></td></tr></table></figure>
-
-<p><em><code>CTRL+C</code>, partially downloaded files will be deleted from your disk and you have to start the download process from the beginning, other interruptions can use the restore</em></p>
-</li>
-</ol>
-<h1 id="why？？（填坑）"><a href="#why？？（填坑）" class="headerlink" title="why？？（填坑）"></a>why？？（填坑）</h1><p><code>pip</code>：</p>
-<p><code>cookie</code></p>
-<p><code>cauth</code></p>
-<p><code>f12</code></p>
-<p><code>批处理</code></p>
-]]></content>
-      <tags>
-        <tag>hacks</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>雅思口语-part1</title>
-    <url>/2020/08/07/ielts-speaking1/</url>
-    <content><![CDATA[<h2 id="your-study"><a href="#your-study" class="headerlink" title="your study"></a>your study</h2><a id="more"></a>
-
-<p><code>volcabulary</code></p>
-<ul>
-<li>uestc: University of Electronic Science and Technology of China</li>
-<li>college entrance examination</li>
-<li>5G: fifth generation</li>
-<li>south-west</li>
-</ul>
-<blockquote>
-<p>study in the morning or night ? (night)</p>
-<ul>
-<li>typical night owl /aul/</li>
-<li>challenging get up early / sleepy</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>look forward to working </p>
-<ul>
-<li>earn money -&gt; buy things / rely less on parents</li>
-<li>useful member of society -&gt; ahievemntment</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>do u like ur subject</p>
-<ul>
-<li>practical -&gt; fifth generation</li>
-<li>math physics -&gt; think logically  </li>
-<li>expriments -&gt; problem-solving skills + achievement </li>
-</ul>
-</blockquote>
-<blockquote>
-<p>why choose to study at ur school</p>
-<ul>
-<li>has a good reputation -&gt; job market</li>
-<li>a friendly-leanring environment -&gt; well equipped library </li>
-<li>extracurricular activities -&gt;clubs + competition</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>enjoy first day?</p>
-<ul>
-<li>well-equipment -&gt; sports center, swimming pool, library</li>
-<li>meet my roommates -&gt; share same interests</li>
-<li>four cafeterias -&gt; foodie</li>
-</ul>
-</blockquote>
-<h2 id="your-hometown"><a href="#your-hometown" class="headerlink" title="your hometown"></a>your hometown</h2><ul>
-<li>in the southeast of China </li>
-<li>costs of living </li>
-<li>housing </li>
-<li>it’s an inland city and is surrounded by high moutains</li>
-<li>the pace of life is slow</li>
-<li>leisure facilities</li>
-</ul>
-<h1 id="film"><a href="#film" class="headerlink" title="film"></a>film</h1><ul>
-<li>The Intouchables (触不可及)</li>
-<li>The Intouchables has broken box office records in its native France and across Europe</li>
-<li>comedy about friendship, trust, respect</li>
-<li>Based on a true story of friendship between a handicap millionaire and a young man who is hired as his caregiver.</li>
-<li>special effect </li>
-<li>the film has a strong cast</li>
-<li>comedies / romantic movie / sci-fi movie</li>
-<li>lose my privary</li>
-<li>sitimulate our imagination</li>
-<li>sound quality</li>
-</ul>
-<h1 id="social-media"><a href="#social-media" class="headerlink" title="social media"></a>social media</h1><ul>
-<li>personal data and privacy can be hacked</li>
-</ul>
-<h2 id="What-Are-The-Top-10-Reasons-For-Using-Social-Media"><a href="#What-Are-The-Top-10-Reasons-For-Using-Social-Media" class="headerlink" title="What Are The Top 10 Reasons For Using Social Media?"></a>What Are The Top 10 Reasons For Using Social Media?</h2><ol>
-<li>To <strong>stay in touch</strong> with what friends are doing (42%)</li>
-<li>To <strong>stay up-to-date</strong> with news and current events (41%)</li>
-<li>To <strong>fill up spare time</strong> (39%)</li>
-<li>To <strong>find funny or entertaining content</strong> (37%)</li>
-</ol>
-<h1 id="weather"><a href="#weather" class="headerlink" title="weather"></a>weather</h1><ul>
-<li>“an early spring, a hot summer, a cool autumn and a relatively warm winter”.</li>
-<li>This type of climate is mild and wet</li>
-<li>Rain falls all year round with a peak in July and August</li>
-<li>the days are longer and the nights are shorter</li>
-<li>have heatstroke 中暑</li>
-</ul>
-<h1 id="music"><a href="#music" class="headerlink" title="music"></a>music</h1><ul>
-<li>Energetic and rhythmic</li>
-<li>be talented in sth  /  have a gift for sth</li>
-</ul>
-<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
-<li>diving 潜水（marine life / move underwater / like fly）</li>
-<li>running (strengthen our hearts and lungs)</li>
-<li>hairdresser 理发师</li>
-<li>barbershop 理发店</li>
-<li>durable 耐磨的</li>
-<li>can be well matched with tight jean</li>
-<li>husky</li>
-<li>street cleaner</li>
-<li>dust bin 垃圾桶</li>
-<li>I have a bad memory   </li>
-<li>on a random basis</li>
-<li>lend something to someone</li>
-<li>regulate</li>
-<li>DMV ：department of motor vehicle</li>
-<li>property company 房地产</li>
-<li>deal with jet lag  倒时差</li>
-<li>develope a film 洗照片</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>雅思</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>雅思口语part2</title>
-    <url>/2020/07/24/ielts-speaking2/</url>
-    <content><![CDATA[<p><strong>注意</strong></p>
-<ol>
-<li>写时态</li>
-<li>idea  （写大一点）</li>
-<li>单复数</li>
-<li>He/she</li>
-</ol>
-<a id="more"></a>
-
-<h1 id="组织"><a href="#组织" class="headerlink" title="组织"></a>组织</h1><h1 id="人物"><a href="#人物" class="headerlink" title="人物"></a>人物</h1><h2 id="taught"><a href="#taught" class="headerlink" title="taught"></a>taught</h2><ul>
-<li>He is my senior</li>
-<li>of average height and build</li>
-<li>wears glasses</li>
-<li>role model</li>
-<li>hard-working</li>
-<li>kind and caring</li>
-<li>always there when you need him</li>
-<li>C Programming Language </li>
-</ul>
-<h2 id="jack-ma"><a href="#jack-ma" class="headerlink" title="jack ma"></a>jack ma</h2><ul>
-<li>head of the Alibaba Group, including the b2b marketplace Alibaba, the shopping site Taobao and alipay</li>
-<li>Ma became interested in the  English language as a young boy, and during his teens he worked as a guide for foreign tourists to Hangzhou. Ma failed the entrance exam for the Hangzhou <a href="https://www.britannica.com/topic/normal-school" target="_blank" rel="noopener">Teachers College</a> twice. (His weak point was mathematics.) He was admitted on the third try</li>
-<li>On a trip to the <a href="https://www.britannica.com/place/United-States" target="_blank" rel="noopener">United States</a> on behalf of the Hangzhou city government in 1995, Ma had his first encounter with the <a href="https://www.britannica.com/technology/Internet" target="_blank" rel="noopener">Internet</a> and saw the lack of Chinese Web sites as a great business opportunity</li>
-<li>which launched a <a href="https://www.britannica.com/technology/Web-site" target="_blank" rel="noopener">Web site</a> that <a href="https://www.merriam-webster.com/dictionary/facilitated" target="_blank" rel="noopener">facilitated</a> deals between small businesses</li>
-<li>Ma created a new company, the consumer-to-consumer online marketplace Taobao</li>
-<li>see through the customer’s eye</li>
-<li>“giving up is the greatest failure”</li>
-<li>Jack Ma Foundation, Alibaba donate medical supplies, COVID-19 test kits to India, other nations</li>
-<li>health care, education and the environment</li>
-<li>He has a slim body with black hair</li>
-</ul>
-<h2 id="huiruoqi"><a href="#huiruoqi" class="headerlink" title="huiruoqi"></a>huiruoqi</h2><ul>
-<li>former female Chinese <a href="https://en.wikipedia.org/wiki/Volleyball" target="_blank" rel="noopener">volleyball</a> player</li>
-<li>She is the Outside Hitter and the fifteenth Captain of <a href="https://en.wikipedia.org/wiki/China_women' target="_blank" rel="noopener"s_national_volleyball_team">China women’s national volleyball team</a></li>
-<li>She retired in 2018.</li>
-<li>Olympic Games, World Cup, and world championship</li>
-<li>“never say die” spirit</li>
-<li>public service activity</li>
-<li>strong in body and mind.</li>
-<li>She had just undergone heart surgery, and seven steel nails were punched into her left shoulder, but she still stood on the court</li>
-<li>launched a fund, hoping to help the retired athletes and coaches who have difficulties in medical treatment and life, and let more people pay attention to athletes and sports itself.</li>
-</ul>
-<h1 id="adj"><a href="#adj" class="headerlink" title="adj"></a>adj</h1><ul>
-<li>terrific</li>
-<li>delighted</li>
-<li>thankful</li>
-<li>proud</li>
-<li>joyful</li>
-<li>motivated</li>
-<li>encouraged</li>
-<li>amazed</li>
-<li>touched</li>
-<li>exhausted</li>
-<li>irritated</li>
-<li>disappointed</li>
-</ul>
-<h1 id="hot-pot"><a href="#hot-pot" class="headerlink" title="hot-pot"></a>hot-pot</h1><ul>
-<li>is a chinese food</li>
-<li>While a hot pot full of soup is kept boiling, raw ingredients are placed into the pot </li>
-<li>Most raw foods can be cooked in a hot pot, although they may have different cooking times</li>
-<li>The cooked food is often eaten with a dipping <a href="https://en.wikipedia.org/wiki/Sauce" target="_blank" rel="noopener">sauce</a> for additional flavoring.</li>
-<li>Hot pots may be prepared and eaten either at home or in a restaurant. Since it is considered as a main dish, it can be enjoyed without other separate courses like rice or noodles. </li>
-</ul>
-<h2 id="how-to-eat"><a href="#how-to-eat" class="headerlink" title="how to eat"></a>how to eat</h2><ul>
-<li>Choose the soup base </li>
-<li>Make your own dipping sauce</li>
-<li>cook food in a hot pot and eat. The best order of eating hot pot is to eat meat first, then vegetables</li>
-</ul>
-<h2 id="why-popular"><a href="#why-popular" class="headerlink" title="why popular"></a>why popular</h2><ul>
-<li><p>convenient</p>
-</li>
-<li><p>enhance friendship and unite family members or colleagues as several people sit around a pot, talking and eating</p>
-</li>
-<li><p>The warm atmosphere makes people feel comfortable and relaxed.<a href="https://en.wikipedia.org/wiki/Hot_pot#cite_note-2" target="_blank" rel="noopener">[2]</a> Hot pot is especially popular in winter and cold places.</p>
-</li>
-</ul>
-<h1 id="monopoly"><a href="#monopoly" class="headerlink" title="monopoly"></a>monopoly</h1><ul>
-<li>a board game</li>
-<li>In the game, players <code>roll</code> two six-sided <code>dice</code> to move around the game board, </li>
-<li>buying and trading properties, and developing them with houses and hotels. </li>
-<li>Players collect rent from their opponents, with the goal being to <code>drive them into bankruptcy</code>. </li>
-<li>Money can also be gained or lost through Chance and destiny cards; </li>
-<li>players can end up in jail, which they cannot move from until they have met one of several conditions. </li>
-</ul>
-<h1 id="Czech-tʃek-plague"><a href="#Czech-tʃek-plague" class="headerlink" title="Czech[tʃek] - plague"></a>Czech[tʃek] - plague</h1><ul>
-<li>the capital of the Czech Republic</li>
-<li>warm summers and chilly winters.</li>
-<li>long history</li>
-<li>one of the world’s most popular tourist destinations</li>
-<li>Prague is home to a number of well-known cultural attractions</li>
-<li>Prague Castle, Charles Bridge, Old Town Square</li>
-<li>Spectacular architecture</li>
-<li>stunning</li>
-<li>Pork Knee</li>
-</ul>
-<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
-<li>parrot</li>
-<li>fridge magnet</li>
-<li>play house 过家家</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>雅思</tag>
       </tags>
   </entry>
   <entry>
@@ -956,6 +734,120 @@
       </tags>
   </entry>
   <entry>
+    <title>雅思口语-part1</title>
+    <url>/2020/08/07/ielts-speaking1/</url>
+    <content><![CDATA[<h2 id="your-study"><a href="#your-study" class="headerlink" title="your study"></a>your study</h2><a id="more"></a>
+
+<p><code>volcabulary</code></p>
+<ul>
+<li>uestc: University of Electronic Science and Technology of China</li>
+<li>college entrance examination</li>
+<li>5G: fifth generation</li>
+<li>south-west</li>
+</ul>
+<blockquote>
+<p>study in the morning or night ? (night)</p>
+<ul>
+<li>typical night owl /aul/</li>
+<li>challenging get up early / sleepy</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>look forward to working </p>
+<ul>
+<li>earn money -&gt; buy things / rely less on parents</li>
+<li>useful member of society -&gt; ahievemntment</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>do u like ur subject</p>
+<ul>
+<li>practical -&gt; fifth generation</li>
+<li>math physics -&gt; think logically  </li>
+<li>expriments -&gt; problem-solving skills + achievement </li>
+</ul>
+</blockquote>
+<blockquote>
+<p>why choose to study at ur school</p>
+<ul>
+<li>has a good reputation -&gt; job market</li>
+<li>a friendly-leanring environment -&gt; well equipped library </li>
+<li>extracurricular activities -&gt;clubs + competition</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>enjoy first day?</p>
+<ul>
+<li>well-equipment -&gt; sports center, swimming pool, library</li>
+<li>meet my roommates -&gt; share same interests</li>
+<li>four cafeterias -&gt; foodie</li>
+</ul>
+</blockquote>
+<h2 id="your-hometown"><a href="#your-hometown" class="headerlink" title="your hometown"></a>your hometown</h2><ul>
+<li>in the southeast of China </li>
+<li>costs of living </li>
+<li>housing </li>
+<li>it’s an inland city and is surrounded by high moutains</li>
+<li>the pace of life is slow</li>
+<li>leisure facilities</li>
+</ul>
+<h1 id="film"><a href="#film" class="headerlink" title="film"></a>film</h1><ul>
+<li>The Intouchables (触不可及)</li>
+<li>The Intouchables has broken box office records in its native France and across Europe</li>
+<li>comedy about friendship, trust, respect</li>
+<li>Based on a true story of friendship between a handicap millionaire and a young man who is hired as his caregiver.</li>
+<li>special effect </li>
+<li>the film has a strong cast</li>
+<li>comedies / romantic movie / sci-fi movie</li>
+<li>lose my privary</li>
+<li>sitimulate our imagination</li>
+<li>sound quality</li>
+</ul>
+<h1 id="social-media"><a href="#social-media" class="headerlink" title="social media"></a>social media</h1><ul>
+<li>personal data and privacy can be hacked</li>
+</ul>
+<h2 id="What-Are-The-Top-10-Reasons-For-Using-Social-Media"><a href="#What-Are-The-Top-10-Reasons-For-Using-Social-Media" class="headerlink" title="What Are The Top 10 Reasons For Using Social Media?"></a>What Are The Top 10 Reasons For Using Social Media?</h2><ol>
+<li>To <strong>stay in touch</strong> with what friends are doing (42%)</li>
+<li>To <strong>stay up-to-date</strong> with news and current events (41%)</li>
+<li>To <strong>fill up spare time</strong> (39%)</li>
+<li>To <strong>find funny or entertaining content</strong> (37%)</li>
+</ol>
+<h1 id="weather"><a href="#weather" class="headerlink" title="weather"></a>weather</h1><ul>
+<li>“an early spring, a hot summer, a cool autumn and a relatively warm winter”.</li>
+<li>This type of climate is mild and wet</li>
+<li>Rain falls all year round with a peak in July and August</li>
+<li>the days are longer and the nights are shorter</li>
+<li>have heatstroke 中暑</li>
+</ul>
+<h1 id="music"><a href="#music" class="headerlink" title="music"></a>music</h1><ul>
+<li>Energetic and rhythmic</li>
+<li>be talented in sth  /  have a gift for sth</li>
+</ul>
+<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
+<li>diving 潜水（marine life / move underwater / like fly）</li>
+<li>running (strengthen our hearts and lungs)</li>
+<li>hairdresser 理发师</li>
+<li>barbershop 理发店</li>
+<li>durable 耐磨的</li>
+<li>can be well matched with tight jean</li>
+<li>husky</li>
+<li>street cleaner</li>
+<li>dust bin 垃圾桶</li>
+<li>I have a bad memory   </li>
+<li>on a random basis</li>
+<li>lend something to someone</li>
+<li>regulate</li>
+<li>DMV ：department of motor vehicle</li>
+<li>property company 房地产</li>
+<li>deal with jet lag  倒时差</li>
+<li>develope a film 洗照片</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>雅思</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>雅思大作文</title>
     <url>/2020/07/16/ielts_writing1/</url>
     <content><![CDATA[<h1 id="day1-了解"><a href="#day1-了解" class="headerlink" title="day1 了解"></a>day1 了解</h1><a id="more"></a>
@@ -1197,566 +1089,111 @@
       </tags>
   </entry>
   <entry>
-    <title>python基础</title>
-    <url>/2020/11/19/python-basic/</url>
-    <content><![CDATA[<h1 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h1><h2 id="from-kaggle"><a href="#from-kaggle" class="headerlink" title="from kaggle"></a>from kaggle</h2><ul>
-<li><p>help()   : pass the name, not the result</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">help(round)</span><br><span class="line"><span class="comment"># help(round(3.0))</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>docstring：provide a description of a function</p>
-<ul>
-<li>triple-quoted string</li>
-<li>after the header of a function</li>
-<li>help() –&gt; shows the docstring</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">least_difference</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">    <span class="string">"""Return the smallest difference between any two numbers</span></span><br><span class="line"><span class="string">    among a, b and c.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; least_difference(1, 5, -5)</span></span><br><span class="line"><span class="string">    4</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    diff1 = abs(a - b)</span><br><span class="line">    diff2 = abs(b - c)</span><br><span class="line">    diff3 = abs(a - c)</span><br><span class="line">    <span class="keyword">return</span> min(diff1, diff2, diff3)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>and 优先级 &gt; or</p>
-</li>
-<li><p>objects carry something, and the stuff is accessed using Python’s dot syntax</p>
-<ul>
-<li>carry: funciotn –&gt; method</li>
-<li>carry: non-function –&gt; attributes</li>
-</ul>
-</li>
-</ul>
-<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><ul>
-<li><p>lists (mutable)</p>
-<ul>
-<li><p>indexing <code>list[0]</code></p>
-</li>
-<li><p>slicing <code>list[0:3]</code>   <code>list[-1:1]</code> </p>
-</li>
-<li><p>change <code>list[1]=&quot;second&quot;</code></p>
-</li>
-<li><p>list comprehensions</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">squares = [n**<span class="number">2</span> <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span> ]</span><br><span class="line"></span><br><span class="line">squares = [</span><br><span class="line">    		n**<span class="number">2</span> </span><br><span class="line">    		<span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>) </span><br><span class="line">    		<span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span> </span><br><span class="line">			]</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p>functions</p>
-<ul>
-<li>len(list)</li>
-<li>sorted(list)</li>
-<li>sum(list)</li>
-<li>max(list)   \   min(list)</li>
-</ul>
-</li>
-<li><p>method   –&gt; help(list)  –&gt; learn all the method</p>
-<ul>
-<li>list.append()</li>
-<li>list.pop()  : removes and returns the last element</li>
-<li>searching<ul>
-<li>“element” in list</li>
-<li>list.index(‘element’)</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><ul>
-<li>tuples(immutable)<ul>
-<li>create<ul>
-<li>t=(1, 2, 3)</li>
-<li>t=1, 2, 3</li>
-</ul>
-</li>
-<li>a, b = b, a</li>
-</ul>
-</li>
-</ul>
-<h3 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h3><ul>
-<li>loops<ul>
-<li>for planet in planets</li>
-<li>for i in range(5)</li>
-<li>while i&lt;10</li>
-</ul>
-</li>
-</ul>
-<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><ul>
-<li><p>Double quotes –&gt;  contains single quote charater</p>
-</li>
-<li><p>single quotes –&gt; contains double quote character</p>
-</li>
-<li><p>escaping –&gt; <code>\</code></p>
-</li>
-<li><p>string –&gt; sequnces of characters –&gt; list (immutable)</p>
-<ul>
-<li><p>index</p>
-</li>
-<li><p>slice</p>
-</li>
-<li><p>funcion</p>
-</li>
-<li><p>method for string</p>
-<ul>
-<li>.split()</li>
-<li>.join()   <code>&#39;/&#39;.join([month, day, year])</code></li>
-<li>str.format()</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"&#123;&#125;, you'll always be the &#123;&#125;th planet to me."</span>.format(planet, position)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = <span class="string">"""Pluto's a &#123;0&#125;.</span></span><br><span class="line"><span class="string">No, it's a &#123;1&#125;.</span></span><br><span class="line"><span class="string">&#123;0&#125;!</span></span><br><span class="line"><span class="string">&#123;1&#125;!"""</span>.format(<span class="string">'planet'</span>, <span class="string">'dwarf planet'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'&#123;:10.5&#125;'</span>.format(<span class="string">'xyz'</span>)    <span class="comment">#十个占位，5位有效数字</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-<h3 id="dictionaries"><a href="#dictionaries" class="headerlink" title="dictionaries"></a>dictionaries</h3><ul>
-<li><pre><code class="python">numbers = {<span class="string">'one'</span>:<span class="number">1</span>, <span class="string">'two'</span>:<span class="number">2</span>, <span class="string">'three'</span>:<span class="number">3</span>}
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ index  &#96;index[&quot;one&quot;]&#96;</span><br><span class="line">+ add &#96;numbers[&quot;four&quot;]&#x3D;4&#96;]</span><br><span class="line">+ change</span><br><span class="line">+ dictionary comprehensions</span><br><span class="line">+ &#39;one&#39; in numbers</span><br><span class="line">+ 遍历</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">for k in numbers:</span><br><span class="line">    print(&quot;&#123;&#125; &#x3D; &#123;&#125;&quot;.format(k,numbers[k]))</span><br><span class="line">    </span><br><span class="line">for k,num in numbers.items():</span><br><span class="line">    print(&quot;&#123;&#125; &#x3D; &#123;&#125;&quot;.format(k,num) )</span><br><span class="line">    #dict.items() &#x3D; dict.keys() + dict.values()</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ul>
-<h3 id="external-libraries"><a href="#external-libraries" class="headerlink" title="external libraries"></a>external libraries</h3><ul>
-<li><pre><code class="python"><span class="keyword">import</span> math <span class="keyword">as</span> mt
-<span class="keyword">import</span> math <span class="keyword">as</span> * <span class="comment"># (NOT GOOD)</span>
-<span class="keyword">from</span> math <span class="keyword">import</span> log
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ understanding strange objects</span><br><span class="line"></span><br><span class="line">  + &#96;type()&#96;   --&gt;  what is it </span><br><span class="line">  + &#96;dir()&#96;  --&gt; what can be done  (模块中定义的模块，哈桑函数，变量)</span><br><span class="line">  + &#96;help()&#96;  --&gt; more info </span><br><span class="line"></span><br><span class="line">+ **operator overloading**</span><br><span class="line"></span><br><span class="line">## 基础</span><br><span class="line"></span><br><span class="line">+ cmd &#96;python&#96; -&gt; 进入到交互环境；&#96;quit&#96;</span><br><span class="line">+ 注释 &#96;#&#96; &#96;&#39;&#39;&#39;&#96; &#96;&quot;&quot;&quot;&#96;</span><br><span class="line"></span><br><span class="line">&lt;!--more--&gt;</span><br><span class="line"></span><br><span class="line">+ &#96;end&#x3D;&#39;&#39;&#96;表示输出后不换行 （默认的结束符&#96;\n&#96;）</span><br><span class="line"></span><br><span class="line">+ 大小写敏感</span><br><span class="line"></span><br><span class="line">+ | 函数                | 说明                                                         |</span><br><span class="line">  | ------------------- | ------------------------------------------------------------ |</span><br><span class="line">  | &#96;chr&#96;               | 整数-&gt;字符串                                                 |</span><br><span class="line">  | &#96;float&#96;             | 个字符串转换成浮点数                                         |</span><br><span class="line">  | &#96;type&#96;              | 函数变量的类型进行检查                                       |</span><br><span class="line">  | &#96;bin&#96;               | 整数-&gt;&#96;&#39;0b&#39;&#96;开头的二进制字符串                               |</span><br><span class="line">  | &#96;ord&#96;               | 字符串-&gt;整数                                                 |</span><br><span class="line">  | &#96;hex&#96;               | 整数-&gt;&#39;0x&#39;&#96;开头的十六进制字符串，例如：&#96;hex(123)&#96;会返回&#96;&#39;0x7b&#39;&#96; |</span><br><span class="line">  | &#96;input&#96;             | 从输入中读取一行，返回读到的字符串。                         |</span><br><span class="line">  | &#96;open&#96;              | 打开一个文件并返回文件对象                                   |</span><br><span class="line">  | &#96;round&#96;             | 四舍五入                                                     |</span><br><span class="line">  | &#96;range(100, 0, -2)&#96; | 100到1的偶数                                                 |</span><br><span class="line">  | &#96;&#x2F;&#96;  &#96;&#x2F;&#x2F;&#96; &#96;**&#96;      | 除法 整除  指数                                              |</span><br><span class="line">  | &#96;print()&#96;           | 来实现换行输出                                               |</span><br><span class="line"></span><br><span class="line">+ | &#96;is&#96; &#96;is not&#96;    | 身份运算符 |</span><br><span class="line">  | ---------------- | ---------- |</span><br><span class="line">  | &#96;in&#96; &#96;not in&#96;    | 成员运算符 |</span><br><span class="line">  | &#96;not&#96; &#96;or&#96; &#96;and&#96; | 逻辑运算符 |</span><br><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  f &#x3D; float(input(&#39;请输入华氏温度: &#39;))</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><pre><code class="python">print(<span class="string">'%.1f华氏度 = %.1f摄氏度'</span> % (f, c))
-print(<span class="string">f'<span class="subst">{f:<span class="number">.1</span>f}</span>华氏度 = <span class="subst">{c:<span class="number">.1</span>f}</span>摄氏度'</span>)
-print(<span class="string">f'<span class="subst">{i}</span>*<span class="subst">{j}</span>=<span class="subst">{i * j}</span>'</span>, end=<span class="string">'\t'</span>)
-print()   <span class="comment">#来实现换行输出</span>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+</span><br></pre></td></tr></table></figure>
-<span class="keyword">if</span> ... :
-<span class="keyword">elif</span>:
-<span class="keyword">else</span>:
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ **Flat is better than nested**</span><br><span class="line"></span><br><span class="line">+ **for-in循环**</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  for x in range(1, 101):   #[1,101)</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><p>产生一个1-100范围的随机数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">answer = random.randint(<span class="number">1</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><strong>函数</strong></h2>  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fac</span><span class="params">(num)</span>:</span></span><br><span class="line">	....</span><br><span class="line">	<span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>函数也可以没有自变量，但是函数名后面的圆括号是必须有的</p>
-</li>
-<li><p><code>def roll_dice(n=2):</code> 默认值为2,如果没有指定参数,那么n使用默认值2;传入参数3，变量n被赋值为3</p>
-</li>
-<li><p>带默认值的参数必须放在不带默认值的参数之后</p>
-</li>
-<li><p><strong>可变参数</strong>: 可变参数其实就是将多个参数打包成了一个元组</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(*args)</span>:</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 可变参数可以放在for循环中取出每个参数的值</span></span><br><span class="line">    <span class="keyword">for</span> val <span class="keyword">in</span> args:</span><br><span class="line">        total += val</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>用模块管理函数-&gt;解决命名冲突</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> module1 <span class="keyword">as</span> m1</span><br><span class="line"><span class="keyword">import</span> module2 <span class="keyword">as</span> m2</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo</span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo <span class="comment">#导入同名函数，后导入覆盖先导入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo <span class="keyword">as</span> f1</span><br><span class="line"><span class="keyword">from</span> module2 <span class="keyword">import</span> foo <span class="keyword">as</span> f2</span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="字符串-string-‘’"><a href="#字符串-string-‘’" class="headerlink" title="字符串(string ‘’)"></a>字符串(string ‘’)</h3><ul>
-<li><p><strong>不可变类型</strong>-&gt;<strong>不能通过索引运算修改字符串中的字符</strong></p>
-</li>
-<li><p><code>\</code>（反斜杠）来表示转义</p>
-<ul>
-<li>\t    制表符</li>
-<li>本身包含了<code>&#39;  \</code>这些特殊的字符，通过<code>\</code>进行转义处理</li>
-</ul>
-</li>
-<li><p>原始字符串：以<code>r</code>或<code>R</code>开头 <code>s2 = r&#39;\time up \now&#39;</code></p>
-</li>
-<li><p><code>+</code>和<code>*</code> -&gt; 拼接和重复</p>
-</li>
-<li><pre><code class="python"><span class="comment"># 比较字符串的内容</span>
-print(s1 == s2, s2 == s3)    <span class="comment"># True True</span>
-<span class="comment"># 比较字符串的内存地址</span>
-print(s1 <span class="keyword">is</span> s2, s2 <span class="keyword">is</span> s3)    <span class="comment"># False True</span>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 成员运算</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  print(&#39;wo&#39; in s1)    # True</span><br><span class="line">  print(&#39;wo&#39; not in s1)</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><p>索引和切片</p>
-<ul>
-<li>正向索引 : 0<code>到</code>N-1</li>
-<li>负向索引: -1<code>到</code>-N</li>
-<li>切片: [i:j:k]</li>
-</ul>
-</li>
-<li><p>循环遍历</p>
-<ul>
-<li><p>下标</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(s1)):</span><br><span class="line">    print(s1[index])</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>直接</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ch <span class="keyword">in</span> s1:</span><br><span class="line">    print(ch)</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>查找</p>
-<ul>
-<li><p>find</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找到了返回字符串中另一个字符串首字符的索引</span></span><br><span class="line">print(s.find(<span class="string">'or'</span>))        <span class="comment"># 8</span></span><br><span class="line"><span class="comment"># 找不到返回-1</span></span><br><span class="line">print(s.find(<span class="string">'shit'</span>))      <span class="comment"># -1</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>index</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找到了返回字符串中另一个字符串首字符的索引</span></span><br><span class="line">print(s.index(<span class="string">'or'</span>))       <span class="comment"># 8</span></span><br><span class="line"><span class="comment"># 找不到引发异常</span></span><br><span class="line">print(s.index(<span class="string">'shit'</span>))     <span class="comment"># ValueError: substring not found</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>逆向查找:rfind<code>和</code>rindex</p>
-</li>
-</ul>
-</li>
-<li><p>格式化</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># center方法以宽度20将字符串居中并在两侧填充*</span></span><br><span class="line">print(s.center(<span class="number">20</span>, <span class="string">'*'</span>))  <span class="comment"># ****hello, world****</span></span><br><span class="line"><span class="comment"># rjust方法以宽度20将字符串右对齐并在左侧填充空格</span></span><br><span class="line">print(s.rjust(<span class="number">20</span>))        <span class="comment">#         hello, world</span></span><br><span class="line"><span class="comment"># ljust方法以宽度20将字符串左对齐并在右侧填充~</span></span><br><span class="line">print(s.ljust(<span class="number">20</span>, <span class="string">'~'</span>))   <span class="comment"># hello, world~~~~~~~~</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><table>
-<thead>
-<tr>
-<th>变量值</th>
-<th>占位符</th>
-<th>格式化结果</th>
-<th>说明</th>
-</tr>
-</thead>
-<tbody><tr>
-<td><code>-1</code></td>
-<td><code>{:+.2f}</code></td>
-<td><code>&#39;-1.00&#39;</code></td>
-<td>带符号保留小数点后两位</td>
-</tr>
-<tr>
-<td><code>3.1415926</code></td>
-<td><code>{:.0f}</code></td>
-<td><code>&#39;3&#39;</code></td>
-<td>不带小数</td>
-</tr>
-<tr>
-<td><code>123</code></td>
-<td><code>{:0&gt;10d}</code></td>
-<td><code>0000000123</code></td>
-<td>左边补<code>0</code>，补够10位</td>
-</tr>
-<tr>
-<td><code>123</code></td>
-<td><code>{:x&lt;10d}</code></td>
-<td><code>123xxxxxxx</code></td>
-<td>右边补<code>x</code> ，补够10位</td>
-</tr>
-<tr>
-<td><code>123456789</code></td>
-<td><code>{:,}</code></td>
-<td><code>&#39;123,456,789&#39;</code></td>
-<td>逗号分隔格式</td>
-</tr>
-<tr>
-<td><code>0.123</code></td>
-<td><code>{:.2%}</code></td>
-<td><code>&#39;12.30%&#39;</code></td>
-<td>百分比格式</td>
-</tr>
-<tr>
-<td><code>123456789</code></td>
-<td><code>{:.2e}</code></td>
-<td><code>&#39;1.23e+08&#39;</code></td>
-<td>科学计数法格式</td>
-</tr>
-</tbody></table>
-</li>
-<li><p><code>s.strip()</code> 修剪掉左右两端空格</p>
-</li>
-</ul>
-<h3 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list [])"></a>列表(list [])</h3><ul>
-<li><p>允许<strong>有重复</strong>的数据，可<strong>修改</strong>。列表底层是一个可以动态扩容的数组。</p>
-</li>
-<li><p>定义</p>
-<ul>
-<li><p>生成式 (最好)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'hello world'</span> <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">' aeiou'</span>]</span><br><span class="line">items2 = [x + y <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> y <span class="keyword">in</span> <span class="string">'12'</span>]</span><br><span class="line">print(items3)    <span class="comment"># ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']</span></span><br></pre></td></tr></table></figure>
-
-
-
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><p><code>[]</code>字面量语法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = [<span class="number">35</span>, <span class="number">12</span>, <span class="number">99</span>, <span class="number">68</span>, <span class="number">55</span>, <span class="number">87</span>]</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>内置的<code>list</code>函数</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = list(range(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">print(items1)    <span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<ul>
-<li><p>拼接、重复、成员运算、索引,切片,比较</p>
-<ul>
-<li><pre><code class="python"><span class="comment"># 列表的重复</span>
-items4 = [<span class="string">'hello'</span>] * <span class="number">3</span>
-print(items4)    <span class="comment"># ['hello', 'hello', 'hello']</span>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 添加和删除</span><br><span class="line"></span><br><span class="line">  + &#96;&#96;&#96;python</span><br><span class="line">    # 使用append方法在列表尾部添加元素</span><br><span class="line">    items.append(&#39;Swift&#39;)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用insert方法在列表指定索引位置插入元素</span></span><br><span class="line">items.insert(<span class="number">2</span>, <span class="string">'SQL'</span>)</span><br></pre></td></tr></table></figure>
-
-
-</code></pre>
-</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li><pre><code class="python"><span class="comment"># 删除指定的元素</span>
-items.remove(<span class="string">'Java'</span>)
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line"># 删除指定索引位置的元素</span><br><span class="line">items.pop(0)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#和pop基本相同，但会返回删除的元素</span></span><br><span class="line"><span class="keyword">del</span> items[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清空列表中的元素</span></span><br><span class="line">items.clear()</span><br></pre></td></tr></table></figure>
-</code></pre>
-</li>
-</ul>
-<ul>
-<li><p>元素位置和次数</p>
-<ul>
-<li><pre><code class="python"><span class="comment"># 查找元素的索引位置</span>
-print(items.index(<span class="string">'Python'</span>))   
-<span class="comment">#从索引为3这个位置开始</span>
-print(items.index(<span class="string">'Java'</span>, <span class="number">3</span>))  
-
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  print(items.count(&#39;Python&#39;))</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-</ul>
-</li>
-<li><p>排序和反转</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items.sort()</span><br><span class="line">items.reverse()</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>嵌套的列表 -&gt; 表格或数学上的矩阵</p>
-<ul>
-<li><p>不能用<code>[[0] * 3] * 5]</code>这种方式来创建嵌套列表</p>
-</li>
-<li><pre><code class="python">scores = [[<span class="number">0</span>] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 元组--tuple () </span><br><span class="line"></span><br><span class="line">+ 可重复，元组是**不可变**类型</span><br><span class="line"></span><br><span class="line">+ 定义</span><br><span class="line"></span><br><span class="line">  + &#96;&#96;&#96;python</span><br><span class="line">    # 定义一个四元组</span><br><span class="line">    t2 &#x3D; (&#39;骆昊&#39;, 40, True, &#39;四川成都&#39;)</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><p><code>()</code>表示空元组</p>
-</li>
-<li><p>只有一个元素，需要加逗号，否则是改变运算优先级的圆括号。<code>(&#39;hello&#39;, )</code>和<code>(100, )</code>才是一元组，而<code>(&#39;hello&#39;)</code>和<code>(100)</code>只是字符串和整数</p>
-</li>
-</ul>
-</li>
-<li><p>打包和解包 （解包语法对所有的序列都成立）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span> <span class="comment"># 打包</span></span><br><span class="line">i, j, k = a	<span class="comment"># 解包</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span></span><br><span class="line">i, j, *k = a  <span class="comment">#星号变量会变成列表</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>交换变量值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a, b, c = b, c, a</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>让函数返回多个值 -&gt; <code>return max_one, min_one</code>装成一个二元组然后返回,通过解包语法将二元组中的两个值分别赋给两个变量</p>
-</li>
-<li><p>元组和列表相互转换 <code>list()</code>  <code>tuple()</code></p>
-</li>
-<li><p><code>enumerate</code>  循环遍历取到一个二元组，解包之后第一个值是索引，第二个值是元素</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(items)):</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;index&#125;</span>: <span class="subst">&#123;items[index]&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(items):</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;index&#125;</span>: <span class="subst">&#123;item&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h3 id="集合-set"><a href="#集合-set" class="headerlink" title="集合(set {})"></a>集合(set {})</h3><ul>
-<li><p>无序性-&gt;不能索引 ； 互异性-&gt; 去重 ； 确定性：<code>(not) in</code>成员运算</p>
-</li>
-<li><p>集合中的元素必须是<code>hashable</code>类型,通常不可变类型都是<code>hashable</code>类型 (集合本身也是可变类型)。集合底层使用了<strong>哈希存储</strong>的方式</p>
-</li>
-<li><p>不可变类型的集合，名字叫<code>frozenset</code>,可以作为<code>set</code>中的元素</p>
-</li>
-<li><p>创建</p>
-<ul>
-<li><p><code>{}</code>字面量语法 (至少有一个元素,否则是空字典)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>构造器语法<code>set</code> (空集合可以使用<code>set()</code>)</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set2 = set(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
-</li>
-<li><p>生成式（同list）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set4 = &#123;num <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">20</span>) <span class="keyword">if</span> num % <span class="number">3</span> == <span class="number">0</span> <span class="keyword">or</span> num % <span class="number">5</span> == <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>运算</p>
-<ul>
-<li><code>in</code>和<code>not in</code></li>
-<li>交并差 (&amp;|-)</li>
-</ul>
-</li>
-<li><p>添加或删除</p>
-<ul>
-<li><pre><code>set1.add(33)
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  set1.discard(100)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#建议先做成员运算再删除,因为不在集合中会引发KeyError异常</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">10</span> <span class="keyword">in</span> set1:</span><br><span class="line">    set1.remove(<span class="number">10</span>)</span><br><span class="line">print(set1)    <span class="comment"># &#123;33, 1, 55, 1000&#125;</span></span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># pop-&gt;随机删除一个元素并返回该元素</span></span><br><span class="line">print(set1.pop())</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clear方法可以清空整个集合</span></span><br><span class="line">set1.clear()</span><br></pre></td></tr></table></figure></code></pre></li>
-</ul>
-</li>
-<li><p>判断有无相同的元素可以使用<code>print(set1.isdisjoint(set2))</code></p>
-</li>
-</ul>
-<h3 id="字典（zip-）"><a href="#字典（zip-）" class="headerlink" title="字典（zip{}）"></a>字典（zip{}）</h3><ul>
-<li><p><strong>字典中的键必须是不可变类型</strong> (列表，集合，字典不行，但是他们可以为键值)</p>
-</li>
-<li><p>定义</p>
-<ul>
-<li><pre><code class="python">person = {<span class="string">'name'</span>: <span class="string">'王大锤'</span>,<span class="string">'age'</span>: <span class="number">55</span>,<span class="string">'weight'</span>: <span class="number">60</span>, }
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 内置函数&#96;dict&#96;</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  person &#x3D; dict(name&#x3D;&#39;王大锤&#39;,age&#x3D;55,weight&#x3D;60)</span><br></pre></td></tr></table></figure>
-
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以通过Python内置函数zip压缩两个序列并创建字典</span></span><br><span class="line">items1 = dict(zip(<span class="string">'ABCDE'</span>, <span class="string">'12345'</span>))</span><br><span class="line">print(items1)    <span class="comment"># &#123;'A': '1', 'B': '2', 'C': '3', 'D': '4', 'E': '5'&#125;</span></span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><p>生成式语法</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items3 = &#123;x: x ** <span class="number">3</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)&#125;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>修改</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'age'</span> <span class="keyword">in</span> person:</span><br><span class="line">    person[<span class="string">'age'</span>] = <span class="number">25</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>方法</p>
-<ul>
-<li><p>通过键获得值</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取不到返回None或设定的默认值</span></span><br><span class="line">print(students.get(<span class="number">1005</span>))    <span class="comment"># None</span></span><br><span class="line">print(students.get(<span class="number">1005</span>, &#123;<span class="string">'name'</span>: <span class="string">'无名氏'</span>&#125;))    <span class="comment"># &#123;'name': '无名氏'&#125;</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><pre><code class="python"><span class="comment"># 获取字典中所有的键</span>
-print(students.keys())      <span class="comment"># dict_keys([1001, 1002, 1003])</span>
-<span class="comment"># 获取字典中所有的值</span>
-print(students.values())    <span class="comment"># dict_values([{...}, {...}, {...}])</span>
-<span class="comment"># 获取字典中所有的键值对</span>
-print(students.items()) 
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 删除</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  # 使用pop方法通过键删除键值,并返回该值</span><br><span class="line">  stu1 &#x3D; students.pop(1002)</span><br><span class="line">  </span><br><span class="line">  # 使用popitem方法删除字典中最后一组键值,返回对应的二元组</span><br><span class="line">  # 如果字典中没有元素，调用该方法将引发KeyError异常</span><br><span class="line">  key, value &#x3D; students.popitem()</span><br><span class="line">  </span><br><span class="line">  #del,引不到对应的值，一样会引发KeyError异常</span><br><span class="line">  person &#x3D; &#123;&#39;name&#39;: &#39;王大锤&#39;, &#39;age&#39;: 25&#125;</span><br><span class="line">  del person[&#39;age&#39;]</span><br></pre></td></tr></table></figure></code></pre>
-</li>
-<li><p>更新</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#setdefault可以更新字典中的键对应的值或向字典中存入新的键值对</span></span><br><span class="line">result = students.setdefault(<span class="number">1005</span>, &#123;<span class="string">'name'</span>: <span class="string">'方启鹤'</span>, <span class="string">'sex'</span>: <span class="literal">True</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用update更新字典元素，相同的键会用新值覆盖掉旧值，不同的键会添加到字典中</span></span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>python</category>
-      </categories>
-      <tags>
-        <tag>python</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>linux</title>
-    <url>/2020/11/15/linux/</url>
-    <content><![CDATA[<h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a><strong>Linux命令</strong></h1><h2 id="常见"><a href="#常见" class="headerlink" title="常见"></a>常见</h2><ul>
-<li><code>pwd</code>（print working directory）：查看用户的当前目录</li>
-<li><code>cd</code> ： 切换目录</li>
-<li><code>.</code>表示当前目录</li>
-<li><code>..</code> 表示当前目录的上一级目录（父目录）</li>
-<li><code>-</code>表示用 cd 命令切换目录<strong>前</strong>所在的目录</li>
-<li><code>~</code> 表示<strong>用户主目录</strong>的绝对路径名</li>
-</ul>
+    <title>雅思口语part2</title>
+    <url>/2020/07/24/ielts-speaking2/</url>
+    <content><![CDATA[<p><strong>注意</strong></p>
+<ol>
+<li>写时态</li>
+<li>idea  （写大一点）</li>
+<li>单复数</li>
+<li>He/she</li>
+</ol>
 <a id="more"></a>
 
-<ul>
-<li><strong>绝对路径：</strong>以斜线（/）开头 </li>
-<li><strong>相对路径 ：</strong>不以斜线（/）开头</li>
+<h1 id="组织"><a href="#组织" class="headerlink" title="组织"></a>组织</h1><h1 id="人物"><a href="#人物" class="headerlink" title="人物"></a>人物</h1><h2 id="taught"><a href="#taught" class="headerlink" title="taught"></a>taught</h2><ul>
+<li>He is my senior</li>
+<li>of average height and build</li>
+<li>wears glasses</li>
+<li>role model</li>
+<li>hard-working</li>
+<li>kind and caring</li>
+<li>always there when you need him</li>
+<li>C Programming Language </li>
 </ul>
-<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
-<li><code>ctrl+l</code> clear screen</li>
-<li><code>ctrl+r</code>  查看历史命令</li>
-<li><code>ctrl+q</code> quit</li>
+<h2 id="jack-ma"><a href="#jack-ma" class="headerlink" title="jack ma"></a>jack ma</h2><ul>
+<li>head of the Alibaba Group, including the b2b marketplace Alibaba, the shopping site Taobao and alipay</li>
+<li>Ma became interested in the  English language as a young boy, and during his teens he worked as a guide for foreign tourists to Hangzhou. Ma failed the entrance exam for the Hangzhou <a href="https://www.britannica.com/topic/normal-school" target="_blank" rel="noopener">Teachers College</a> twice. (His weak point was mathematics.) He was admitted on the third try</li>
+<li>On a trip to the <a href="https://www.britannica.com/place/United-States" target="_blank" rel="noopener">United States</a> on behalf of the Hangzhou city government in 1995, Ma had his first encounter with the <a href="https://www.britannica.com/technology/Internet" target="_blank" rel="noopener">Internet</a> and saw the lack of Chinese Web sites as a great business opportunity</li>
+<li>which launched a <a href="https://www.britannica.com/technology/Web-site" target="_blank" rel="noopener">Web site</a> that <a href="https://www.merriam-webster.com/dictionary/facilitated" target="_blank" rel="noopener">facilitated</a> deals between small businesses</li>
+<li>Ma created a new company, the consumer-to-consumer online marketplace Taobao</li>
+<li>see through the customer’s eye</li>
+<li>“giving up is the greatest failure”</li>
+<li>Jack Ma Foundation, Alibaba donate medical supplies, COVID-19 test kits to India, other nations</li>
+<li>health care, education and the environment</li>
+<li>He has a slim body with black hair</li>
 </ul>
-<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul>
-<li><p><code>rmdir</code>：要求目录为空</p>
+<h2 id="huiruoqi"><a href="#huiruoqi" class="headerlink" title="huiruoqi"></a>huiruoqi</h2><ul>
+<li>former female Chinese <a href="https://en.wikipedia.org/wiki/Volleyball" target="_blank" rel="noopener">volleyball</a> player</li>
+<li>She is the Outside Hitter and the fifteenth Captain of <a href="https://en.wikipedia.org/wiki/China_women' target="_blank" rel="noopener"s_national_volleyball_team">China women’s national volleyball team</a></li>
+<li>She retired in 2018.</li>
+<li>Olympic Games, World Cup, and world championship</li>
+<li>“never say die” spirit</li>
+<li>public service activity</li>
+<li>strong in body and mind.</li>
+<li>She had just undergone heart surgery, and seven steel nails were punched into her left shoulder, but she still stood on the court</li>
+<li>launched a fund, hoping to help the retired athletes and coaches who have difficulties in medical treatment and life, and let more people pay attention to athletes and sports itself.</li>
+</ul>
+<h1 id="adj"><a href="#adj" class="headerlink" title="adj"></a>adj</h1><ul>
+<li>terrific</li>
+<li>delighted</li>
+<li>thankful</li>
+<li>proud</li>
+<li>joyful</li>
+<li>motivated</li>
+<li>encouraged</li>
+<li>amazed</li>
+<li>touched</li>
+<li>exhausted</li>
+<li>irritated</li>
+<li>disappointed</li>
+</ul>
+<h1 id="hot-pot"><a href="#hot-pot" class="headerlink" title="hot-pot"></a>hot-pot</h1><ul>
+<li>is a chinese food</li>
+<li>While a hot pot full of soup is kept boiling, raw ingredients are placed into the pot </li>
+<li>Most raw foods can be cooked in a hot pot, although they may have different cooking times</li>
+<li>The cooked food is often eaten with a dipping <a href="https://en.wikipedia.org/wiki/Sauce" target="_blank" rel="noopener">sauce</a> for additional flavoring.</li>
+<li>Hot pots may be prepared and eaten either at home or in a restaurant. Since it is considered as a main dish, it can be enjoyed without other separate courses like rice or noodles. </li>
+</ul>
+<h2 id="how-to-eat"><a href="#how-to-eat" class="headerlink" title="how to eat"></a>how to eat</h2><ul>
+<li>Choose the soup base </li>
+<li>Make your own dipping sauce</li>
+<li>cook food in a hot pot and eat. The best order of eating hot pot is to eat meat first, then vegetables</li>
+</ul>
+<h2 id="why-popular"><a href="#why-popular" class="headerlink" title="why popular"></a>why popular</h2><ul>
+<li><p>convenient</p>
 </li>
-<li><p><code>touch</code>：生成一个空文件或更改文件的时间</p>
+<li><p>enhance friendship and unite family members or colleagues as several people sit around a pot, talking and eating</p>
 </li>
-<li><p><code>cp</code>：复制文件或目录</p>
-</li>
-<li><p><code>mv</code>：移动文件或目录、文件或目录改名</p>
-</li>
-<li><p><code>rm</code>：删除文件或目录</p>
-</li>
-<li><p><code>ln</code>：建立链接文件</p>
-</li>
-<li><p><code>find</code>：查找文件</p>
-</li>
-<li><p><code>file/stat</code>：查看文件类型或文件属性信息</p>
-</li>
-<li><p><code>cat：</code>查看文本文件内容</p>
-</li>
-<li><p><code>more：</code>可以分页看</p>
-</li>
-<li><p><code>less：</code>不仅可以分页，还可以方便地搜索，回翻等操作</p>
-</li>
-<li><p><code>tail -10</code>： 查看文件的尾部的10行</p>
-</li>
-<li><p><code>head -20</code>：查看文件的头部20行</p>
-</li>
-<li><p><code>echo</code>：把内容重定向到指定的文件中 ，有则打开，无则创建</p>
-</li>
-<li><p><code>管道命令 |</code> ：将前面的结果给后面的命令，例如：<code>ls -la | wc</code>，将ls的结果加油wc命令来统计字数</p>
+<li><p>The warm atmosphere makes people feel comfortable and relaxed.<a href="https://en.wikipedia.org/wiki/Hot_pot#cite_note-2" target="_blank" rel="noopener">[2]</a> Hot pot is especially popular in winter and cold places.</p>
 </li>
 </ul>
-<ul>
-<li><code>重定向 &gt; 是覆盖模式，&gt;&gt; 是追加模式</code>，例如：<code>echo &quot;Java3y,zhen de hen xihuan ni&quot; &gt; qingshu.txt</code>把左边的输出放到右边的文件里去</li>
+<h1 id="monopoly"><a href="#monopoly" class="headerlink" title="monopoly"></a>monopoly</h1><ul>
+<li>a board game</li>
+<li>In the game, players <code>roll</code> two six-sided <code>dice</code> to move around the game board, </li>
+<li>buying and trading properties, and developing them with houses and hotels. </li>
+<li>Players collect rent from their opponents, with the goal being to <code>drive them into bankruptcy</code>. </li>
+<li>Money can also be gained or lost through Chance and destiny cards; </li>
+<li>players can end up in jail, which they cannot move from until they have met one of several conditions. </li>
 </ul>
-<h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩/解压"></a>压缩/解压</h2><ul>
-<li><code>gzip filename</code></li>
-<li><code>bzip2 filename</code></li>
-<li><code>tar -czvf filename</code></li>
+<h1 id="Czech-tʃek-plague"><a href="#Czech-tʃek-plague" class="headerlink" title="Czech[tʃek] - plague"></a>Czech[tʃek] - plague</h1><ul>
+<li>the capital of the Czech Republic</li>
+<li>warm summers and chilly winters.</li>
+<li>long history</li>
+<li>one of the world’s most popular tourist destinations</li>
+<li>Prague is home to a number of well-known cultural attractions</li>
+<li>Prague Castle, Charles Bridge, Old Town Square</li>
+<li>Spectacular architecture</li>
+<li>stunning</li>
+<li>Pork Knee</li>
 </ul>
-<ul>
-<li><code>gzip -d filename.gz</code></li>
-<li><code>bzip2 -d filename.bz2</code></li>
-<li><code>tar -xzvf filename.tar.gz</code></li>
-</ul>
-<h1 id="linux基础"><a href="#linux基础" class="headerlink" title="linux基础"></a>linux基础</h1><h2 id="1-系统组成"><a href="#1-系统组成" class="headerlink" title="1.系统组成"></a>1.系统组成</h2><ol>
-<li><p><strong>linux内核</strong>（linus 团队管理）</p>
-</li>
-<li><p><strong>shell</strong>：用户与内核交互的接口 </p>
-<p>Shell可以执行：</p>
-<ul>
-<li><strong>内部命令</strong></li>
-<li><strong>应用程序</strong></li>
-<li><strong>shell脚本</strong></li>
-</ul>
-</li>
-<li><p><strong>文件系统</strong>：ext3、ext4等。windows 有 fat32 、ntfs</p>
-</li>
-<li><p><strong>第三方应用软件</strong></p>
-</li>
-</ol>
-<h2 id="2-Linux基本目录结构"><a href="#2-Linux基本目录结构" class="headerlink" title="2.Linux基本目录结构"></a>2.Linux基本目录结构</h2><p><img src="https://pic2.zhimg.com/v2-1f6cdbc3e0765ae8484624eaa2a08ab9_b.jpg" alt="img"></p>
-<ul>
-<li><strong>bin 存放二进制可执行文件(ls,cat,mkdir等)</strong>+</li>
-<li>boot 存放用于系统引导时使用的各种文件+ </li>
-<li>dev 用于存放设备文件</li>
-<li><strong>etc 存放系统配置文件</strong><ul>
-<li>home 存放所有用户文件的根目录</li>
-<li>lib 存放跟文件系统中的程序运行所需要的共享库及内核模块</li>
-</ul>
-</li>
-<li>mnt 系统管理员安装临时文件系统的安装点</li>
-<li><strong>opt 额外安装的可选应用程序包所放置的位置</strong></li>
-<li>proc 虚拟文件系统，存放当前内存的映射</li>
-<li><strong>root 超级用户目录</strong></li>
-<li>sbin 存放二进制可执行文件，只有root才能访问</li>
-<li>tmp 用于存放各种临时文件</li>
-<li>usr 用于存放系统应用程序，比较重要的目录/usr/local 本地管理员软件安装目录</li>
-<li>var 用于存放运行时需要改变数据的文件</li>
-</ul>
-<h2 id="命令-cmd-options-arguments"><a href="#命令-cmd-options-arguments" class="headerlink" title="命令 cmd [options] [arguments]"></a>命令 cmd [options] [arguments]</h2><ul>
-<li>Linux是<strong>区分大小</strong>写的</li>
-<li><strong>单字符</strong>选项前使用<strong>一个</strong><code>减号-</code>。<strong>单词选项</strong>前使用两个<code>减号--</code></li>
-<li><strong>通配符</strong><ul>
-<li>*：匹配任何字符和任何数目的字符</li>
-<li>?：匹配单一数目的任何字符</li>
-<li>[ ]：匹配[ ]之内的任意一个字符</li>
-<li>[! ]：匹配除了[! ]之外的任意一个字符，!表示非的意思</li>
-</ul>
-</li>
+<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
+<li>parrot</li>
+<li>fridge magnet</li>
+<li>play house 过家家</li>
 </ul>
 ]]></content>
-      <categories>
-        <category>linux</category>
-      </categories>
       <tags>
-        <tag>linux</tag>
+        <tag>雅思</tag>
       </tags>
   </entry>
   <entry>
@@ -2545,6 +1982,571 @@ print(students.items())
 ]]></content>
       <tags>
         <tag>雅思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>linux</title>
+    <url>/2020/11/15/linux/</url>
+    <content><![CDATA[<h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a><strong>Linux命令</strong></h1><h2 id="常见"><a href="#常见" class="headerlink" title="常见"></a>常见</h2><ul>
+<li><code>pwd</code>（print working directory）：查看用户的当前目录</li>
+<li><code>cd</code> ： 切换目录</li>
+<li><code>.</code>表示当前目录</li>
+<li><code>..</code> 表示当前目录的上一级目录（父目录）</li>
+<li><code>-</code>表示用 cd 命令切换目录<strong>前</strong>所在的目录</li>
+<li><code>~</code> 表示<strong>用户主目录</strong>的绝对路径名</li>
+</ul>
+<a id="more"></a>
+
+<ul>
+<li><strong>绝对路径：</strong>以斜线（/）开头 </li>
+<li><strong>相对路径 ：</strong>不以斜线（/）开头</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
+<li><code>ctrl+l</code> clear screen</li>
+<li><code>ctrl+r</code>  查看历史命令</li>
+<li><code>ctrl+q</code> quit</li>
+</ul>
+<h2 id="文件"><a href="#文件" class="headerlink" title="文件"></a>文件</h2><ul>
+<li><p><code>rmdir</code>：要求目录为空</p>
+</li>
+<li><p><code>touch</code>：生成一个空文件或更改文件的时间</p>
+</li>
+<li><p><code>cp</code>：复制文件或目录</p>
+</li>
+<li><p><code>mv</code>：移动文件或目录、文件或目录改名</p>
+</li>
+<li><p><code>rm</code>：删除文件或目录</p>
+</li>
+<li><p><code>ln</code>：建立链接文件</p>
+</li>
+<li><p><code>find</code>：查找文件</p>
+</li>
+<li><p><code>file/stat</code>：查看文件类型或文件属性信息</p>
+</li>
+<li><p><code>cat：</code>查看文本文件内容</p>
+</li>
+<li><p><code>more：</code>可以分页看</p>
+</li>
+<li><p><code>less：</code>不仅可以分页，还可以方便地搜索，回翻等操作</p>
+</li>
+<li><p><code>tail -10</code>： 查看文件的尾部的10行</p>
+</li>
+<li><p><code>head -20</code>：查看文件的头部20行</p>
+</li>
+<li><p><code>echo</code>：把内容重定向到指定的文件中 ，有则打开，无则创建</p>
+</li>
+<li><p><code>管道命令 |</code> ：将前面的结果给后面的命令，例如：<code>ls -la | wc</code>，将ls的结果加油wc命令来统计字数</p>
+</li>
+</ul>
+<ul>
+<li><code>重定向 &gt; 是覆盖模式，&gt;&gt; 是追加模式</code>，例如：<code>echo &quot;Java3y,zhen de hen xihuan ni&quot; &gt; qingshu.txt</code>把左边的输出放到右边的文件里去</li>
+</ul>
+<h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩/解压"></a>压缩/解压</h2><ul>
+<li><code>gzip filename</code></li>
+<li><code>bzip2 filename</code></li>
+<li><code>tar -czvf filename</code></li>
+</ul>
+<ul>
+<li><code>gzip -d filename.gz</code></li>
+<li><code>bzip2 -d filename.bz2</code></li>
+<li><code>tar -xzvf filename.tar.gz</code></li>
+</ul>
+<h1 id="linux基础"><a href="#linux基础" class="headerlink" title="linux基础"></a>linux基础</h1><h2 id="1-系统组成"><a href="#1-系统组成" class="headerlink" title="1.系统组成"></a>1.系统组成</h2><ol>
+<li><p><strong>linux内核</strong>（linus 团队管理）</p>
+</li>
+<li><p><strong>shell</strong>：用户与内核交互的接口 </p>
+<p>Shell可以执行：</p>
+<ul>
+<li><strong>内部命令</strong></li>
+<li><strong>应用程序</strong></li>
+<li><strong>shell脚本</strong></li>
+</ul>
+</li>
+<li><p><strong>文件系统</strong>：ext3、ext4等。windows 有 fat32 、ntfs</p>
+</li>
+<li><p><strong>第三方应用软件</strong></p>
+</li>
+</ol>
+<h2 id="2-Linux基本目录结构"><a href="#2-Linux基本目录结构" class="headerlink" title="2.Linux基本目录结构"></a>2.Linux基本目录结构</h2><p><img src="https://pic2.zhimg.com/v2-1f6cdbc3e0765ae8484624eaa2a08ab9_b.jpg" alt="img"></p>
+<ul>
+<li><strong>bin 存放二进制可执行文件(ls,cat,mkdir等)</strong>+</li>
+<li>boot 存放用于系统引导时使用的各种文件+ </li>
+<li>dev 用于存放设备文件</li>
+<li><strong>etc 存放系统配置文件</strong><ul>
+<li>home 存放所有用户文件的根目录</li>
+<li>lib 存放跟文件系统中的程序运行所需要的共享库及内核模块</li>
+</ul>
+</li>
+<li>mnt 系统管理员安装临时文件系统的安装点</li>
+<li><strong>opt 额外安装的可选应用程序包所放置的位置</strong></li>
+<li>proc 虚拟文件系统，存放当前内存的映射</li>
+<li><strong>root 超级用户目录</strong></li>
+<li>sbin 存放二进制可执行文件，只有root才能访问</li>
+<li>tmp 用于存放各种临时文件</li>
+<li>usr 用于存放系统应用程序，比较重要的目录/usr/local 本地管理员软件安装目录</li>
+<li>var 用于存放运行时需要改变数据的文件</li>
+</ul>
+<h2 id="命令-cmd-options-arguments"><a href="#命令-cmd-options-arguments" class="headerlink" title="命令 cmd [options] [arguments]"></a>命令 cmd [options] [arguments]</h2><ul>
+<li>Linux是<strong>区分大小</strong>写的</li>
+<li><strong>单字符</strong>选项前使用<strong>一个</strong><code>减号-</code>。<strong>单词选项</strong>前使用两个<code>减号--</code></li>
+<li><strong>通配符</strong><ul>
+<li>*：匹配任何字符和任何数目的字符</li>
+<li>?：匹配单一数目的任何字符</li>
+<li>[ ]：匹配[ ]之内的任意一个字符</li>
+<li>[! ]：匹配除了[! ]之外的任意一个字符，!表示非的意思</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>linux</category>
+      </categories>
+      <tags>
+        <tag>linux</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>python基础</title>
+    <url>/2020/11/19/python-basic/</url>
+    <content><![CDATA[<h1 id="python基础"><a href="#python基础" class="headerlink" title="python基础"></a>python基础</h1><h2 id="from-kaggle"><a href="#from-kaggle" class="headerlink" title="from kaggle"></a>from kaggle</h2><ul>
+<li><p>help()   : pass the name, not the result</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">help(round)</span><br><span class="line"><span class="comment"># help(round(3.0))</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>docstring：provide a description of a function</p>
+<a id="more"></a>
+
+<ul>
+<li>triple-quoted string</li>
+<li>after the header of a function</li>
+<li>help() –&gt; shows the docstring</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">least_difference</span><span class="params">(a, b, c)</span>:</span></span><br><span class="line">    <span class="string">"""Return the smallest difference between any two numbers</span></span><br><span class="line"><span class="string">    among a, b and c.</span></span><br><span class="line"><span class="string">    </span></span><br><span class="line"><span class="string">    &gt;&gt;&gt; least_difference(1, 5, -5)</span></span><br><span class="line"><span class="string">    4</span></span><br><span class="line"><span class="string">    """</span></span><br><span class="line">    diff1 = abs(a - b)</span><br><span class="line">    diff2 = abs(b - c)</span><br><span class="line">    diff3 = abs(a - c)</span><br><span class="line">    <span class="keyword">return</span> min(diff1, diff2, diff3)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>and 优先级 &gt; or</p>
+</li>
+<li><p>objects carry something, and the stuff is accessed using Python’s dot syntax</p>
+<ul>
+<li>carry: funciotn –&gt; method</li>
+<li>carry: non-function –&gt; attributes</li>
+</ul>
+</li>
+</ul>
+<h3 id="list"><a href="#list" class="headerlink" title="list"></a>list</h3><ul>
+<li><p>lists (mutable)</p>
+<ul>
+<li><p>indexing <code>list[0]</code></p>
+</li>
+<li><p>slicing <code>list[0:3]</code>   <code>list[-1:1]</code> </p>
+</li>
+<li><p>change <code>list[1]=&quot;second&quot;</code></p>
+</li>
+<li><p>list comprehensions</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">squares = [n**<span class="number">2</span> <span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>) <span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span> ]</span><br><span class="line"></span><br><span class="line">squares = [</span><br><span class="line">    		n**<span class="number">2</span> </span><br><span class="line">    		<span class="keyword">for</span> n <span class="keyword">in</span> range(<span class="number">10</span>) </span><br><span class="line">    		<span class="keyword">if</span> n%<span class="number">2</span>==<span class="number">0</span> </span><br><span class="line">			]</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>functions</p>
+<ul>
+<li>len(list)</li>
+<li>sorted(list)</li>
+<li>sum(list)</li>
+<li>max(list)   \   min(list)</li>
+</ul>
+</li>
+<li><p>method   –&gt; help(list)  –&gt; learn all the method</p>
+<ul>
+<li>list.append()</li>
+<li>list.pop()  : removes and returns the last element</li>
+<li>searching<ul>
+<li>“element” in list</li>
+<li>list.index(‘element’)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="tuple"><a href="#tuple" class="headerlink" title="tuple"></a>tuple</h3><ul>
+<li>tuples(immutable)<ul>
+<li>create<ul>
+<li>t=(1, 2, 3)</li>
+<li>t=1, 2, 3</li>
+</ul>
+</li>
+<li>a, b = b, a</li>
+</ul>
+</li>
+</ul>
+<h3 id="loop"><a href="#loop" class="headerlink" title="loop"></a>loop</h3><ul>
+<li>loops<ul>
+<li>for planet in planets</li>
+<li>for i in range(5)</li>
+<li>while i&lt;10</li>
+</ul>
+</li>
+</ul>
+<h3 id="string"><a href="#string" class="headerlink" title="string"></a>string</h3><ul>
+<li><p>Double quotes –&gt;  contains single quote charater</p>
+</li>
+<li><p>single quotes –&gt; contains double quote character</p>
+</li>
+<li><p>escaping –&gt; <code>\</code></p>
+</li>
+<li><p>string –&gt; sequnces of characters –&gt; list (immutable)</p>
+<ul>
+<li><p>index</p>
+</li>
+<li><p>slice</p>
+</li>
+<li><p>funcion</p>
+</li>
+<li><p>method for string</p>
+<ul>
+<li>.split()</li>
+<li>.join()   <code>&#39;/&#39;.join([month, day, year])</code></li>
+<li>str.format()</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="string">"&#123;&#125;, you'll always be the &#123;&#125;th planet to me."</span>.format(planet, position)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">s = <span class="string">"""Pluto's a &#123;0&#125;.</span></span><br><span class="line"><span class="string">No, it's a &#123;1&#125;.</span></span><br><span class="line"><span class="string">&#123;0&#125;!</span></span><br><span class="line"><span class="string">&#123;1&#125;!"""</span>.format(<span class="string">'planet'</span>, <span class="string">'dwarf planet'</span>)</span><br><span class="line"></span><br><span class="line"><span class="string">'&#123;:10.5&#125;'</span>.format(<span class="string">'xyz'</span>)    <span class="comment">#十个占位，5位有效数字</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="dictionaries"><a href="#dictionaries" class="headerlink" title="dictionaries"></a>dictionaries</h3><ul>
+<li><pre><code class="python">numbers = {<span class="string">'one'</span>:<span class="number">1</span>, <span class="string">'two'</span>:<span class="number">2</span>, <span class="string">'three'</span>:<span class="number">3</span>}
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ index  &#96;index[&quot;one&quot;]&#96;</span><br><span class="line">+ add &#96;numbers[&quot;four&quot;]&#x3D;4&#96;]</span><br><span class="line">+ change</span><br><span class="line">+ dictionary comprehensions</span><br><span class="line">+ &#39;one&#39; in numbers</span><br><span class="line">+ 遍历</span><br><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">for k in numbers:</span><br><span class="line">    print(&quot;&#123;&#125; &#x3D; &#123;&#125;&quot;.format(k,numbers[k]))</span><br><span class="line">    </span><br><span class="line">for k,num in numbers.items():</span><br><span class="line">    print(&quot;&#123;&#125; &#x3D; &#123;&#125;&quot;.format(k,num) )</span><br><span class="line">    #dict.items() &#x3D; dict.keys() + dict.values()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<h3 id="external-libraries"><a href="#external-libraries" class="headerlink" title="external libraries"></a>external libraries</h3><ul>
+<li><pre><code class="python"><span class="keyword">import</span> math <span class="keyword">as</span> mt
+<span class="keyword">import</span> math <span class="keyword">as</span> * <span class="comment"># (NOT GOOD)</span>
+<span class="keyword">from</span> math <span class="keyword">import</span> log
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ understanding strange objects</span><br><span class="line"></span><br><span class="line">  + &#96;type()&#96;   --&gt;  what is it </span><br><span class="line">  + &#96;dir()&#96;  --&gt; what can be done  (模块中定义的模块，哈桑函数，变量)</span><br><span class="line">  + &#96;help()&#96;  --&gt; more info </span><br><span class="line"></span><br><span class="line">+ **operator overloading**</span><br><span class="line"></span><br><span class="line">## 基础</span><br><span class="line"></span><br><span class="line">+ cmd &#96;python&#96; -&gt; 进入到交互环境；&#96;quit&#96;</span><br><span class="line">+ 注释 &#96;#&#96; &#96;&#39;&#39;&#39;&#96; &#96;&quot;&quot;&quot;&#96;</span><br><span class="line"></span><br><span class="line">+ &#96;end&#x3D;&#39;&#39;&#96;表示输出后不换行 （默认的结束符&#96;\n&#96;）</span><br><span class="line"></span><br><span class="line">+ 大小写敏感</span><br><span class="line"></span><br><span class="line">+ | 函数                | 说明                                                         |</span><br><span class="line">  | ------------------- | ------------------------------------------------------------ |</span><br><span class="line">  | &#96;chr&#96;               | 整数-&gt;字符串                                                 |</span><br><span class="line">  | &#96;float&#96;             | 个字符串转换成浮点数                                         |</span><br><span class="line">  | &#96;type&#96;              | 函数变量的类型进行检查                                       |</span><br><span class="line">  | &#96;bin&#96;               | 整数-&gt;&#96;&#39;0b&#39;&#96;开头的二进制字符串                               |</span><br><span class="line">  | &#96;ord&#96;               | 字符串-&gt;整数                                                 |</span><br><span class="line">  | &#96;hex&#96;               | 整数-&gt;&#39;0x&#39;&#96;开头的十六进制字符串，例如：&#96;hex(123)&#96;会返回&#96;&#39;0x7b&#39;&#96; |</span><br><span class="line">  | &#96;input&#96;             | 从输入中读取一行，返回读到的字符串。                         |</span><br><span class="line">  | &#96;open&#96;              | 打开一个文件并返回文件对象                                   |</span><br><span class="line">  | &#96;round&#96;             | 四舍五入                                                     |</span><br><span class="line">  | &#96;range(100, 0, -2)&#96; | 100到1的偶数                                                 |</span><br><span class="line">  | &#96;&#x2F;&#96;  &#96;&#x2F;&#x2F;&#96; &#96;**&#96;      | 除法 整除  指数                                              |</span><br><span class="line">  | &#96;print()&#96;           | 来实现换行输出                                               |</span><br><span class="line"></span><br><span class="line">+ | &#96;is&#96; &#96;is not&#96;    | 身份运算符 |</span><br><span class="line">  | ---------------- | ---------- |</span><br><span class="line">  | &#96;in&#96; &#96;not in&#96;    | 成员运算符 |</span><br><span class="line">  | &#96;not&#96; &#96;or&#96; &#96;and&#96; | 逻辑运算符 |</span><br><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  f &#x3D; float(input(&#39;请输入华氏温度: &#39;))</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><pre><code class="python">print(<span class="string">'%.1f华氏度 = %.1f摄氏度'</span> % (f, c))
+print(<span class="string">f'<span class="subst">{f:<span class="number">.1</span>f}</span>华氏度 = <span class="subst">{c:<span class="number">.1</span>f}</span>摄氏度'</span>)
+print(<span class="string">f'<span class="subst">{i}</span>*<span class="subst">{j}</span>=<span class="subst">{i * j}</span>'</span>, end=<span class="string">'\t'</span>)
+print()   <span class="comment">#来实现换行输出</span>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+</span><br></pre></td></tr></table></figure>
+<span class="keyword">if</span> ... :
+<span class="keyword">elif</span>:
+<span class="keyword">else</span>:
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ **Flat is better than nested**</span><br><span class="line"></span><br><span class="line">+ **for-in循环**</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  for x in range(1, 101):   #[1,101)</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>产生一个1-100范围的随机数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> random</span><br><span class="line">answer = random.randint(<span class="number">1</span>, <span class="number">100</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a><strong>函数</strong></h2>  <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">fac</span><span class="params">(num)</span>:</span></span><br><span class="line">	....</span><br><span class="line">	<span class="keyword">return</span> result</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>函数也可以没有自变量，但是函数名后面的圆括号是必须有的</p>
+</li>
+<li><p><code>def roll_dice(n=2):</code> 默认值为2,如果没有指定参数,那么n使用默认值2;传入参数3，变量n被赋值为3</p>
+</li>
+<li><p>带默认值的参数必须放在不带默认值的参数之后</p>
+</li>
+<li><p><strong>可变参数</strong>: 可变参数其实就是将多个参数打包成了一个元组</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(*args)</span>:</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="comment"># 可变参数可以放在for循环中取出每个参数的值</span></span><br><span class="line">    <span class="keyword">for</span> val <span class="keyword">in</span> args:</span><br><span class="line">        total += val</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>用模块管理函数-&gt;解决命名冲突</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> module1 <span class="keyword">as</span> m1</span><br><span class="line"><span class="keyword">import</span> module2 <span class="keyword">as</span> m2</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo</span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo <span class="comment">#导入同名函数，后导入覆盖先导入</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo <span class="keyword">as</span> f1</span><br><span class="line"><span class="keyword">from</span> module2 <span class="keyword">import</span> foo <span class="keyword">as</span> f2</span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+<h2 id="数据结构"><a href="#数据结构" class="headerlink" title="数据结构"></a>数据结构</h2><h3 id="字符串-string-‘’"><a href="#字符串-string-‘’" class="headerlink" title="字符串(string ‘’)"></a>字符串(string ‘’)</h3><ul>
+<li><p><strong>不可变类型</strong>-&gt;<strong>不能通过索引运算修改字符串中的字符</strong></p>
+</li>
+<li><p><code>\</code>（反斜杠）来表示转义</p>
+<ul>
+<li>\t    制表符</li>
+<li>本身包含了<code>&#39;  \</code>这些特殊的字符，通过<code>\</code>进行转义处理</li>
+</ul>
+</li>
+<li><p>原始字符串：以<code>r</code>或<code>R</code>开头 <code>s2 = r&#39;\time up \now&#39;</code></p>
+</li>
+<li><p><code>+</code>和<code>*</code> -&gt; 拼接和重复</p>
+</li>
+<li><pre><code class="python"><span class="comment"># 比较字符串的内容</span>
+print(s1 == s2, s2 == s3)    <span class="comment"># True True</span>
+<span class="comment"># 比较字符串的内存地址</span>
+print(s1 <span class="keyword">is</span> s2, s2 <span class="keyword">is</span> s3)    <span class="comment"># False True</span>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 成员运算</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  print(&#39;wo&#39; in s1)    # True</span><br><span class="line">  print(&#39;wo&#39; not in s1)</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>索引和切片</p>
+<ul>
+<li>正向索引 : 0<code>到</code>N-1</li>
+<li>负向索引: -1<code>到</code>-N</li>
+<li>切片: [i:j:k]</li>
+</ul>
+</li>
+<li><p>循环遍历</p>
+<ul>
+<li><p>下标</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(s1)):</span><br><span class="line">    print(s1[index])</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>直接</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> ch <span class="keyword">in</span> s1:</span><br><span class="line">    print(ch)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>查找</p>
+<ul>
+<li><p>find</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找到了返回字符串中另一个字符串首字符的索引</span></span><br><span class="line">print(s.find(<span class="string">'or'</span>))        <span class="comment"># 8</span></span><br><span class="line"><span class="comment"># 找不到返回-1</span></span><br><span class="line">print(s.find(<span class="string">'shit'</span>))      <span class="comment"># -1</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>index</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 找到了返回字符串中另一个字符串首字符的索引</span></span><br><span class="line">print(s.index(<span class="string">'or'</span>))       <span class="comment"># 8</span></span><br><span class="line"><span class="comment"># 找不到引发异常</span></span><br><span class="line">print(s.index(<span class="string">'shit'</span>))     <span class="comment"># ValueError: substring not found</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>逆向查找:rfind<code>和</code>rindex</p>
+</li>
+</ul>
+</li>
+<li><p>格式化</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># center方法以宽度20将字符串居中并在两侧填充*</span></span><br><span class="line">print(s.center(<span class="number">20</span>, <span class="string">'*'</span>))  <span class="comment"># ****hello, world****</span></span><br><span class="line"><span class="comment"># rjust方法以宽度20将字符串右对齐并在左侧填充空格</span></span><br><span class="line">print(s.rjust(<span class="number">20</span>))        <span class="comment">#         hello, world</span></span><br><span class="line"><span class="comment"># ljust方法以宽度20将字符串左对齐并在右侧填充~</span></span><br><span class="line">print(s.ljust(<span class="number">20</span>, <span class="string">'~'</span>))   <span class="comment"># hello, world~~~~~~~~</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><table>
+<thead>
+<tr>
+<th>变量值</th>
+<th>占位符</th>
+<th>格式化结果</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>-1</code></td>
+<td><code>{:+.2f}</code></td>
+<td><code>&#39;-1.00&#39;</code></td>
+<td>带符号保留小数点后两位</td>
+</tr>
+<tr>
+<td><code>3.1415926</code></td>
+<td><code>{:.0f}</code></td>
+<td><code>&#39;3&#39;</code></td>
+<td>不带小数</td>
+</tr>
+<tr>
+<td><code>123</code></td>
+<td><code>{:0&gt;10d}</code></td>
+<td><code>0000000123</code></td>
+<td>左边补<code>0</code>，补够10位</td>
+</tr>
+<tr>
+<td><code>123</code></td>
+<td><code>{:x&lt;10d}</code></td>
+<td><code>123xxxxxxx</code></td>
+<td>右边补<code>x</code> ，补够10位</td>
+</tr>
+<tr>
+<td><code>123456789</code></td>
+<td><code>{:,}</code></td>
+<td><code>&#39;123,456,789&#39;</code></td>
+<td>逗号分隔格式</td>
+</tr>
+<tr>
+<td><code>0.123</code></td>
+<td><code>{:.2%}</code></td>
+<td><code>&#39;12.30%&#39;</code></td>
+<td>百分比格式</td>
+</tr>
+<tr>
+<td><code>123456789</code></td>
+<td><code>{:.2e}</code></td>
+<td><code>&#39;1.23e+08&#39;</code></td>
+<td>科学计数法格式</td>
+</tr>
+</tbody></table>
+</li>
+<li><p><code>s.strip()</code> 修剪掉左右两端空格</p>
+</li>
+</ul>
+<h3 id="列表-list"><a href="#列表-list" class="headerlink" title="列表(list [])"></a>列表(list [])</h3><ul>
+<li><p>允许<strong>有重复</strong>的数据，可<strong>修改</strong>。列表底层是一个可以动态扩容的数组。</p>
+</li>
+<li><p>定义</p>
+<ul>
+<li><p>生成式 (最好)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = [x <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'hello world'</span> <span class="keyword">if</span> x <span class="keyword">not</span> <span class="keyword">in</span> <span class="string">' aeiou'</span>]</span><br><span class="line">items2 = [x + y <span class="keyword">for</span> x <span class="keyword">in</span> <span class="string">'ABC'</span> <span class="keyword">for</span> y <span class="keyword">in</span> <span class="string">'12'</span>]</span><br><span class="line">print(items3)    <span class="comment"># ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']</span></span><br></pre></td></tr></table></figure>
+
+
+
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p><code>[]</code>字面量语法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = [<span class="number">35</span>, <span class="number">12</span>, <span class="number">99</span>, <span class="number">68</span>, <span class="number">55</span>, <span class="number">87</span>]</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>内置的<code>list</code>函数</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items1 = list(range(<span class="number">1</span>, <span class="number">10</span>))</span><br><span class="line">print(items1)    <span class="comment"># [1, 2, 3, 4, 5, 6, 7, 8, 9]</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<ul>
+<li><p>拼接、重复、成员运算、索引,切片,比较</p>
+<ul>
+<li><pre><code class="python"><span class="comment"># 列表的重复</span>
+items4 = [<span class="string">'hello'</span>] * <span class="number">3</span>
+print(items4)    <span class="comment"># ['hello', 'hello', 'hello']</span>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 添加和删除</span><br><span class="line"></span><br><span class="line">  + &#96;&#96;&#96;python</span><br><span class="line">    # 使用append方法在列表尾部添加元素</span><br><span class="line">    items.append(&#39;Swift&#39;)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 使用insert方法在列表指定索引位置插入元素</span></span><br><span class="line">items.insert(<span class="number">2</span>, <span class="string">'SQL'</span>)</span><br></pre></td></tr></table></figure>
+
+
+</code></pre>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><pre><code class="python"><span class="comment"># 删除指定的元素</span>
+items.remove(<span class="string">'Java'</span>)
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line"># 删除指定索引位置的元素</span><br><span class="line">items.pop(0)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#和pop基本相同，但会返回删除的元素</span></span><br><span class="line"><span class="keyword">del</span> items[<span class="number">1</span>]</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 清空列表中的元素</span></span><br><span class="line">items.clear()</span><br></pre></td></tr></table></figure>
+</code></pre>
+</li>
+</ul>
+<ul>
+<li><p>元素位置和次数</p>
+<ul>
+<li><pre><code class="python"><span class="comment"># 查找元素的索引位置</span>
+print(items.index(<span class="string">'Python'</span>))   
+<span class="comment">#从索引为3这个位置开始</span>
+print(items.index(<span class="string">'Java'</span>, <span class="number">3</span>))  
+
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  print(items.count(&#39;Python&#39;))</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+</ul>
+</li>
+<li><p>排序和反转</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items.sort()</span><br><span class="line">items.reverse()</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>嵌套的列表 -&gt; 表格或数学上的矩阵</p>
+<ul>
+<li><p>不能用<code>[[0] * 3] * 5]</code>这种方式来创建嵌套列表</p>
+</li>
+<li><pre><code class="python">scores = [[<span class="number">0</span>] * <span class="number">3</span> <span class="keyword">for</span> _ <span class="keyword">in</span> range(<span class="number">5</span>)]
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">### 元组--tuple () </span><br><span class="line"></span><br><span class="line">+ 可重复，元组是**不可变**类型</span><br><span class="line"></span><br><span class="line">+ 定义</span><br><span class="line"></span><br><span class="line">  + &#96;&#96;&#96;python</span><br><span class="line">    # 定义一个四元组</span><br><span class="line">    t2 &#x3D; (&#39;骆昊&#39;, 40, True, &#39;四川成都&#39;)</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p><code>()</code>表示空元组</p>
+</li>
+<li><p>只有一个元素，需要加逗号，否则是改变运算优先级的圆括号。<code>(&#39;hello&#39;, )</code>和<code>(100, )</code>才是一元组，而<code>(&#39;hello&#39;)</code>和<code>(100)</code>只是字符串和整数</p>
+</li>
+</ul>
+</li>
+<li><p>打包和解包 （解包语法对所有的序列都成立）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a = <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span> <span class="comment"># 打包</span></span><br><span class="line">i, j, k = a	<span class="comment"># 解包</span></span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>, <span class="number">10</span>, <span class="number">100</span>, <span class="number">1000</span></span><br><span class="line">i, j, *k = a  <span class="comment">#星号变量会变成列表</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>交换变量值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">a, b, c = b, c, a</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>让函数返回多个值 -&gt; <code>return max_one, min_one</code>装成一个二元组然后返回,通过解包语法将二元组中的两个值分别赋给两个变量</p>
+</li>
+<li><p>元组和列表相互转换 <code>list()</code>  <code>tuple()</code></p>
+</li>
+<li><p><code>enumerate</code>  循环遍历取到一个二元组，解包之后第一个值是索引，第二个值是元素</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">for</span> index <span class="keyword">in</span> range(len(items)):</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;index&#125;</span>: <span class="subst">&#123;items[index]&#125;</span>'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> index, item <span class="keyword">in</span> enumerate(items):</span><br><span class="line">    print(<span class="string">f'<span class="subst">&#123;index&#125;</span>: <span class="subst">&#123;item&#125;</span>'</span>)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h3 id="集合-set"><a href="#集合-set" class="headerlink" title="集合(set {})"></a>集合(set {})</h3><ul>
+<li><p>无序性-&gt;不能索引 ； 互异性-&gt; 去重 ； 确定性：<code>(not) in</code>成员运算</p>
+</li>
+<li><p>集合中的元素必须是<code>hashable</code>类型,通常不可变类型都是<code>hashable</code>类型 (集合本身也是可变类型)。集合底层使用了<strong>哈希存储</strong>的方式</p>
+</li>
+<li><p>不可变类型的集合，名字叫<code>frozenset</code>,可以作为<code>set</code>中的元素</p>
+</li>
+<li><p>创建</p>
+<ul>
+<li><p><code>{}</code>字面量语法 (至少有一个元素,否则是空字典)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set1 = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">3</span>, <span class="number">2</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>构造器语法<code>set</code> (空集合可以使用<code>set()</code>)</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set2 = set(<span class="string">'hello'</span>)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>生成式（同list）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">set4 = &#123;num <span class="keyword">for</span> num <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">20</span>) <span class="keyword">if</span> num % <span class="number">3</span> == <span class="number">0</span> <span class="keyword">or</span> num % <span class="number">5</span> == <span class="number">0</span>&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>运算</p>
+<ul>
+<li><code>in</code>和<code>not in</code></li>
+<li>交并差 (&amp;|-)</li>
+</ul>
+</li>
+<li><p>添加或删除</p>
+<ul>
+<li><pre><code>set1.add(33)
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ &#96;&#96;&#96;python</span><br><span class="line">  set1.discard(100)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#建议先做成员运算再删除,因为不在集合中会引发KeyError异常</span></span><br><span class="line"><span class="keyword">if</span> <span class="number">10</span> <span class="keyword">in</span> set1:</span><br><span class="line">    set1.remove(<span class="number">10</span>)</span><br><span class="line">print(set1)    <span class="comment"># &#123;33, 1, 55, 1000&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># pop-&gt;随机删除一个元素并返回该元素</span></span><br><span class="line">print(set1.pop())</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># clear方法可以清空整个集合</span></span><br><span class="line">set1.clear()</span><br></pre></td></tr></table></figure></code></pre></li>
+</ul>
+</li>
+<li><p>判断有无相同的元素可以使用<code>print(set1.isdisjoint(set2))</code></p>
+</li>
+</ul>
+<h3 id="字典（zip-）"><a href="#字典（zip-）" class="headerlink" title="字典（zip{}）"></a>字典（zip{}）</h3><ul>
+<li><p><strong>字典中的键必须是不可变类型</strong> (列表，集合，字典不行，但是他们可以为键值)</p>
+</li>
+<li><p>定义</p>
+<ul>
+<li><pre><code class="python">person = {<span class="string">'name'</span>: <span class="string">'王大锤'</span>,<span class="string">'age'</span>: <span class="number">55</span>,<span class="string">'weight'</span>: <span class="number">60</span>, }
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 内置函数&#96;dict&#96;</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  person &#x3D; dict(name&#x3D;&#39;王大锤&#39;,age&#x3D;55,weight&#x3D;60)</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 可以通过Python内置函数zip压缩两个序列并创建字典</span></span><br><span class="line">items1 = dict(zip(<span class="string">'ABCDE'</span>, <span class="string">'12345'</span>))</span><br><span class="line">print(items1)    <span class="comment"># &#123;'A': '1', 'B': '2', 'C': '3', 'D': '4', 'E': '5'&#125;</span></span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>生成式语法</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">items3 = &#123;x: x ** <span class="number">3</span> <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>, <span class="number">6</span>)&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>修改</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="string">'age'</span> <span class="keyword">in</span> person:</span><br><span class="line">    person[<span class="string">'age'</span>] = <span class="number">25</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>方法</p>
+<ul>
+<li><p>通过键获得值</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment"># 取不到返回None或设定的默认值</span></span><br><span class="line">print(students.get(<span class="number">1005</span>))    <span class="comment"># None</span></span><br><span class="line">print(students.get(<span class="number">1005</span>, &#123;<span class="string">'name'</span>: <span class="string">'无名氏'</span>&#125;))    <span class="comment"># &#123;'name': '无名氏'&#125;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><pre><code class="python"><span class="comment"># 获取字典中所有的键</span>
+print(students.keys())      <span class="comment"># dict_keys([1001, 1002, 1003])</span>
+<span class="comment"># 获取字典中所有的值</span>
+print(students.values())    <span class="comment"># dict_values([{...}, {...}, {...}])</span>
+<span class="comment"># 获取字典中所有的键值对</span>
+print(students.items()) 
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">+ 删除</span><br><span class="line"></span><br><span class="line">  &#96;&#96;&#96;python</span><br><span class="line">  # 使用pop方法通过键删除键值,并返回该值</span><br><span class="line">  stu1 &#x3D; students.pop(1002)</span><br><span class="line">  </span><br><span class="line">  # 使用popitem方法删除字典中最后一组键值,返回对应的二元组</span><br><span class="line">  # 如果字典中没有元素，调用该方法将引发KeyError异常</span><br><span class="line">  key, value &#x3D; students.popitem()</span><br><span class="line">  </span><br><span class="line">  #del,引不到对应的值，一样会引发KeyError异常</span><br><span class="line">  person &#x3D; &#123;&#39;name&#39;: &#39;王大锤&#39;, &#39;age&#39;: 25&#125;</span><br><span class="line">  del person[&#39;age&#39;]</span><br></pre></td></tr></table></figure></code></pre>
+</li>
+<li><p>更新</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="comment">#setdefault可以更新字典中的键对应的值或向字典中存入新的键值对</span></span><br><span class="line">result = students.setdefault(<span class="number">1005</span>, &#123;<span class="string">'name'</span>: <span class="string">'方启鹤'</span>, <span class="string">'sex'</span>: <span class="literal">True</span>&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用update更新字典元素，相同的键会用新值覆盖掉旧值，不同的键会添加到字典中</span></span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>python</category>
+      </categories>
+      <tags>
+        <tag>python</tag>
       </tags>
   </entry>
 </search>
