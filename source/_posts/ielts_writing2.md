@@ -445,7 +445,7 @@ categories:
 + 第一阶段
 
   + `at the first stage of the process`
-  + `the first/initial step/phare`
+  + `the first/initial step/phase`
   + `first` /`first of all`
   + `to begin with` / `the process begins with the +(n.)`
   + `at the larval stage` (在幼虫阶段) （`life stages` 生命阶段）
