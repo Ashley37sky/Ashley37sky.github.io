@@ -3,10 +3,11 @@
   <entry>
     <title>Linux命令</title>
     <url>/2021/03/01/Linux_command/</url>
-    <content><![CDATA[<h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="命令格式-cmd-options-arguments"><a href="#命令格式-cmd-options-arguments" class="headerlink" title="命令格式 cmd [-options] [arguments]"></a>命令格式 cmd [-options] [arguments]</h2><ul>
+    <content><![CDATA[<h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>*<em>cmd [-options] [arguments] *</em></p>
+<ul>
 <li>Linux<strong>区分大小</strong></li>
 <li>个别命令不遵循此格式</li>
-<li>有多个选项时，可以写在一起   eg la -la /etc</li>
+<li>有多个选项时，可以写在一起   eg ls -la /etc</li>
 </ul>
 <a id="more"></a>
 
@@ -95,7 +96,7 @@
 <li><code>rmdir</code>：删除空目录 （很很少用）</li>
 <li><code>cp [origin] [new]</code>：复制文件<ul>
 <li>-r：复制目录</li>
-<li>-p：保留文件属性 （eg.修改实践）</li>
+<li>-p：保留文件属性 （eg.修改时间）</li>
 <li>复制的时候可以改名<ul>
 <li>cp -r /tmp/test /root/test1</li>
 <li>cp -r /rmp/test /root (不改名) </li>
@@ -185,7 +186,137 @@
 <ul>
 <li><code>重定向 &gt; 是覆盖模式，&gt;&gt; 是追加模式</code>，例如：<code>echo &quot;Java3y,zhen de hen xihuan ni&quot; &gt; qingshu.txt</code>把左边的输出放到右边的文件里去</li>
 </ul>
-<h2 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h2><h3 id="更改权限chmod-（root、所有者）"><a href="#更改权限chmod-（root、所有者）" class="headerlink" title="更改权限chmod （root、所有者）"></a>更改权限chmod （root、所有者）</h3><h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩/解压"></a>压缩/解压</h2><ul>
+<h2 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h2><h3 id="更改权限-chmod"><a href="#更改权限-chmod" class="headerlink" title="更改权限-chmod"></a>更改权限-chmod</h3><p>chmod：（change mode）root、所有者可以执行</p>
+<p>两种方式</p>
+<ul>
+<li><p><code>chmod [{ugoa} {+-=} {rwx} [文件或目录]]</code></p>
+</li>
+<li><p><code>chmod [421] [文件或目录]</code> (更常用)</p>
+<p>ps. r—4, w–2, x–1</p>
+<p>​      rwxrw-r–(764)</p>
+<ul>
+<li><code>-R</code> 递归修改 （把目录及其子目录全西安都修改）</li>
+<li>一次更改多个权限，用逗号隔开 <code>g+w,o-r</code></li>
+</ul>
+<p>补充： 创建普通用户，组</p>
+</li>
+<li><p><code>useradd __</code>          <code>passwd  __</code></p>
+</li>
+<li><p><code>groupadd</code></p>
+</li>
+</ul>
+<p><strong>重要：file和directory的rwx权限</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>file</th>
+<th>directory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>cat/more/head/tail/less</td>
+<td>ls （列出目录内容）</td>
+</tr>
+<tr>
+<td>w</td>
+<td>vim （可修改文件）</td>
+<td>touch/mkdir/rmdir/rm （可在目录中创建删除文件）</td>
+</tr>
+<tr>
+<td>x</td>
+<td>script command</td>
+<td>cd （可以进入目录，所以一般rx同时出现）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>文件 w权限 = 修改文件</li>
+<li>目录 w权限 = 删除创建文件</li>
+<li>对文件有权限，但是进不去文件所在目录也不行</li>
+</ul>
+<h3 id="其他权限命令"><a href="#其他权限命令" class="headerlink" title="其他权限命令"></a>其他权限命令</h3><ul>
+<li><p><code>chown [用户] [文件或目录]</code>: change ownership 改变所有者，只有root能执行</p>
+</li>
+<li><p><code>umask</code>  显示，设置文件的缺省（默认）权限</p>
+<ul>
+<li><code>-S</code> : 以rwx显示新建文件的default权限</li>
+<li>不加S</li>
+</ul>
+<img src="C:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210311143914415.png" alt="image-20210311143914415" style="zoom: 25%;" />
+
+</li>
+</ul>
+<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p><code>find [搜索范围] [匹配条件]</code></p>
+<ul>
+<li><p><code>find [搜索范围] -name [条件]</code></p>
+<ul>
+<li><code>-iname</code></li>
+<li><code>*</code> 匹配多个  <code>?</code> 匹配一个字符</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -size +204800</code> 查找大于100MB的文件</p>
+<ul>
+<li><p><code>+ - =</code></p>
+</li>
+<li><p>size 是数据块大小  1个数据块-512字节-0.5k</p>
+<p>（100M = 102400K =204800数据块）</p>
+</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -user [用户名]</code>  查找以用户名为所属者的文件</p>
+<ul>
+<li><code>-group</code>    根据所属组查找</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -cmin -5</code>  查找5min内被修改过属性的文件和目录</p>
+<ul>
+<li><code>amin</code>   access 访问时间</li>
+<li><code>cmin</code> change 文件属性</li>
+<li><code>mmin</code> modify 文件内容</li>
+</ul>
+</li>
+<li><p><code>-type</code> 根据文件类型查找</p>
+<ul>
+<li>f：文件</li>
+<li>d：目录</li>
+<li>l：软连接文件</li>
+</ul>
+</li>
+<li><p>多个条件</p>
+<ul>
+<li><p><code>-a</code> and</p>
+<p>eg. <code>find /etc -size +163940 -a size -204800</code></p>
+</li>
+<li><p><code>-o</code> or</p>
+</li>
+</ul>
+</li>
+<li><p><code>-exec/-ok [命令] {} \</code> 对搜索结果执行操作</p>
+<ul>
+<li>eg. <code>find /etc -name init -exec ls -l {} \</code></li>
+<li><code>-ok</code> 会询问是否确定操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他搜索命令"><a href="#其他搜索命令" class="headerlink" title="其他搜索命令"></a>其他搜索命令</h3><ul>
+<li><code>locat [文件]</code>再文件资料库中查找文件<ul>
+<li><code>-i</code> 不区分大小写</li>
+<li><code>updatedb</code> 更新资料库</li>
+<li>查找比find快，但是新建文件后 如果资料库未更新 则搜不到文件</li>
+<li>/tmp 的文件搜不到</li>
+</ul>
+</li>
+<li><code>which [命令]</code> 搜索 命令 所在 目录 和 别名</li>
+<li><code>whereis [命令]</code> 搜索 命令 所在 目录 和 帮助文档路径</li>
+<li><code>grep -iv [指定字串] [文件]</code> 在文件中搜寻字串匹配的行并输出<ul>
+<li><code>-i</code> 不区分大小写</li>
+<li><code>-v</code> 排除指定字符串</li>
+<li><code>grep -v ^# [file]</code> 去掉以#开头的行（注释行）</li>
+</ul>
+</li>
+</ul>
+<h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩/解压"></a>压缩/解压</h2><ul>
 <li><p><code>gzip filename</code></p>
 </li>
 <li><p><code>bzip2 filename</code></p>
@@ -587,6 +718,469 @@
       </tags>
   </entry>
   <entry>
+    <title>雅思口语part2</title>
+    <url>/2020/07/24/ielts-speaking2/</url>
+    <content><![CDATA[<p><strong>注意</strong></p>
+<ol>
+<li>写时态</li>
+<li>idea  （写大一点）</li>
+<li>单复数</li>
+<li>He/she</li>
+</ol>
+<a id="more"></a>
+
+<h1 id="组织"><a href="#组织" class="headerlink" title="组织"></a>组织</h1><h1 id="人物"><a href="#人物" class="headerlink" title="人物"></a>人物</h1><h2 id="taught"><a href="#taught" class="headerlink" title="taught"></a>taught</h2><ul>
+<li>He is my senior</li>
+<li>of average height and build</li>
+<li>wears glasses</li>
+<li>role model</li>
+<li>hard-working</li>
+<li>kind and caring</li>
+<li>always there when you need him</li>
+<li>C Programming Language </li>
+</ul>
+<h2 id="jack-ma"><a href="#jack-ma" class="headerlink" title="jack ma"></a>jack ma</h2><ul>
+<li>head of the Alibaba Group, including the b2b marketplace Alibaba, the shopping site Taobao and alipay</li>
+<li>Ma became interested in the  English language as a young boy, and during his teens he worked as a guide for foreign tourists to Hangzhou. Ma failed the entrance exam for the Hangzhou <a href="https://www.britannica.com/topic/normal-school" target="_blank" rel="noopener">Teachers College</a> twice. (His weak point was mathematics.) He was admitted on the third try</li>
+<li>On a trip to the <a href="https://www.britannica.com/place/United-States" target="_blank" rel="noopener">United States</a> on behalf of the Hangzhou city government in 1995, Ma had his first encounter with the <a href="https://www.britannica.com/technology/Internet" target="_blank" rel="noopener">Internet</a> and saw the lack of Chinese Web sites as a great business opportunity</li>
+<li>which launched a <a href="https://www.britannica.com/technology/Web-site" target="_blank" rel="noopener">Web site</a> that <a href="https://www.merriam-webster.com/dictionary/facilitated" target="_blank" rel="noopener">facilitated</a> deals between small businesses</li>
+<li>Ma created a new company, the consumer-to-consumer online marketplace Taobao</li>
+<li>see through the customer’s eye</li>
+<li>“giving up is the greatest failure”</li>
+<li>Jack Ma Foundation, Alibaba donate medical supplies, COVID-19 test kits to India, other nations</li>
+<li>health care, education and the environment</li>
+<li>He has a slim body with black hair</li>
+</ul>
+<h2 id="huiruoqi"><a href="#huiruoqi" class="headerlink" title="huiruoqi"></a>huiruoqi</h2><ul>
+<li>former female Chinese <a href="https://en.wikipedia.org/wiki/Volleyball" target="_blank" rel="noopener">volleyball</a> player</li>
+<li>She is the Outside Hitter and the fifteenth Captain of <a href="https://en.wikipedia.org/wiki/China_women' target="_blank" rel="noopener"s_national_volleyball_team">China women’s national volleyball team</a></li>
+<li>She retired in 2018.</li>
+<li>Olympic Games, World Cup, and world championship</li>
+<li>“never say die” spirit</li>
+<li>public service activity</li>
+<li>strong in body and mind.</li>
+<li>She had just undergone heart surgery, and seven steel nails were punched into her left shoulder, but she still stood on the court</li>
+<li>launched a fund, hoping to help the retired athletes and coaches who have difficulties in medical treatment and life, and let more people pay attention to athletes and sports itself.</li>
+</ul>
+<h1 id="adj"><a href="#adj" class="headerlink" title="adj"></a>adj</h1><ul>
+<li>terrific</li>
+<li>delighted</li>
+<li>thankful</li>
+<li>proud</li>
+<li>joyful</li>
+<li>motivated</li>
+<li>encouraged</li>
+<li>amazed</li>
+<li>touched</li>
+<li>exhausted</li>
+<li>irritated</li>
+<li>disappointed</li>
+</ul>
+<h1 id="hot-pot"><a href="#hot-pot" class="headerlink" title="hot-pot"></a>hot-pot</h1><ul>
+<li>is a chinese food</li>
+<li>While a hot pot full of soup is kept boiling, raw ingredients are placed into the pot </li>
+<li>Most raw foods can be cooked in a hot pot, although they may have different cooking times</li>
+<li>The cooked food is often eaten with a dipping <a href="https://en.wikipedia.org/wiki/Sauce" target="_blank" rel="noopener">sauce</a> for additional flavoring.</li>
+<li>Hot pots may be prepared and eaten either at home or in a restaurant. Since it is considered as a main dish, it can be enjoyed without other separate courses like rice or noodles. </li>
+</ul>
+<h2 id="how-to-eat"><a href="#how-to-eat" class="headerlink" title="how to eat"></a>how to eat</h2><ul>
+<li>Choose the soup base </li>
+<li>Make your own dipping sauce</li>
+<li>cook food in a hot pot and eat. The best order of eating hot pot is to eat meat first, then vegetables</li>
+</ul>
+<h2 id="why-popular"><a href="#why-popular" class="headerlink" title="why popular"></a>why popular</h2><ul>
+<li><p>convenient</p>
+</li>
+<li><p>enhance friendship and unite family members or colleagues as several people sit around a pot, talking and eating</p>
+</li>
+<li><p>The warm atmosphere makes people feel comfortable and relaxed.<a href="https://en.wikipedia.org/wiki/Hot_pot#cite_note-2" target="_blank" rel="noopener">[2]</a> Hot pot is especially popular in winter and cold places.</p>
+</li>
+</ul>
+<h1 id="monopoly"><a href="#monopoly" class="headerlink" title="monopoly"></a>monopoly</h1><ul>
+<li>a board game</li>
+<li>In the game, players <code>roll</code> two six-sided <code>dice</code> to move around the game board, </li>
+<li>buying and trading properties, and developing them with houses and hotels. </li>
+<li>Players collect rent from their opponents, with the goal being to <code>drive them into bankruptcy</code>. </li>
+<li>Money can also be gained or lost through Chance and destiny cards; </li>
+<li>players can end up in jail, which they cannot move from until they have met one of several conditions. </li>
+</ul>
+<h1 id="Czech-tʃek-plague"><a href="#Czech-tʃek-plague" class="headerlink" title="Czech[tʃek] - plague"></a>Czech[tʃek] - plague</h1><ul>
+<li>the capital of the Czech Republic</li>
+<li>warm summers and chilly winters.</li>
+<li>long history</li>
+<li>one of the world’s most popular tourist destinations</li>
+<li>Prague is home to a number of well-known cultural attractions</li>
+<li>Prague Castle, Charles Bridge, Old Town Square</li>
+<li>Spectacular architecture</li>
+<li>stunning</li>
+<li>Pork Knee</li>
+</ul>
+<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
+<li>parrot</li>
+<li>fridge magnet</li>
+<li>play house 过家家</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>雅思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雅思口语-part1</title>
+    <url>/2020/08/07/ielts-speaking1/</url>
+    <content><![CDATA[<h2 id="your-study"><a href="#your-study" class="headerlink" title="your study"></a>your study</h2><a id="more"></a>
+
+<p><code>volcabulary</code></p>
+<ul>
+<li>uestc: University of Electronic Science and Technology of China</li>
+<li>college entrance examination</li>
+<li>5G: fifth generation</li>
+<li>south-west</li>
+</ul>
+<blockquote>
+<p>study in the morning or night ? (night)</p>
+<ul>
+<li>typical night owl /aul/</li>
+<li>challenging get up early / sleepy</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>look forward to working </p>
+<ul>
+<li>earn money -&gt; buy things / rely less on parents</li>
+<li>useful member of society -&gt; ahievemntment</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>do u like ur subject</p>
+<ul>
+<li>practical -&gt; fifth generation</li>
+<li>math physics -&gt; think logically  </li>
+<li>expriments -&gt; problem-solving skills + achievement </li>
+</ul>
+</blockquote>
+<blockquote>
+<p>why choose to study at ur school</p>
+<ul>
+<li>has a good reputation -&gt; job market</li>
+<li>a friendly-leanring environment -&gt; well equipped library </li>
+<li>extracurricular activities -&gt;clubs + competition</li>
+</ul>
+</blockquote>
+<blockquote>
+<p>enjoy first day?</p>
+<ul>
+<li>well-equipment -&gt; sports center, swimming pool, library</li>
+<li>meet my roommates -&gt; share same interests</li>
+<li>four cafeterias -&gt; foodie</li>
+</ul>
+</blockquote>
+<h2 id="your-hometown"><a href="#your-hometown" class="headerlink" title="your hometown"></a>your hometown</h2><ul>
+<li>in the southeast of China </li>
+<li>costs of living </li>
+<li>housing </li>
+<li>it’s an inland city and is surrounded by high moutains</li>
+<li>the pace of life is slow</li>
+<li>leisure facilities</li>
+</ul>
+<h1 id="film"><a href="#film" class="headerlink" title="film"></a>film</h1><ul>
+<li>The Intouchables (触不可及)</li>
+<li>The Intouchables has broken box office records in its native France and across Europe</li>
+<li>comedy about friendship, trust, respect</li>
+<li>Based on a true story of friendship between a handicap millionaire and a young man who is hired as his caregiver.</li>
+<li>special effect </li>
+<li>the film has a strong cast</li>
+<li>comedies / romantic movie / sci-fi movie</li>
+<li>lose my privary</li>
+<li>sitimulate our imagination</li>
+<li>sound quality</li>
+</ul>
+<h1 id="social-media"><a href="#social-media" class="headerlink" title="social media"></a>social media</h1><ul>
+<li>personal data and privacy can be hacked</li>
+</ul>
+<h2 id="What-Are-The-Top-10-Reasons-For-Using-Social-Media"><a href="#What-Are-The-Top-10-Reasons-For-Using-Social-Media" class="headerlink" title="What Are The Top 10 Reasons For Using Social Media?"></a>What Are The Top 10 Reasons For Using Social Media?</h2><ol>
+<li>To <strong>stay in touch</strong> with what friends are doing (42%)</li>
+<li>To <strong>stay up-to-date</strong> with news and current events (41%)</li>
+<li>To <strong>fill up spare time</strong> (39%)</li>
+<li>To <strong>find funny or entertaining content</strong> (37%)</li>
+</ol>
+<h1 id="weather"><a href="#weather" class="headerlink" title="weather"></a>weather</h1><ul>
+<li>“an early spring, a hot summer, a cool autumn and a relatively warm winter”.</li>
+<li>This type of climate is mild and wet</li>
+<li>Rain falls all year round with a peak in July and August</li>
+<li>the days are longer and the nights are shorter</li>
+<li>have heatstroke 中暑</li>
+</ul>
+<h1 id="music"><a href="#music" class="headerlink" title="music"></a>music</h1><ul>
+<li>Energetic and rhythmic</li>
+<li>be talented in sth  /  have a gift for sth</li>
+</ul>
+<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
+<li>diving 潜水（marine life / move underwater / like fly）</li>
+<li>running (strengthen our hearts and lungs)</li>
+<li>hairdresser 理发师</li>
+<li>barbershop 理发店</li>
+<li>durable 耐磨的</li>
+<li>can be well matched with tight jean</li>
+<li>husky</li>
+<li>street cleaner</li>
+<li>dust bin 垃圾桶</li>
+<li>I have a bad memory   </li>
+<li>on a random basis</li>
+<li>lend something to someone</li>
+<li>regulate</li>
+<li>DMV ：department of motor vehicle</li>
+<li>property company 房地产</li>
+<li>deal with jet lag  倒时差</li>
+<li>develope a film 洗照片</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>雅思</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>雅思大作文</title>
+    <url>/2020/07/16/ielts_writing1/</url>
+    <content><![CDATA[<h1 id="day1-了解"><a href="#day1-了解" class="headerlink" title="day1 了解"></a>day1 了解</h1><a id="more"></a>
+
+<ul>
+<li><p>不能缩写（<code>can&#39;t</code> -&gt; <code>cannot</code>,  <code>won&#39;t</code>-&gt;<code>will not</code>）</p>
+</li>
+<li><p>不能口语化 <code>lots of</code>-&gt; <code>many/a large number of</code></p>
+</li>
+<li><p>不能祈使句。不用<code>！</code>等感情色彩强烈的符号结尾。不能太绝对。</p>
+</li>
+<li><p>不能谚语</p>
+</li>
+<li><p>适度使用<code>I/We</code></p>
+</li>
+</ul>
+<h1 id="day2-充实观点streec"><a href="#day2-充实观点streec" class="headerlink" title="day2 充实观点streec"></a>day2 充实观点<code>streec</code></h1><table>
+<thead>
+<tr>
+<th>skills</th>
+<th align="center">efficiency</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>technology</td>
+<td align="center">safety（犯罪率，个人信息，病毒）</td>
+</tr>
+<tr>
+<td>right(pension,paid vacations,freedom,privacy)</td>
+<td align="center">responsibility（援助,学校社会媒体）</td>
+</tr>
+<tr>
+<td>environment（污染，多样性）</td>
+<td align="center">health（压力，医疗，运动饮食，心理）</td>
+</tr>
+<tr>
+<td>employment（就业机会）</td>
+<td align="center">money（贫富差距，纳税人负担，援助）</td>
+</tr>
+<tr>
+<td>culture（传统，文化多样性）</td>
+<td align="center">fun（探索发现，娱乐，动力）</td>
+</tr>
+</tbody></table>
+<h1 id="day3-易错词"><a href="#day3-易错词" class="headerlink" title="day3 易错词"></a>day3 易错词</h1><ul>
+<li><p>不可数</p>
+<ul>
+<li>feedback（反馈） </li>
+<li>behaviour</li>
+<li>knowledge </li>
+<li>equipment</li>
+<li>potential</li>
+<li>furniture</li>
+<li>scenery</li>
+<li>jewllery</li>
+</ul>
+</li>
+<li><p>outweigh（v.）结尾没有t</p>
+</li>
+<li><p>economy(经济) </p>
+<p>economics（经济学） </p>
+<p>economical（省钱的）</p>
+</li>
+<li><p>lack sth (v.) lack of sth (n.)</p>
+</li>
+<li><p>benefit (对…有益)  及物动词</p>
+<p>benefit form （从…收益）</p>
+</li>
+</ul>
+<h1 id="day4-作文结构"><a href="#day4-作文结构" class="headerlink" title="day4 作文结构"></a>day4 作文结构</h1><ul>
+<li><p>偏向“折中式”，对正反两方进行辩证，但是更倾向一方</p>
+</li>
+<li><p>分类</p>
+<ul>
+<li>report (cause, solution, problems, factors, measures, effects)</li>
+<li>argument (debate, pros/cons)</li>
+</ul>
+</li>
+<li><p>四段式 / 五段式</p>
+<table>
+<thead>
+<tr>
+<th>四段式（两个主体段，一方一段）</th>
+<th>五段式（三个主体段，两个一方，一个一方）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1~3</td>
+<td>1~3</td>
+</tr>
+<tr>
+<td>1 + 6~8</td>
+<td>1 + 2~4</td>
+</tr>
+<tr>
+<td>1 + 4~6</td>
+<td>1 + 2~4</td>
+</tr>
+<tr>
+<td>1~2</td>
+<td>1 ~ 2-4</td>
+</tr>
+<tr>
+<td>\</td>
+<td>1~2</td>
+</tr>
+<tr>
+<td>每段2-3个分论点。适合分论点多，支持句少。</td>
+<td>每段一个分论点。适合分论点少，支持句多。</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h1 id="day4-开头段"><a href="#day4-开头段" class="headerlink" title="day4 开头段"></a>day4 开头段</h1><h2 id="agree-or-disagree"><a href="#agree-or-disagree" class="headerlink" title="agree  or disagree"></a>agree  or disagree</h2><ul>
+<li>基础<ul>
+<li>背景（optional）</li>
+<li>改写观点（小手术）</li>
+<li>自己观点<ul>
+<li>明确支持/反对 <code>I agree/disagree with this view</code></li>
+<li>主要支持/反对 <code>I tend to agree/disagree with this view</code></li>
+<li>两方差不多 <code>I partly agree with this view</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>进阶<ul>
+<li>背景</li>
+<li>自己观点<ul>
+<li><code>Although I agree with that... ,I believe that...</code></li>
+<li><code>While I agree that..., I believe that ...</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>不能出现<code>others think that ...</code></strong></p>
+<h2 id="双方讨论"><a href="#双方讨论" class="headerlink" title="双方讨论"></a>双方讨论</h2><p>一般是在主体段分别讨论两种看法，在结尾段再提出自己的看法<code>in my opinion</code> <code>in my view</code></p>
+<ul>
+<li><p>基础</p>
+<ul>
+<li>背景（optional）</li>
+<li>改写两种观点 <code>Some people think that..., while others believe that</code></li>
+</ul>
+</li>
+<li><p>进阶</p>
+<ul>
+<li>背景（optional）</li>
+<li>概括争论点<code>People have different views about ...</code>，此时在两个主体段可以分别写 <code>Some people think that...,</code> <code>Others, however, believe that...</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="比较利弊"><a href="#比较利弊" class="headerlink" title="比较利弊"></a>比较利弊</h2><ul>
+<li>背景/观点</li>
+<li>自己看法 <code>I believe that the advantage of this outweigh the disadvantages</code> , <code>I believe that the drawbacks of this outweigh the benefits</code></li>
+</ul>
+<h2 id="report-分析解释类"><a href="#report-分析解释类" class="headerlink" title="report(分析解释类)"></a>report(分析解释类)</h2><p><strong>仔细读题，看清楚分析什么</strong></p>
+<p>eg. causes+solution </p>
+<ul>
+<li>开头<ul>
+<li>改写现象</li>
+<li>概括分析<ul>
+<li><code>there are several causes of this trend</code></li>
+<li><code>... and ... are respinsible for this trend</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>实质论述</li>
+<li>解决办法<ul>
+<li><code>various measures could be taken to solve the problem</code></li>
+<li><code>a variety of measures could be taken to tackle the problem</code></li>
+<li><code>the solution to the problem lies with ...</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="结尾段"><a href="#结尾段" class="headerlink" title="结尾段"></a>结尾段</h2><p>1-2句话，<code>简要，概括，不偏题</code></p>
+<h1 id="day5-分论点支持句"><a href="#day5-分论点支持句" class="headerlink" title="day5 分论点支持句"></a>day5 分论点支持句</h1><ul>
+<li><p>支持句原则</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">idea -&gt; explain in detail -&gt; example</span><br></pre></td></tr></table></figure>
+
+<p>为了避免机械重复，选择1-2个分论点举列子就可以了</p>
+</li>
+<li><p>思考方向</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">why (为什么) </span><br><span class="line">so  (有什么结果)</span><br><span class="line">what (这样的具体意思-&gt;分论点比较抽象的时候)</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<h1 id="day6-支持句变流畅-明暗结合"><a href="#day6-支持句变流畅-明暗结合" class="headerlink" title="day6 支持句变流畅(明暗结合)"></a>day6 支持句变流畅(明暗结合)</h1><ul>
+<li><p>连接词（不要过多使用）</p>
+<ul>
+<li><p>因果 <code>therefore,</code>(常用在句首) <code>as a result,</code>(常用在句首)</p>
+</li>
+<li><p>举例 <code>for example,</code>(常用在句首)  <code>such as</code></p>
+</li>
+<li><p>对比展开 <code>while</code> <code>by contrast</code></p>
+</li>
+<li><p>类比展开 <code>similarly,</code>(常用在句首)</p>
+</li>
+<li><p>让步展开 <code>although</code></p>
+</li>
+<li><p>假设展开 <code>may</code> <code>are likely to</code> <code>without...,...would...</code></p>
+</li>
+<li><p>下定义展开 <code>This means that</code> <code>In other words,</code></p>
+</li>
+<li><p>限定范围展开 <code>Specifically,</code></p>
+</li>
+<li><p>连接分论点的连接词 <code>Also,</code> <code>Furthermore</code> <code>Another benefit/advantage of ... is</code></p>
+<p><strong>不用<code>moreover</code></strong>,显得呆板深沉，只有在大学正是论文中使用较多</p>
+<p><strong>不用<code>besides</code></strong>,过于口语化</p>
+</li>
+</ul>
+</li>
+<li><p>代词，相关名词（eg. urban residents -&gt; city dwellers）</p>
+</li>
+</ul>
+<h1 id="day7-phrases（略）"><a href="#day7-phrases（略）" class="headerlink" title="day7 phrases（略）"></a>day7 phrases（略）</h1><h1 id="day8-高分作文"><a href="#day8-高分作文" class="headerlink" title="day8 高分作文"></a>day8 高分作文</h1><ul>
+<li><p>260-300 words</p>
+</li>
+<li><p>可单独使用<code>on the other hand</code></p>
+</li>
+<li><p>可以用<code>first</code> <code>second</code>来表示分论点顺序，但是更加自然的做法是</p>
+<ul>
+<li><code>the main benefit/advantage of...is that</code></li>
+<li><code>the main problem is that</code></li>
+<li><code>another disadvantage is that</code></li>
+<li><code>also,</code></li>
+<li><code>futhermore</code>（等同重要）</li>
+<li><code>in addtion</code>（补充说明）</li>
+</ul>
+</li>
+<li><p>题目中出现<code>best</code> ，只需要指出不足之处或者替代选择就可以</p>
+</li>
+<li><p>题目中出现<code>only</code>， 一般是先承认这种看法有一定的道理，再指出其他可能性</p>
+</li>
+</ul>
+]]></content>
+      <tags>
+        <tag>雅思</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>git</title>
     <url>/2020/06/17/git-tutotial/</url>
     <content><![CDATA[<h1 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h1><h2 id="什么是git"><a href="#什么是git" class="headerlink" title="什么是git"></a>什么是git</h2><p>分布式版本控制系统</p>
@@ -938,469 +1532,6 @@
       </categories>
       <tags>
         <tag>git</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>雅思口语-part1</title>
-    <url>/2020/08/07/ielts-speaking1/</url>
-    <content><![CDATA[<h2 id="your-study"><a href="#your-study" class="headerlink" title="your study"></a>your study</h2><a id="more"></a>
-
-<p><code>volcabulary</code></p>
-<ul>
-<li>uestc: University of Electronic Science and Technology of China</li>
-<li>college entrance examination</li>
-<li>5G: fifth generation</li>
-<li>south-west</li>
-</ul>
-<blockquote>
-<p>study in the morning or night ? (night)</p>
-<ul>
-<li>typical night owl /aul/</li>
-<li>challenging get up early / sleepy</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>look forward to working </p>
-<ul>
-<li>earn money -&gt; buy things / rely less on parents</li>
-<li>useful member of society -&gt; ahievemntment</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>do u like ur subject</p>
-<ul>
-<li>practical -&gt; fifth generation</li>
-<li>math physics -&gt; think logically  </li>
-<li>expriments -&gt; problem-solving skills + achievement </li>
-</ul>
-</blockquote>
-<blockquote>
-<p>why choose to study at ur school</p>
-<ul>
-<li>has a good reputation -&gt; job market</li>
-<li>a friendly-leanring environment -&gt; well equipped library </li>
-<li>extracurricular activities -&gt;clubs + competition</li>
-</ul>
-</blockquote>
-<blockquote>
-<p>enjoy first day?</p>
-<ul>
-<li>well-equipment -&gt; sports center, swimming pool, library</li>
-<li>meet my roommates -&gt; share same interests</li>
-<li>four cafeterias -&gt; foodie</li>
-</ul>
-</blockquote>
-<h2 id="your-hometown"><a href="#your-hometown" class="headerlink" title="your hometown"></a>your hometown</h2><ul>
-<li>in the southeast of China </li>
-<li>costs of living </li>
-<li>housing </li>
-<li>it’s an inland city and is surrounded by high moutains</li>
-<li>the pace of life is slow</li>
-<li>leisure facilities</li>
-</ul>
-<h1 id="film"><a href="#film" class="headerlink" title="film"></a>film</h1><ul>
-<li>The Intouchables (触不可及)</li>
-<li>The Intouchables has broken box office records in its native France and across Europe</li>
-<li>comedy about friendship, trust, respect</li>
-<li>Based on a true story of friendship between a handicap millionaire and a young man who is hired as his caregiver.</li>
-<li>special effect </li>
-<li>the film has a strong cast</li>
-<li>comedies / romantic movie / sci-fi movie</li>
-<li>lose my privary</li>
-<li>sitimulate our imagination</li>
-<li>sound quality</li>
-</ul>
-<h1 id="social-media"><a href="#social-media" class="headerlink" title="social media"></a>social media</h1><ul>
-<li>personal data and privacy can be hacked</li>
-</ul>
-<h2 id="What-Are-The-Top-10-Reasons-For-Using-Social-Media"><a href="#What-Are-The-Top-10-Reasons-For-Using-Social-Media" class="headerlink" title="What Are The Top 10 Reasons For Using Social Media?"></a>What Are The Top 10 Reasons For Using Social Media?</h2><ol>
-<li>To <strong>stay in touch</strong> with what friends are doing (42%)</li>
-<li>To <strong>stay up-to-date</strong> with news and current events (41%)</li>
-<li>To <strong>fill up spare time</strong> (39%)</li>
-<li>To <strong>find funny or entertaining content</strong> (37%)</li>
-</ol>
-<h1 id="weather"><a href="#weather" class="headerlink" title="weather"></a>weather</h1><ul>
-<li>“an early spring, a hot summer, a cool autumn and a relatively warm winter”.</li>
-<li>This type of climate is mild and wet</li>
-<li>Rain falls all year round with a peak in July and August</li>
-<li>the days are longer and the nights are shorter</li>
-<li>have heatstroke 中暑</li>
-</ul>
-<h1 id="music"><a href="#music" class="headerlink" title="music"></a>music</h1><ul>
-<li>Energetic and rhythmic</li>
-<li>be talented in sth  /  have a gift for sth</li>
-</ul>
-<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
-<li>diving 潜水（marine life / move underwater / like fly）</li>
-<li>running (strengthen our hearts and lungs)</li>
-<li>hairdresser 理发师</li>
-<li>barbershop 理发店</li>
-<li>durable 耐磨的</li>
-<li>can be well matched with tight jean</li>
-<li>husky</li>
-<li>street cleaner</li>
-<li>dust bin 垃圾桶</li>
-<li>I have a bad memory   </li>
-<li>on a random basis</li>
-<li>lend something to someone</li>
-<li>regulate</li>
-<li>DMV ：department of motor vehicle</li>
-<li>property company 房地产</li>
-<li>deal with jet lag  倒时差</li>
-<li>develope a film 洗照片</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>雅思</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>雅思口语part2</title>
-    <url>/2020/07/24/ielts-speaking2/</url>
-    <content><![CDATA[<p><strong>注意</strong></p>
-<ol>
-<li>写时态</li>
-<li>idea  （写大一点）</li>
-<li>单复数</li>
-<li>He/she</li>
-</ol>
-<a id="more"></a>
-
-<h1 id="组织"><a href="#组织" class="headerlink" title="组织"></a>组织</h1><h1 id="人物"><a href="#人物" class="headerlink" title="人物"></a>人物</h1><h2 id="taught"><a href="#taught" class="headerlink" title="taught"></a>taught</h2><ul>
-<li>He is my senior</li>
-<li>of average height and build</li>
-<li>wears glasses</li>
-<li>role model</li>
-<li>hard-working</li>
-<li>kind and caring</li>
-<li>always there when you need him</li>
-<li>C Programming Language </li>
-</ul>
-<h2 id="jack-ma"><a href="#jack-ma" class="headerlink" title="jack ma"></a>jack ma</h2><ul>
-<li>head of the Alibaba Group, including the b2b marketplace Alibaba, the shopping site Taobao and alipay</li>
-<li>Ma became interested in the  English language as a young boy, and during his teens he worked as a guide for foreign tourists to Hangzhou. Ma failed the entrance exam for the Hangzhou <a href="https://www.britannica.com/topic/normal-school" target="_blank" rel="noopener">Teachers College</a> twice. (His weak point was mathematics.) He was admitted on the third try</li>
-<li>On a trip to the <a href="https://www.britannica.com/place/United-States" target="_blank" rel="noopener">United States</a> on behalf of the Hangzhou city government in 1995, Ma had his first encounter with the <a href="https://www.britannica.com/technology/Internet" target="_blank" rel="noopener">Internet</a> and saw the lack of Chinese Web sites as a great business opportunity</li>
-<li>which launched a <a href="https://www.britannica.com/technology/Web-site" target="_blank" rel="noopener">Web site</a> that <a href="https://www.merriam-webster.com/dictionary/facilitated" target="_blank" rel="noopener">facilitated</a> deals between small businesses</li>
-<li>Ma created a new company, the consumer-to-consumer online marketplace Taobao</li>
-<li>see through the customer’s eye</li>
-<li>“giving up is the greatest failure”</li>
-<li>Jack Ma Foundation, Alibaba donate medical supplies, COVID-19 test kits to India, other nations</li>
-<li>health care, education and the environment</li>
-<li>He has a slim body with black hair</li>
-</ul>
-<h2 id="huiruoqi"><a href="#huiruoqi" class="headerlink" title="huiruoqi"></a>huiruoqi</h2><ul>
-<li>former female Chinese <a href="https://en.wikipedia.org/wiki/Volleyball" target="_blank" rel="noopener">volleyball</a> player</li>
-<li>She is the Outside Hitter and the fifteenth Captain of <a href="https://en.wikipedia.org/wiki/China_women' target="_blank" rel="noopener"s_national_volleyball_team">China women’s national volleyball team</a></li>
-<li>She retired in 2018.</li>
-<li>Olympic Games, World Cup, and world championship</li>
-<li>“never say die” spirit</li>
-<li>public service activity</li>
-<li>strong in body and mind.</li>
-<li>She had just undergone heart surgery, and seven steel nails were punched into her left shoulder, but she still stood on the court</li>
-<li>launched a fund, hoping to help the retired athletes and coaches who have difficulties in medical treatment and life, and let more people pay attention to athletes and sports itself.</li>
-</ul>
-<h1 id="adj"><a href="#adj" class="headerlink" title="adj"></a>adj</h1><ul>
-<li>terrific</li>
-<li>delighted</li>
-<li>thankful</li>
-<li>proud</li>
-<li>joyful</li>
-<li>motivated</li>
-<li>encouraged</li>
-<li>amazed</li>
-<li>touched</li>
-<li>exhausted</li>
-<li>irritated</li>
-<li>disappointed</li>
-</ul>
-<h1 id="hot-pot"><a href="#hot-pot" class="headerlink" title="hot-pot"></a>hot-pot</h1><ul>
-<li>is a chinese food</li>
-<li>While a hot pot full of soup is kept boiling, raw ingredients are placed into the pot </li>
-<li>Most raw foods can be cooked in a hot pot, although they may have different cooking times</li>
-<li>The cooked food is often eaten with a dipping <a href="https://en.wikipedia.org/wiki/Sauce" target="_blank" rel="noopener">sauce</a> for additional flavoring.</li>
-<li>Hot pots may be prepared and eaten either at home or in a restaurant. Since it is considered as a main dish, it can be enjoyed without other separate courses like rice or noodles. </li>
-</ul>
-<h2 id="how-to-eat"><a href="#how-to-eat" class="headerlink" title="how to eat"></a>how to eat</h2><ul>
-<li>Choose the soup base </li>
-<li>Make your own dipping sauce</li>
-<li>cook food in a hot pot and eat. The best order of eating hot pot is to eat meat first, then vegetables</li>
-</ul>
-<h2 id="why-popular"><a href="#why-popular" class="headerlink" title="why popular"></a>why popular</h2><ul>
-<li><p>convenient</p>
-</li>
-<li><p>enhance friendship and unite family members or colleagues as several people sit around a pot, talking and eating</p>
-</li>
-<li><p>The warm atmosphere makes people feel comfortable and relaxed.<a href="https://en.wikipedia.org/wiki/Hot_pot#cite_note-2" target="_blank" rel="noopener">[2]</a> Hot pot is especially popular in winter and cold places.</p>
-</li>
-</ul>
-<h1 id="monopoly"><a href="#monopoly" class="headerlink" title="monopoly"></a>monopoly</h1><ul>
-<li>a board game</li>
-<li>In the game, players <code>roll</code> two six-sided <code>dice</code> to move around the game board, </li>
-<li>buying and trading properties, and developing them with houses and hotels. </li>
-<li>Players collect rent from their opponents, with the goal being to <code>drive them into bankruptcy</code>. </li>
-<li>Money can also be gained or lost through Chance and destiny cards; </li>
-<li>players can end up in jail, which they cannot move from until they have met one of several conditions. </li>
-</ul>
-<h1 id="Czech-tʃek-plague"><a href="#Czech-tʃek-plague" class="headerlink" title="Czech[tʃek] - plague"></a>Czech[tʃek] - plague</h1><ul>
-<li>the capital of the Czech Republic</li>
-<li>warm summers and chilly winters.</li>
-<li>long history</li>
-<li>one of the world’s most popular tourist destinations</li>
-<li>Prague is home to a number of well-known cultural attractions</li>
-<li>Prague Castle, Charles Bridge, Old Town Square</li>
-<li>Spectacular architecture</li>
-<li>stunning</li>
-<li>Pork Knee</li>
-</ul>
-<h1 id="others"><a href="#others" class="headerlink" title="others"></a>others</h1><ul>
-<li>parrot</li>
-<li>fridge magnet</li>
-<li>play house 过家家</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>雅思</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>雅思大作文</title>
-    <url>/2020/07/16/ielts_writing1/</url>
-    <content><![CDATA[<h1 id="day1-了解"><a href="#day1-了解" class="headerlink" title="day1 了解"></a>day1 了解</h1><a id="more"></a>
-
-<ul>
-<li><p>不能缩写（<code>can&#39;t</code> -&gt; <code>cannot</code>,  <code>won&#39;t</code>-&gt;<code>will not</code>）</p>
-</li>
-<li><p>不能口语化 <code>lots of</code>-&gt; <code>many/a large number of</code></p>
-</li>
-<li><p>不能祈使句。不用<code>！</code>等感情色彩强烈的符号结尾。不能太绝对。</p>
-</li>
-<li><p>不能谚语</p>
-</li>
-<li><p>适度使用<code>I/We</code></p>
-</li>
-</ul>
-<h1 id="day2-充实观点streec"><a href="#day2-充实观点streec" class="headerlink" title="day2 充实观点streec"></a>day2 充实观点<code>streec</code></h1><table>
-<thead>
-<tr>
-<th>skills</th>
-<th align="center">efficiency</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>technology</td>
-<td align="center">safety（犯罪率，个人信息，病毒）</td>
-</tr>
-<tr>
-<td>right(pension,paid vacations,freedom,privacy)</td>
-<td align="center">responsibility（援助,学校社会媒体）</td>
-</tr>
-<tr>
-<td>environment（污染，多样性）</td>
-<td align="center">health（压力，医疗，运动饮食，心理）</td>
-</tr>
-<tr>
-<td>employment（就业机会）</td>
-<td align="center">money（贫富差距，纳税人负担，援助）</td>
-</tr>
-<tr>
-<td>culture（传统，文化多样性）</td>
-<td align="center">fun（探索发现，娱乐，动力）</td>
-</tr>
-</tbody></table>
-<h1 id="day3-易错词"><a href="#day3-易错词" class="headerlink" title="day3 易错词"></a>day3 易错词</h1><ul>
-<li><p>不可数</p>
-<ul>
-<li>feedback（反馈） </li>
-<li>behaviour</li>
-<li>knowledge </li>
-<li>equipment</li>
-<li>potential</li>
-<li>furniture</li>
-<li>scenery</li>
-<li>jewllery</li>
-</ul>
-</li>
-<li><p>outweigh（v.）结尾没有t</p>
-</li>
-<li><p>economy(经济) </p>
-<p>economics（经济学） </p>
-<p>economical（省钱的）</p>
-</li>
-<li><p>lack sth (v.) lack of sth (n.)</p>
-</li>
-<li><p>benefit (对…有益)  及物动词</p>
-<p>benefit form （从…收益）</p>
-</li>
-</ul>
-<h1 id="day4-作文结构"><a href="#day4-作文结构" class="headerlink" title="day4 作文结构"></a>day4 作文结构</h1><ul>
-<li><p>偏向“折中式”，对正反两方进行辩证，但是更倾向一方</p>
-</li>
-<li><p>分类</p>
-<ul>
-<li>report (cause, solution, problems, factors, measures, effects)</li>
-<li>argument (debate, pros/cons)</li>
-</ul>
-</li>
-<li><p>四段式 / 五段式</p>
-<table>
-<thead>
-<tr>
-<th>四段式（两个主体段，一方一段）</th>
-<th>五段式（三个主体段，两个一方，一个一方）</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>1~3</td>
-<td>1~3</td>
-</tr>
-<tr>
-<td>1 + 6~8</td>
-<td>1 + 2~4</td>
-</tr>
-<tr>
-<td>1 + 4~6</td>
-<td>1 + 2~4</td>
-</tr>
-<tr>
-<td>1~2</td>
-<td>1 ~ 2-4</td>
-</tr>
-<tr>
-<td>\</td>
-<td>1~2</td>
-</tr>
-<tr>
-<td>每段2-3个分论点。适合分论点多，支持句少。</td>
-<td>每段一个分论点。适合分论点少，支持句多。</td>
-</tr>
-</tbody></table>
-</li>
-</ul>
-<h1 id="day4-开头段"><a href="#day4-开头段" class="headerlink" title="day4 开头段"></a>day4 开头段</h1><h2 id="agree-or-disagree"><a href="#agree-or-disagree" class="headerlink" title="agree  or disagree"></a>agree  or disagree</h2><ul>
-<li>基础<ul>
-<li>背景（optional）</li>
-<li>改写观点（小手术）</li>
-<li>自己观点<ul>
-<li>明确支持/反对 <code>I agree/disagree with this view</code></li>
-<li>主要支持/反对 <code>I tend to agree/disagree with this view</code></li>
-<li>两方差不多 <code>I partly agree with this view</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>进阶<ul>
-<li>背景</li>
-<li>自己观点<ul>
-<li><code>Although I agree with that... ,I believe that...</code></li>
-<li><code>While I agree that..., I believe that ...</code></li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p><strong>不能出现<code>others think that ...</code></strong></p>
-<h2 id="双方讨论"><a href="#双方讨论" class="headerlink" title="双方讨论"></a>双方讨论</h2><p>一般是在主体段分别讨论两种看法，在结尾段再提出自己的看法<code>in my opinion</code> <code>in my view</code></p>
-<ul>
-<li><p>基础</p>
-<ul>
-<li>背景（optional）</li>
-<li>改写两种观点 <code>Some people think that..., while others believe that</code></li>
-</ul>
-</li>
-<li><p>进阶</p>
-<ul>
-<li>背景（optional）</li>
-<li>概括争论点<code>People have different views about ...</code>，此时在两个主体段可以分别写 <code>Some people think that...,</code> <code>Others, however, believe that...</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="比较利弊"><a href="#比较利弊" class="headerlink" title="比较利弊"></a>比较利弊</h2><ul>
-<li>背景/观点</li>
-<li>自己看法 <code>I believe that the advantage of this outweigh the disadvantages</code> , <code>I believe that the drawbacks of this outweigh the benefits</code></li>
-</ul>
-<h2 id="report-分析解释类"><a href="#report-分析解释类" class="headerlink" title="report(分析解释类)"></a>report(分析解释类)</h2><p><strong>仔细读题，看清楚分析什么</strong></p>
-<p>eg. causes+solution </p>
-<ul>
-<li>开头<ul>
-<li>改写现象</li>
-<li>概括分析<ul>
-<li><code>there are several causes of this trend</code></li>
-<li><code>... and ... are respinsible for this trend</code></li>
-</ul>
-</li>
-</ul>
-</li>
-<li>实质论述</li>
-<li>解决办法<ul>
-<li><code>various measures could be taken to solve the problem</code></li>
-<li><code>a variety of measures could be taken to tackle the problem</code></li>
-<li><code>the solution to the problem lies with ...</code></li>
-</ul>
-</li>
-</ul>
-<h2 id="结尾段"><a href="#结尾段" class="headerlink" title="结尾段"></a>结尾段</h2><p>1-2句话，<code>简要，概括，不偏题</code></p>
-<h1 id="day5-分论点支持句"><a href="#day5-分论点支持句" class="headerlink" title="day5 分论点支持句"></a>day5 分论点支持句</h1><ul>
-<li><p>支持句原则</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">idea -&gt; explain in detail -&gt; example</span><br></pre></td></tr></table></figure>
-
-<p>为了避免机械重复，选择1-2个分论点举列子就可以了</p>
-</li>
-<li><p>思考方向</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">why (为什么) </span><br><span class="line">so  (有什么结果)</span><br><span class="line">what (这样的具体意思-&gt;分论点比较抽象的时候)</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-<h1 id="day6-支持句变流畅-明暗结合"><a href="#day6-支持句变流畅-明暗结合" class="headerlink" title="day6 支持句变流畅(明暗结合)"></a>day6 支持句变流畅(明暗结合)</h1><ul>
-<li><p>连接词（不要过多使用）</p>
-<ul>
-<li><p>因果 <code>therefore,</code>(常用在句首) <code>as a result,</code>(常用在句首)</p>
-</li>
-<li><p>举例 <code>for example,</code>(常用在句首)  <code>such as</code></p>
-</li>
-<li><p>对比展开 <code>while</code> <code>by contrast</code></p>
-</li>
-<li><p>类比展开 <code>similarly,</code>(常用在句首)</p>
-</li>
-<li><p>让步展开 <code>although</code></p>
-</li>
-<li><p>假设展开 <code>may</code> <code>are likely to</code> <code>without...,...would...</code></p>
-</li>
-<li><p>下定义展开 <code>This means that</code> <code>In other words,</code></p>
-</li>
-<li><p>限定范围展开 <code>Specifically,</code></p>
-</li>
-<li><p>连接分论点的连接词 <code>Also,</code> <code>Furthermore</code> <code>Another benefit/advantage of ... is</code></p>
-<p><strong>不用<code>moreover</code></strong>,显得呆板深沉，只有在大学正是论文中使用较多</p>
-<p><strong>不用<code>besides</code></strong>,过于口语化</p>
-</li>
-</ul>
-</li>
-<li><p>代词，相关名词（eg. urban residents -&gt; city dwellers）</p>
-</li>
-</ul>
-<h1 id="day7-phrases（略）"><a href="#day7-phrases（略）" class="headerlink" title="day7 phrases（略）"></a>day7 phrases（略）</h1><h1 id="day8-高分作文"><a href="#day8-高分作文" class="headerlink" title="day8 高分作文"></a>day8 高分作文</h1><ul>
-<li><p>260-300 words</p>
-</li>
-<li><p>可单独使用<code>on the other hand</code></p>
-</li>
-<li><p>可以用<code>first</code> <code>second</code>来表示分论点顺序，但是更加自然的做法是</p>
-<ul>
-<li><code>the main benefit/advantage of...is that</code></li>
-<li><code>the main problem is that</code></li>
-<li><code>another disadvantage is that</code></li>
-<li><code>also,</code></li>
-<li><code>futhermore</code>（等同重要）</li>
-<li><code>in addtion</code>（补充说明）</li>
-</ul>
-</li>
-<li><p>题目中出现<code>best</code> ，只需要指出不足之处或者替代选择就可以</p>
-</li>
-<li><p>题目中出现<code>only</code>， 一般是先承认这种看法有一定的道理，再指出其他可能性</p>
-</li>
-</ul>
-]]></content>
-      <tags>
-        <tag>雅思</tag>
       </tags>
   </entry>
   <entry>
@@ -2192,77 +2323,6 @@
       </tags>
   </entry>
   <entry>
-    <title>kaggle</title>
-    <url>/2021/02/02/kaggle-intro%20to%20ML/</url>
-    <content><![CDATA[<h1 id="kaggle-intro-to-ML"><a href="#kaggle-intro-to-ML" class="headerlink" title="kaggle-intro to ML"></a>kaggle-intro to ML</h1><h2 id="pandas-data"><a href="#pandas-data" class="headerlink" title="pandas - data"></a>pandas - data</h2><ul>
-<li><p>read data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data_file_path = <span class="string">'../../../data.csv'</span></span><br><span class="line">data = pd.read_csv(data_file_path)</span><br></pre></td></tr></table></figure>
-
-<a id="more"></a>
-</li>
-<li><p>DataFrame –&gt; sheet in Excel</p>
-</li>
-<li><p>see data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.shape()  <span class="comment"># (row, column)</span></span><br><span class="line">data.describe()    <span class="comment"># count / mean / std / max / min ...</span></span><br><span class="line">data.head()    <span class="comment"># top 5 rows</span></span><br><span class="line">data.columns   <span class="comment"># columns names</span></span><br></pre></td></tr></table></figure>
-</li>
-<li><p>select data</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.columns   <span class="comment"># columns names</span></span><br><span class="line">data = data.dropna(axis=<span class="number">0</span>) <span class="comment"># drop not available (missing) data</span></span><br><span class="line"></span><br><span class="line">y = data.price <span class="comment"># select prediction target</span></span><br><span class="line"></span><br><span class="line">data_features = [<span class="string">'rooms'</span>, <span class="string">'size'</span>, <span class="string">'direction'</span>]  </span><br><span class="line">X = data[data_features]</span><br><span class="line">X.describe()  <span class="comment"># check</span></span><br><span class="line">X.head()</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><p>select prediction target</p>
-<ul>
-<li>select column –&gt; dot notation</li>
-<li>single column is stored in <code>Series</code></li>
-</ul>
-</li>
-<li><p>select features</p>
-<ul>
-<li>a list of column names –&gt; string with quotes</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2 id="Sklearn-scikit-learn-Model"><a href="#Sklearn-scikit-learn-Model" class="headerlink" title="Sklearn (scikit-learn) - Model"></a>Sklearn (scikit-learn) - Model</h2><ul>
-<li><p>modeling the types of data typically stored in DataFrames</p>
-</li>
-<li><p>steps</p>
-<ul>
-<li>define (model + parameters)</li>
-<li>fit</li>
-<li>predict</li>
-<li>evaluate</li>
-</ul>
-</li>
-<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line">train_X, val_X, train_y, val_y = train_test_split(X, y, random_state = <span class="number">0</span>) <span class="comment"># split test to train and validation</span></span><br><span class="line">house_model = DecisionTreeRegressor () <span class="comment"># define</span></span><br><span class="line">house_model.fit(train_X, train_y) <span class="comment"># fit</span></span><br><span class="line">val_prediciton = house_model.predict(val_X) <span class="comment"># predict</span></span><br><span class="line">error = mean_absolute_error(val_y, val_prediciton) <span class="comment">#evaluate</span></span><br><span class="line">print(error)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><code>random_state</code> ensures you get the same results in each run, can use any number</li>
-</ul>
-</li>
-<li><p>overfitting vs. underfitting by <code>max_leaf_nodes</code></p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load data</span></span><br><span class="line">melbourne_file_path = <span class="string">'../input/melbourne-housing-snapshot/melb_data.csv'</span></span><br><span class="line">melbourne_data = pd.read_csv(melbourne_file_path) </span><br><span class="line"><span class="comment"># Filter rows with missing values</span></span><br><span class="line">filtered_melbourne_data = melbourne_data.dropna(axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># Choose target and features</span></span><br><span class="line">y = filtered_melbourne_data.Price</span><br><span class="line">melbourne_features = [<span class="string">'Rooms'</span>, <span class="string">'Bathroom'</span>, <span class="string">'Landsize'</span>, <span class="string">'BuildingArea'</span>]</span><br><span class="line">X = filtered_melbourne_data[melbourne_features]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mae</span><span class="params">(max_leaf_nodes, train_X, val_X, train_y, val_y)</span>:</span></span><br><span class="line">    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=<span class="number">0</span>)</span><br><span class="line">    model.fit(train_X, train_y)</span><br><span class="line">    preds_val = model.predict(val_X)</span><br><span class="line">    mae = mean_absolute_error(val_y, preds_val)</span><br><span class="line">    <span class="keyword">return</span>(mae)</span><br><span class="line"></span><br><span class="line"><span class="comment"># split data into training and validation data, for both features and target</span></span><br><span class="line">train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compare MAE with differing values of max_leaf_nodes</span></span><br><span class="line"><span class="keyword">for</span> max_leaf_nodes <span class="keyword">in</span> [<span class="number">5</span>, <span class="number">50</span>, <span class="number">500</span>, <span class="number">5000</span>]:</span><br><span class="line">    scores = &#123;leaf_size: get_mae(leaf_size, train_X, val_X, train_y, val_y) <span class="keyword">for</span> leaf_size <span class="keyword">in</span> candidate_max_leaf_nodes&#125;</span><br><span class="line">    </span><br><span class="line">best_tree_size = min(scores, key=scores.get)</span><br><span class="line"></span><br><span class="line">final_model = DecisionTreeRegressor(max_leaf_nodes = best_tree_size, random_state = <span class="number">0</span>)</span><br><span class="line">final_model.fit(X, y)</span><br><span class="line"></span><br><span class="line">test_data_path = <span class="string">'../input/test.csv'</span></span><br><span class="line">test_data = read_csv(test_data_path)</span><br><span class="line">test_X = test_data[features]</span><br><span class="line">test_preds = rf_model.predict(test_X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># save predictions in format used for competition scoring</span></span><br><span class="line">output = pd.DataFrame(&#123;<span class="string">'Id'</span>: test_data.Id,</span><br><span class="line">                       <span class="string">'SalePrice'</span>: test_preds&#125;)</span><br><span class="line">output.to_csv(<span class="string">'submission.csv'</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">get(self, key, default=<span class="literal">None</span>, /)</span><br><span class="line">    Return the value <span class="keyword">for</span> key <span class="keyword">if</span> key <span class="keyword">is</span> <span class="keyword">in</span> the dictionary, <span class="keyword">else</span> default</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-</li>
-<li><p>random forest –&gt; many random trees and take average</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line">forest_model = RandomForestRegressor(random_state=<span class="number">1</span>)</span><br><span class="line">forest_model.fit(train_X, train_y)</span><br><span class="line">melb_preds = forest_model.predict(val_X)</span><br><span class="line">print(mean_absolute_error(val_y, melb_preds))</span><br></pre></td></tr></table></figure>
-
-</li>
-</ul>
-]]></content>
-      <categories>
-        <category>ML</category>
-      </categories>
-      <tags>
-        <tag>Kaggle</tag>
-        <tag>ML</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>linux系统/虚拟机网络连接</title>
     <url>/2020/03/01/linux_system_and_VM/</url>
     <content><![CDATA[<h1 id="linux系统-虚拟机网络连接"><a href="#linux系统-虚拟机网络连接" class="headerlink" title="linux系统/虚拟机网络连接"></a>linux系统/虚拟机网络连接</h1><h2 id="系统组成"><a href="#系统组成" class="headerlink" title="系统组成"></a>系统组成</h2><ol>
@@ -2459,6 +2519,77 @@
       <tags>
         <tag>Linux</tag>
         <tag>虚拟机</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>kaggle</title>
+    <url>/2021/02/02/kaggle-intro%20to%20ML/</url>
+    <content><![CDATA[<h1 id="kaggle-intro-to-ML"><a href="#kaggle-intro-to-ML" class="headerlink" title="kaggle-intro to ML"></a>kaggle-intro to ML</h1><h2 id="pandas-data"><a href="#pandas-data" class="headerlink" title="pandas - data"></a>pandas - data</h2><ul>
+<li><p>read data</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line">data_file_path = <span class="string">'../../../data.csv'</span></span><br><span class="line">data = pd.read_csv(data_file_path)</span><br></pre></td></tr></table></figure>
+
+<a id="more"></a>
+</li>
+<li><p>DataFrame –&gt; sheet in Excel</p>
+</li>
+<li><p>see data</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.shape()  <span class="comment"># (row, column)</span></span><br><span class="line">data.describe()    <span class="comment"># count / mean / std / max / min ...</span></span><br><span class="line">data.head()    <span class="comment"># top 5 rows</span></span><br><span class="line">data.columns   <span class="comment"># columns names</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>select data</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">data.columns   <span class="comment"># columns names</span></span><br><span class="line">data = data.dropna(axis=<span class="number">0</span>) <span class="comment"># drop not available (missing) data</span></span><br><span class="line"></span><br><span class="line">y = data.price <span class="comment"># select prediction target</span></span><br><span class="line"></span><br><span class="line">data_features = [<span class="string">'rooms'</span>, <span class="string">'size'</span>, <span class="string">'direction'</span>]  </span><br><span class="line">X = data[data_features]</span><br><span class="line">X.describe()  <span class="comment"># check</span></span><br><span class="line">X.head()</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><p>select prediction target</p>
+<ul>
+<li>select column –&gt; dot notation</li>
+<li>single column is stored in <code>Series</code></li>
+</ul>
+</li>
+<li><p>select features</p>
+<ul>
+<li>a list of column names –&gt; string with quotes</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="Sklearn-scikit-learn-Model"><a href="#Sklearn-scikit-learn-Model" class="headerlink" title="Sklearn (scikit-learn) - Model"></a>Sklearn (scikit-learn) - Model</h2><ul>
+<li><p>modeling the types of data typically stored in DataFrames</p>
+</li>
+<li><p>steps</p>
+<ul>
+<li>define (model + parameters)</li>
+<li>fit</li>
+<li>predict</li>
+<li>evaluate</li>
+</ul>
+</li>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line">train_X, val_X, train_y, val_y = train_test_split(X, y, random_state = <span class="number">0</span>) <span class="comment"># split test to train and validation</span></span><br><span class="line">house_model = DecisionTreeRegressor () <span class="comment"># define</span></span><br><span class="line">house_model.fit(train_X, train_y) <span class="comment"># fit</span></span><br><span class="line">val_prediciton = house_model.predict(val_X) <span class="comment"># predict</span></span><br><span class="line">error = mean_absolute_error(val_y, val_prediciton) <span class="comment">#evaluate</span></span><br><span class="line">print(error)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><code>random_state</code> ensures you get the same results in each run, can use any number</li>
+</ul>
+</li>
+<li><p>overfitting vs. underfitting by <code>max_leaf_nodes</code></p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> pandas <span class="keyword">as</span> pd</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"><span class="keyword">from</span> sklearn.tree <span class="keyword">import</span> DecisionTreeRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.model_selection <span class="keyword">import</span> train_test_split</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment"># Load data</span></span><br><span class="line">melbourne_file_path = <span class="string">'../input/melbourne-housing-snapshot/melb_data.csv'</span></span><br><span class="line">melbourne_data = pd.read_csv(melbourne_file_path) </span><br><span class="line"><span class="comment"># Filter rows with missing values</span></span><br><span class="line">filtered_melbourne_data = melbourne_data.dropna(axis=<span class="number">0</span>)</span><br><span class="line"><span class="comment"># Choose target and features</span></span><br><span class="line">y = filtered_melbourne_data.Price</span><br><span class="line">melbourne_features = [<span class="string">'Rooms'</span>, <span class="string">'Bathroom'</span>, <span class="string">'Landsize'</span>, <span class="string">'BuildingArea'</span>]</span><br><span class="line">X = filtered_melbourne_data[melbourne_features]</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">get_mae</span><span class="params">(max_leaf_nodes, train_X, val_X, train_y, val_y)</span>:</span></span><br><span class="line">    model = DecisionTreeRegressor(max_leaf_nodes=max_leaf_nodes, random_state=<span class="number">0</span>)</span><br><span class="line">    model.fit(train_X, train_y)</span><br><span class="line">    preds_val = model.predict(val_X)</span><br><span class="line">    mae = mean_absolute_error(val_y, preds_val)</span><br><span class="line">    <span class="keyword">return</span>(mae)</span><br><span class="line"></span><br><span class="line"><span class="comment"># split data into training and validation data, for both features and target</span></span><br><span class="line">train_X, val_X, train_y, val_y = train_test_split(X, y,random_state = <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment"># compare MAE with differing values of max_leaf_nodes</span></span><br><span class="line"><span class="keyword">for</span> max_leaf_nodes <span class="keyword">in</span> [<span class="number">5</span>, <span class="number">50</span>, <span class="number">500</span>, <span class="number">5000</span>]:</span><br><span class="line">    scores = &#123;leaf_size: get_mae(leaf_size, train_X, val_X, train_y, val_y) <span class="keyword">for</span> leaf_size <span class="keyword">in</span> candidate_max_leaf_nodes&#125;</span><br><span class="line">    </span><br><span class="line">best_tree_size = min(scores, key=scores.get)</span><br><span class="line"></span><br><span class="line">final_model = DecisionTreeRegressor(max_leaf_nodes = best_tree_size, random_state = <span class="number">0</span>)</span><br><span class="line">final_model.fit(X, y)</span><br><span class="line"></span><br><span class="line">test_data_path = <span class="string">'../input/test.csv'</span></span><br><span class="line">test_data = read_csv(test_data_path)</span><br><span class="line">test_X = test_data[features]</span><br><span class="line">test_preds = rf_model.predict(test_X)</span><br><span class="line"></span><br><span class="line"><span class="comment"># save predictions in format used for competition scoring</span></span><br><span class="line">output = pd.DataFrame(&#123;<span class="string">'Id'</span>: test_data.Id,</span><br><span class="line">                       <span class="string">'SalePrice'</span>: test_preds&#125;)</span><br><span class="line">output.to_csv(<span class="string">'submission.csv'</span>, index=<span class="literal">False</span>)</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">get(self, key, default=<span class="literal">None</span>, /)</span><br><span class="line">    Return the value <span class="keyword">for</span> key <span class="keyword">if</span> key <span class="keyword">is</span> <span class="keyword">in</span> the dictionary, <span class="keyword">else</span> default</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+<li><p>random forest –&gt; many random trees and take average</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.ensemble <span class="keyword">import</span> RandomForestRegressor</span><br><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_absolute_error</span><br><span class="line"></span><br><span class="line">forest_model = RandomForestRegressor(random_state=<span class="number">1</span>)</span><br><span class="line">forest_model.fit(train_X, train_y)</span><br><span class="line">melb_preds = forest_model.predict(val_X)</span><br><span class="line">print(mean_absolute_error(val_y, melb_preds))</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+]]></content>
+      <categories>
+        <category>ML</category>
+      </categories>
+      <tags>
+        <tag>Kaggle</tag>
+        <tag>ML</tag>
       </tags>
   </entry>
   <entry>
