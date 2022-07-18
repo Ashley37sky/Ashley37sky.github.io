@@ -2,7 +2,7 @@
 title: F3_Tree
 date: 2022-02-12 11:52:44
 tags:
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 ## F3 - Tree
@@ -98,7 +98,7 @@ class Solution(object):
 + 难点：recursion怎么处理global k
 
 ```python
-class Solution(object):
+class Solution(object): # recurssion
     def kthSmallest(self, root, k):
         self.k = k
         self.ans = 0
@@ -117,18 +117,21 @@ class Solution(object):
 ```
 
 ```python
-class Solution(object): # iteration
+class Solution(object): # stack
     def kthSmallest(self, root, k):
         stack = []
-        while root or stack:
-            while root:
-                stack.append(root)
-                root = root.left
-            root = stack.pop()
-            k -= 1
-            if k == 0:
-                return root.val
-            root = root.right
+        cur = root
+        # inorder: left node right
+        while stack or cur:
+            if cur:
+                stack.append(cur)
+                cur = cur.left
+            else:
+                cur = stack.pop()
+                k -= 1
+                if not k:
+                    return cur.val
+                cur = cur.right
 ```
 
 #### LC 572 - Subtree
@@ -181,7 +184,18 @@ class Solution(object):
         self.search(node.right, s)
 ```
 
++ 用 str 不需要 pop，因为 string 是primitive type，不是 object，值不会传入下一层
 
++ 若是返回 list，那么加入后还需要删除 （是object）
+
+  ```python
+  ans.append(node)
+  self.search(node.left, ans)
+  self.search(node.right, ans)
+  ans.pop(node)
+  ```
+
+  
 
 ### 中等
 
@@ -263,6 +277,8 @@ class Solution(object):
 
 #### LC 114 - Flatten Binary Tree to Linked List
 
+<img src="D:\file\markdown图片\image-20220313214916608.png" alt="image-20220313214916608" style="zoom:50%;" />
+
 + preorder flatten 
 
 ```python
@@ -326,3 +342,94 @@ class Solution(object):
 #### ？ LC 426 - subscribe
 
 #### ？ LC 156 - subscribe
+
+# 遍历模板
+
+## DFS
+
+### Recurssion
+
+```python
+def inorder(root):
+    if not root:
+        return
+    inorder(root.left)
+    print(root.data)
+    inorder(root.right)
+```
+
+### Stack
+
++ inorder
+
+  ```python
+  stack = deque()
+  curr = root
+   
+  # if the current node is None and the stack is also empty, we are done
+  while stack or curr:
+   
+      if curr:
+          stack.append(curr)
+          curr = curr.left
+      else:
+          # otherwise, if the current node is None, pop an element from the stack,
+          curr = stack.pop()
+          print(curr.data, end=' ')
+          curr = curr.right
+  ```
+
++ preorder - (node - left - right)
+
+  ```python
+  stack = [root]
+  while stack():
+      cur = stack.pop()
+      ans.add(cur.val)
+      if cur.right:
+          stack.append(cur.right)
+      if cur.left:
+          stack.append(cur.left)
+  ```
+
++ postorder (left right node)
+
+  ```python
+  from collections import deque
+  
+  ans = deque()
+  stack = []
+  if root:
+      return ans
+  stack.append(root)
+  while stack:
+      cur = stack.pop()
+      ans.appendleft(cur.val)
+      if cur.left:
+          stack.append(cur.left)
+      if cur.right:
+          stack.append(cur.right)
+  print(ans)
+  ```
+
+## BFS
+
+```python
+def bfs_depth(root):
+    if not root:
+        return 0
+    
+    q = [root]
+    depth = 0
+    while q:
+        depth += 1
+        temp = []
+        for i in range(len(q)):
+            if q[i].left:
+                temp.append(q[i].left)
+            if q[i].right:
+                temp.append(q[i].right)
+        q = temp[:]
+    return depth
+```
+

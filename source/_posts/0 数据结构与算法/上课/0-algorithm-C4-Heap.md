@@ -2,7 +2,7 @@
 title: C4-Heap
 date: 2022-02-12 11:58:45
 tags:
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 # Heap

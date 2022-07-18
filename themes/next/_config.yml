@@ -117,10 +117,10 @@ darkmode: false
 # External url should start with http:// or https://
 menu:
   home: / || fa fa-home
-  tags: /tags/ || fa fa-tags
   categories: /categories/ || fa fa-th
   archives: /archives/ || fa fa-archive
-  shuoshuo: /shuoshuo/ || fa fa-user
+  tags: /tags/ || fa fa-tags
+  #shuoshuo: /shuoshuo/ || fa fa-user
   #schedule: /schedule/ || fa fa-calendar
   #about: /about/ || fa fa-user
   #sitemap: /sitemap.xml || fa fa-sitemap
@@ -234,6 +234,10 @@ chat:
 
 # Automatically excerpt description in homepage as preamble text.
 excerpt_description: true
+
+auto_excerpt: 
+  enable: true #自动截取一定程度的摘要
+  length: 150
 
 # Read more button
 # If true, the read more button will be displayed in excerpt section.

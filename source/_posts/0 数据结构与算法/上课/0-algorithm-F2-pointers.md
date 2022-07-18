@@ -2,14 +2,16 @@
 title: F2_指针和滑动窗口
 date: 2021-11-29 15:40:30
 tags: 
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 # F2_指针和滑动窗口
 
 ## 双向指针
 
-> 关键：游标卡尺 （找到移动条件）
+> 关键：游标卡尺 （找到移动条件），一般只关注端点，不关注区间element
+>
+> 条件：一般 l < r
 
 ### LC167 - two sum
 
@@ -62,7 +64,7 @@ class Solution(object):
                     r -= 1
                 else:
                     ans.append((nums[i], nums[l], nums[r]))
-                    while l < r and nums[l] == nums[l+1]:  # 去重
+                    while l < r and nums[l] == nums[l+1]:  # 去重, 出现nums[i+1] 一定要考虑边界
                         l += 1
                     while l < r and nums[r] == nums[r-1]:
                         r -= 1
@@ -92,8 +94,6 @@ class Solution(object):
                 l +=1
         return ans
 ```
-
-## 双向指针
 
 ### LC581 - 最短未排序区间
 
@@ -134,6 +134,31 @@ class Solution(object):
         return r_s+1-l_s
 ```
 
+```python
+class Solution(object):
+    def findUnsortedSubarray(self, nums):
+    
+        a = nums[:] # 复制元素，不然指向同一地址！！
+        a.sort()
+        n = len(nums)
+        
+        for i in range(n):
+            if nums[i] != a[i]:
+                break
+        if i == n-1:
+            return 0
+        for j in range(n-1, 0, -1):
+            if nums[j] != a[j]:
+                break
+        return j-i+1
+```
+
+## 同向指针
+
+> like sliding window, 关注区间的端点和中间的element
+>
+> HashMap: 只关心count or pos, 与顺序无关
+
 ### LC438 - find anagrams
 
 + 题目：Find All Anagrams in a String
@@ -150,10 +175,10 @@ class Solution(object):
             return []
         s_count, p_count = [0] * 26, [0] * 26
         for ch in p:
-            p_count[ord(ch)%26] += 1
+            p_count[ord(ch)%26] += 1 # 使用set，instead of dict/Hashmap
         ans = []
         
-        for i in range(len(s)):
+        for i in range(len(s)): # 区间长度给定，单指针就行
             if i < len(p):
                 s_count[ord(s[i])%26] += 1
                 continue
@@ -194,10 +219,20 @@ class Solution(object):
         s_dict = dict()
         while r < len(s):
             if s_dict.get(s[r]) != None: # 注意 None 和 0
-                l = max(l, s_dict[s[r]]+1)
+                l = max(l, s_dict[s[r]]+1) # 有重复的最远位置
             s_dict[s[r]] = r
             r += 1 # 左开右闭
             ans = max(ans, r-l)
+        return ans
+    
+class Solution(object):
+    def lengthOfLongestSubstring(self, s):
+        hashmap = {}
+        ans, last = 0, -1
+        for i in range(len(s)):
+            last = max(hashmap.get(ord(s[i]), -1), last)
+            ans = max(ans, i - last)
+            hashmap[ord(s[i])] = i
         return ans
 ```
 
@@ -210,22 +245,26 @@ class Solution(object):
 + Middle of the Linked List
 
   ```python
-  while(fast!=null && fast.next!=null) # 注意条件
-      {
-          slow = slow.next;
-          fast = fast.next.next;
-      }
-      return slow; 
+  class Solution(object):
+      def middleNode(self, head):
+          
+          slow, fast = head, head
+          while fast and fast.next: # 注意条件
+              fast = fast.next.next
+              slow = slow.next
+          return slow
   ```
 
 ### LC19 删除链表倒数Kth
 
 + Remove Nth Node From End of List
 
-  + 删除index x 的元素：(x-1).next = (x-1).next.next。所以直接定位倒数n+1的元素就可以。
   + **dummy head**：避免删除第一个元素
 
   ```python
+  # class ListNode(object):
+  #     def __init__(self, val=0, next=None):
+  
   class Solution(object):
       def removeNthFromEnd(self, head, n):
           dummy = ListNode(0, head) # 防止第一个元素被移除
@@ -251,16 +290,18 @@ class Solution(object):
 
   + deque 前后都可以进出
 
-    ![img](https://img2020.cnblogs.com/i-beta/1959611/202003/1959611-20200307215621460-1733987446.png)
+  + ![image-20220225154819522](D:\file\markdown图片\image-20220225154819522.png)
 
 + 算法：
 
   + 记录max下标，存入deque
   + 窗口移动时
-    + 判断是否出界，若出街则popleft
+    + 判断是否出界，若出界则popleft
     + num[i] > deque[num[-1]]: deque.pop() --> 后面比前面大，那么前面的不会再用到了
-  + 重点：deque[num[0]] 一定是窗口中的max
-
+  + 重点：
+    + deque[num[0]] 一定是窗口中的max
+    + dq 中的element一定是降序排列
+  
   ```python
   from collections import deque
   
@@ -273,7 +314,7 @@ class Solution(object):
           for i in range(len(nums)):
               if dq and i - dq[0] == k: # 区间长度大于k：i -dq[0] + 1 > k 同i-dq[0] == k
                   dq.popleft()
-              while dq and nums[dq[-1]] <= nums[i]:
+              while dq and nums[dq[-1]] <= nums[i]: # h
                   dq.pop()
               dq.append(i)
               if i >= k-1:

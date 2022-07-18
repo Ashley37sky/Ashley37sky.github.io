@@ -1,8 +1,8 @@
 ---
-title: C1_sort
+title: C1_Sort
 date: 2021-11-28 21:56:53
 tags: sort
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 ## 算法内容
@@ -146,7 +146,7 @@ void sort(int arr[])
 
 - Worst and Average Case Time Complexity: O(n*n). Worst case occurs when array is reverse sorted.
 
-- Best Case Time Complexity: O(n). Best case occurs when array is already sorted.
+- Best Case Time Complexity: O(n^2^). Best case occurs when array is already sorted.
 
 
 ## Merge Sort

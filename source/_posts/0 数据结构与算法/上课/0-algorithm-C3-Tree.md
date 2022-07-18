@@ -2,7 +2,7 @@
 title: C3-Tree
 date: 2022-02-12 11:52:39
 tags:
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 # Tree
@@ -59,7 +59,7 @@ tree.root.left.right = new Node(5);
 
 + Depth (Breath) First Search
 
-![image-20220120102142026](D:\file\markdown图片\image-20220120102142026.png)
+![image-20220225173200561](D:\file\markdown图片\image-20220225173200561.png)
 
 虽然常见的Traverse方法是以上几种, 其实不仅限于上面几种. 以上的DFS都是从左边开始的, DFS还可以从右边开始. 
 
@@ -142,7 +142,7 @@ if __name__ == '__main__':
 
 inorder - (left - node - right)
 
-<img src="D:\file\markdown图片\image-20220120105951856.png" alt="image-20220120105951856" style="zoom:33%;" />
+<img src="D:\file\markdown图片\image-20220225173424943.png" alt="image-20220225173424943" style="zoom:50%;" />
 
 ```python
   ## Pseudocode
@@ -187,8 +187,6 @@ class Node:
         self.left = left
         self.right = right
  
- 
-# Iterative function to perform inorder traversal on the tree
 def inorderIterative(root):
     
     stack = deque()
@@ -197,17 +195,14 @@ def inorderIterative(root):
     # if the current node is None and the stack is also empty, we are done
     while stack or curr:
  
-        # if the current node exists, push it into the stack (defer it)
-        # and move to its left child
         if curr:
             stack.append(curr)
             curr = curr.left
         else:
             # otherwise, if the current node is None, pop an element from the stack,
-            # print it, and finally set the current node to its right child
             curr = stack.pop()
             print(curr.data, end=' ')
- 
+
             curr = curr.right
 ```
 

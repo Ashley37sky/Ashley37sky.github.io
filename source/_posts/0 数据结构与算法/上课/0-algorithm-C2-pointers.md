@@ -2,7 +2,7 @@
 title: C2_指针和滑动窗口
 date: 2021-11-28 22:04:28
 tags: 指针
-categories: 数据结构和算法
+categories: [数据结构和算法, 课程]
 ---
 
 ## 相向指针
