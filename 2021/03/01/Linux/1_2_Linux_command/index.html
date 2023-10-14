@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="Linux命令命令格式**cmd [-options] [arguments] **  Linux区分大小 个别命令不遵循此格式 有多个选项时，可以写在一起   eg ls -la &#x2F;etc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux命令">
+<meta property="og:url" content="http://yoursite.com/2021/03/01/Linux/1_2_Linux_command/index.html">
+<meta property="og:site_name" content="Ashley&#39;s blog">
+<meta property="og:description" content="Linux命令命令格式**cmd [-options] [arguments] **  Linux区分大小 个别命令不遵循此格式 有多个选项时，可以写在一起   eg ls -la &#x2F;etc">
+<meta property="og:locale">
+<meta property="og:image" content="c:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210301200427123.png">
+<meta property="og:image" content="c:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210311143914415.png">
+<meta property="article:published_time" content="2021-03-01T11:49:06.000Z">
+<meta property="article:modified_time" content="2023-10-14T16:59:02.237Z">
+<meta property="article:author" content="Ashley">
+<meta property="article:tag" content="Linux命令">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="c:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210301200427123.png">
+
+<link rel="canonical" href="http://yoursite.com/2021/03/01/Linux/1_2_Linux_command/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Linux命令 | Ashley's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ashley's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">玛丽玛丽呼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/03/01/Linux/1_2_Linux_command/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ashley">
+      <meta itemprop="description" content="宇宙无敌美少女战士">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashley's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Linux命令
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-01 03:49:06" itemprop="dateCreated datePublished" datetime="2021-03-01T03:49:06-08:00">2021-03-01</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-14 09:59:02" itemprop="dateModified" datetime="2023-10-14T09:59:02-07:00">2023-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Linux/" itemprop="url" rel="index"><span itemprop="name">Linux</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="Linux命令"><a href="#Linux命令" class="headerlink" title="Linux命令"></a>Linux命令</h1><h2 id="命令格式"><a href="#命令格式" class="headerlink" title="命令格式"></a>命令格式</h2><p>**cmd [-options] [arguments] **</p>
+<ul>
+<li>Linux<strong>区分大小</strong></li>
+<li>个别命令不遵循此格式</li>
+<li>有多个选项时，可以写在一起   eg ls -la &#x2F;etc</li>
+</ul>
+<span id="more"></span>
+
+<ul>
+<li><strong>简化选项</strong>前使用<strong>一个</strong><code>减号-</code>。<strong>完整选项</strong>前使用两个<code>减号--</code>   eg. -a &#x3D;&#x3D; –all</li>
+<li><strong>通配符</strong><ul>
+<li>*：匹配任何字符和任何数目的字符</li>
+<li>?：匹配单一数目的任何字符</li>
+<li>[ ]：匹配[ ]之内的任意一个字符</li>
+<li>[! ]：匹配除了[! ]之外的任意一个字符，!表示非的意思</li>
+</ul>
+</li>
+</ul>
+<h2 id="常见"><a href="#常见" class="headerlink" title="常见"></a>常见</h2><ul>
+<li><code>pwd</code>（print working directory）：查看用户的当前目录</li>
+<li><code>cd</code> ： 切换目录</li>
+<li><code>.</code>表示当前目录</li>
+<li><code>..</code> 表示当前目录的上一级目录（父目录）</li>
+<li><code>-</code>表示用 cd 命令切换目录<strong>前</strong>所在的目录</li>
+<li><code>~</code> 表示<strong>用户主目录</strong>的绝对路径名</li>
+<li><code>clear</code>:清屏</li>
+</ul>
+<!--more-->
+
+<ul>
+<li><strong>绝对路径：</strong>以斜线（&#x2F;）开头 </li>
+<li><strong>相对路径 ：</strong>不以斜线（&#x2F;）开头</li>
+</ul>
+<h2 id="常用快捷键"><a href="#常用快捷键" class="headerlink" title="常用快捷键"></a>常用快捷键</h2><ul>
+<li><code>ctrl+l</code> clear screen</li>
+<li><code>ctrl+r</code>  查看历史命令</li>
+<li><code>ctrl+q</code> quit</li>
+</ul>
+<h2 id="文件-目录处理命令"><a href="#文件-目录处理命令" class="headerlink" title="文件&#x2F;目录处理命令"></a>文件&#x2F;目录处理命令</h2><h3 id="ls"><a href="#ls" class="headerlink" title="ls"></a>ls</h3><ul>
+<li><p>-a (all)： 显示隐藏文件</p>
+</li>
+<li><p>-d (directory) 显示目录本身</p>
+</li>
+<li><p>-h (human) 显示单位</p>
+</li>
+<li><p>-i (id)：i节点，理解为身份证</p>
+</li>
+<li><p>-l (long): 显示属性</p>
+<p><img src="C:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210301200427123.png" alt="image-20210301200427123"></p>
+<ol>
+<li>u-user 所有者（一个用户）</li>
+<li>g-group 所属组（一个组）</li>
+<li>o-other 其他人</li>
+</ol>
+<p>eg.</p>
+<table>
+<thead>
+<tr>
+<th>-</th>
+<th>-二进制文件       d目录         l软连接文件</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>rw-</td>
+<td>u</td>
+</tr>
+<tr>
+<td>r–</td>
+<td>g</td>
+</tr>
+<tr>
+<td>r–</td>
+<td>o</td>
+</tr>
+</tbody></table>
+<ul>
+<li>r：读  </li>
+<li>w：写</li>
+<li>x：执行</li>
+</ul>
+</li>
+</ul>
+<h3 id="目录处理命令"><a href="#目录处理命令" class="headerlink" title="目录处理命令"></a>目录处理命令</h3><ul>
+<li><code>mkdir</code>: 创建新目录<ul>
+<li>-p 递归创建</li>
+<li>可同时创建多个目录，空格隔开</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><code>rmdir</code>：删除空目录 （很很少用）</li>
+<li><code>cp [origin] [new]</code>：复制文件<ul>
+<li>-r：复制目录</li>
+<li>-p：保留文件属性 （eg.修改时间）</li>
+<li>复制的时候可以改名<ul>
+<li>cp -r &#x2F;tmp&#x2F;test &#x2F;root&#x2F;test1</li>
+<li>cp -r &#x2F;rmp&#x2F;test &#x2F;root (不改名)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>mv [origin] [new]</code>：移动文件或目录、改名(同一目录下移动并改成新名字)</li>
+<li><code>rm</code>：删除文件<ul>
+<li>-r 删除目录</li>
+<li>-f 强制删除（不会询问是否删除）</li>
+<li>常用 rm -rf</li>
+</ul>
+</li>
+</ul>
+<h3 id="文件处理命令"><a href="#文件处理命令" class="headerlink" title="文件处理命令"></a>文件处理命令</h3><ul>
+<li><code>touch [文件名]</code>： 创建空文件、</li>
+<li><code>cat</code>: 显示文件内容<ul>
+<li>-n: 显示行号</li>
+</ul>
+</li>
+<li><code>tac</code>：反向显示文件内容</li>
+<li><code>more</code>:分页显示文件内容<ul>
+<li>空格、f  –&gt; 翻页</li>
+<li>enter  –&gt;换行</li>
+<li>q、Q  –&gt;退出</li>
+</ul>
+</li>
+<li><code>less</code>: more升级版<ul>
+<li>pgup：向上翻页</li>
+<li>&#x2F;[keyword]: 搜索<ul>
+<li>n：下一个关键词所在位置</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><code>head</code>：显示文件前几行<ul>
+<li>-n 指定行数，默认10</li>
+</ul>
+</li>
+<li><code>tail</code>：显示文件后几行<ul>
+<li>-n </li>
+<li>-f：动态显示，实时更新（日志）</li>
+</ul>
+</li>
+<li><code>find</code>：查找文件</li>
+</ul>
+<h3 id="链接命令"><a href="#链接命令" class="headerlink" title="链接命令"></a>链接命令</h3><ul>
+<li><p><code>ln [原文件] [目标文件]</code>：建立链接文件</p>
+<ul>
+<li>-s：创建软连接</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th align="center">软链接（同win快捷方式，常用）</th>
+<th>硬链接（很少用）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">显示lrwxrwxrwx，实际文件操作权限才有决定权</td>
+<td>除文件名都一样</td>
+</tr>
+<tr>
+<td align="center">很小，只是符号链接，有箭头指向</td>
+<td>i节点同源文件，两文件同时更新</td>
+</tr>
+<tr>
+<td align="center">可以是目录</td>
+<td>不能是目录</td>
+</tr>
+<tr>
+<td align="center">删除原文件后不能访问软链接</td>
+<td>删除原文件后能访问硬链接</td>
+</tr>
+<tr>
+<td align="center">可以跨分区</td>
+<td>不能跨分区 (&#x2F;boot  &#x2F;home   &#x2F;)</td>
+</tr>
+</tbody></table>
+</li>
+</ul>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><ul>
+<li><code>echo</code>：把内容重定向到指定的文件中 ，有则打开，无则创建</li>
+<li><code>管道命令 |</code> ：将前面的结果给后面的命令，例如：<code>ls -la | wc</code>，将ls的结果加给wc命令来统计字数</li>
+</ul>
+<ul>
+<li><code>重定向 &gt; 是覆盖模式，&gt;&gt; 是追加模式</code>，例如：<code>echo &quot;Java3y,zhen de hen xihuan ni&quot; &gt; qingshu.txt</code>把左边的输出放到右边的文件里去</li>
+</ul>
+<h2 id="权限管理命令"><a href="#权限管理命令" class="headerlink" title="权限管理命令"></a>权限管理命令</h2><h3 id="更改权限-chmod"><a href="#更改权限-chmod" class="headerlink" title="更改权限-chmod"></a>更改权限-chmod</h3><p>chmod：（change mode）root、所有者可以执行</p>
+<p>两种方式</p>
+<ul>
+<li><p><code>chmod [&#123;ugoa&#125; &#123;+-=&#125; &#123;rwx&#125; [文件或目录]]</code></p>
+</li>
+<li><p><code>chmod [421] [文件或目录]</code> (更常用)</p>
+<p>ps. r—4, w–2, x–1</p>
+<p>​	  rwxrw-r–(764)</p>
+<ul>
+<li><code>-R</code> 递归修改 （把目录及其子目录全西安都修改）</li>
+<li>一次更改多个权限，用逗号隔开 <code>g+w,o-r</code></li>
+</ul>
+</li>
+</ul>
+<p> 补充： 创建普通用户，组</p>
+<ul>
+<li><code>useradd __</code>          <code>passwd  __</code></li>
+<li><code>groupadd</code></li>
+</ul>
+<p><strong>重要：file和directory的rwx权限</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>file</th>
+<th>directory</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>r</td>
+<td>cat&#x2F;more&#x2F;head&#x2F;tail&#x2F;less</td>
+<td>ls （列出目录内容）</td>
+</tr>
+<tr>
+<td>w</td>
+<td>vim （可修改文件）</td>
+<td>touch&#x2F;mkdir&#x2F;rmdir&#x2F;rm （可在目录中创建删除文件）</td>
+</tr>
+<tr>
+<td>x</td>
+<td>script command</td>
+<td>cd （可以进入目录，所以一般rx同时出现）</td>
+</tr>
+</tbody></table>
+<ul>
+<li>文件 w权限 &#x3D; 修改文件</li>
+<li>目录 w权限 &#x3D; 删除创建文件</li>
+<li>对文件有权限，但是进不去文件所在目录也不行</li>
+</ul>
+<h3 id="其他权限命令"><a href="#其他权限命令" class="headerlink" title="其他权限命令"></a>其他权限命令</h3><ul>
+<li><p><code>chown [用户] [文件或目录]</code>: change ownership 改变所有者，只有root能执行</p>
+</li>
+<li><p><code>umask</code>  显示，设置文件的缺省（默认）权限</p>
+<ul>
+<li><code>-S</code> : 以rwx显示新建文件的default权限</li>
+<li>不加S</li>
+</ul>
+<img src="C:\Users\Ashley\AppData\Roaming\Typora\typora-user-images\image-20210311143914415.png" alt="image-20210311143914415" style="zoom: 25%;" /></li>
+</ul>
+<h2 id="文件搜索命令"><a href="#文件搜索命令" class="headerlink" title="文件搜索命令"></a>文件搜索命令</h2><h3 id="find"><a href="#find" class="headerlink" title="find"></a>find</h3><p><code>find [搜索范围] [匹配条件]</code></p>
+<ul>
+<li><p><code>find [搜索范围] -name [条件]</code></p>
+<ul>
+<li><code>-iname</code></li>
+<li><code>*</code> 匹配多个  <code>?</code> 匹配一个字符</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -size +204800</code> 查找大于100MB的文件</p>
+<ul>
+<li><p><code>+ - =</code></p>
+</li>
+<li><p>size 是数据块大小  1个数据块-512字节-0.5k</p>
+<p>（100M &#x3D; 102400K &#x3D;204800数据块）</p>
+</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -user [用户名]</code>  查找以用户名为所属者的文件</p>
+<ul>
+<li><code>-group</code>    根据所属组查找</li>
+</ul>
+</li>
+<li><p><code>find [搜索范围] -cmin -5</code>  查找5min内被修改过属性的文件和目录</p>
+<ul>
+<li><code>amin</code>   access 访问时间</li>
+<li><code>cmin</code> change 文件属性</li>
+<li><code>mmin</code> modify 文件内容</li>
+</ul>
+</li>
+<li><p><code>-type</code> 根据文件类型查找</p>
+<ul>
+<li>f：文件</li>
+<li>d：目录</li>
+<li>l：软连接文件</li>
+</ul>
+</li>
+<li><p>多个条件</p>
+<ul>
+<li><p><code>-a</code> and</p>
+<p>eg. <code>find /etc -size +163940 -a size -204800</code></p>
+</li>
+<li><p><code>-o</code> or</p>
+</li>
+</ul>
+</li>
+<li><p><code>-exec/-ok [命令] &#123;&#125; \</code> 对搜索结果执行操作</p>
+<ul>
+<li>eg. <code>find /etc -name init -exec ls -l &#123;&#125; \</code></li>
+<li><code>-ok</code> 会询问是否确定操作</li>
+</ul>
+</li>
+</ul>
+<h3 id="其他搜索命令"><a href="#其他搜索命令" class="headerlink" title="其他搜索命令"></a>其他搜索命令</h3><ul>
+<li><code>locat [文件]</code>再文件资料库中查找文件<ul>
+<li><code>-i</code> 不区分大小写</li>
+<li><code>updatedb</code> 更新资料库</li>
+<li>查找比find快，但是新建文件后 如果资料库未更新 则搜不到文件</li>
+<li>&#x2F;tmp 的文件搜不到</li>
+</ul>
+</li>
+<li><code>which [命令]</code> 搜索 命令 所在 目录 和 别名</li>
+<li><code>whereis [命令]</code> 搜索 命令 所在 目录 和 帮助文档路径</li>
+<li><code>grep -iv [指定字串] [文件]</code> 在文件中搜寻字串匹配的行并输出<ul>
+<li><code>-i</code> 不区分大小写</li>
+<li><code>-v</code> 排除指定字符串</li>
+<li><code>grep -v ^# [file]</code> 去掉以#开头的行（注释行）</li>
+</ul>
+</li>
+</ul>
+<h2 id="压缩-解压"><a href="#压缩-解压" class="headerlink" title="压缩&#x2F;解压"></a>压缩&#x2F;解压</h2><ul>
+<li><p><code>gzip filename</code></p>
+</li>
+<li><p><code>bzip2 filename</code></p>
+</li>
+<li><p><code>tar -czvf filename</code></p>
+</li>
+<li><p><code>gzip -d filename.gz</code></p>
+</li>
+<li><p><code>bzip2 -d filename.bz2</code></p>
+</li>
+<li><p><code>tar -xzvf filename.tar.gz</code></p>
+</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Linux%E5%91%BD%E4%BB%A4/" rel="tag"><i class="fa fa-tag"></i>
+
+ Linux命令</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/02/02/1%20python/1_kaggle-intro%20to%20ML/" rel="prev" title="kaggle">
+      <i class="fa fa-chevron-left"></i> kaggle
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/08/25/1%20python/1_3_jupter_notebook/" rel="next" title="Jupyter notebook">
+      Jupyter notebook <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Linux%E5%91%BD%E4%BB%A4"><span class="nav-number">1.</span> <span class="nav-text">Linux命令</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%91%BD%E4%BB%A4%E6%A0%BC%E5%BC%8F"><span class="nav-number">1.1.</span> <span class="nav-text">命令格式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E8%A7%81"><span class="nav-number">1.2.</span> <span class="nav-text">常见</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="nav-number">1.3.</span> <span class="nav-text">常用快捷键</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6-%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.</span> <span class="nav-text">文件&#x2F;目录处理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls"><span class="nav-number">1.4.1.</span> <span class="nav-text">ls</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9B%AE%E5%BD%95%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.2.</span> <span class="nav-text">目录处理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E5%A4%84%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.3.</span> <span class="nav-text">文件处理命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%93%BE%E6%8E%A5%E5%91%BD%E4%BB%A4"><span class="nav-number">1.4.4.</span> <span class="nav-text">链接命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96"><span class="nav-number">1.4.5.</span> <span class="nav-text">其他</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9D%83%E9%99%90%E7%AE%A1%E7%90%86%E5%91%BD%E4%BB%A4"><span class="nav-number">1.5.</span> <span class="nav-text">权限管理命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9B%B4%E6%94%B9%E6%9D%83%E9%99%90-chmod"><span class="nav-number">1.5.1.</span> <span class="nav-text">更改权限-chmod</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%9D%83%E9%99%90%E5%91%BD%E4%BB%A4"><span class="nav-number">1.5.2.</span> <span class="nav-text">其他权限命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.</span> <span class="nav-text">文件搜索命令</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#find"><span class="nav-number">1.6.1.</span> <span class="nav-text">find</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E6%90%9C%E7%B4%A2%E5%91%BD%E4%BB%A4"><span class="nav-number">1.6.2.</span> <span class="nav-text">其他搜索命令</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%8B%E7%BC%A9-%E8%A7%A3%E5%8E%8B"><span class="nav-number">1.7.</span> <span class="nav-text">压缩&#x2F;解压</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashley"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashley</p>
+  <div class="site-description" itemprop="description">宇宙无敌美少女战士</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashley37sky" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashley37sky" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:893822928@qq.com" title="E-Mail → mailto:893822928@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashley</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+<dr>
+
+<br>
+  <span class="post-count">博客全站共38.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

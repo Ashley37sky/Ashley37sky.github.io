@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.0.0-rc2">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"yoursite.com","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":-1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="编程入门C\C++语言基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arduino基础">
+<meta property="og:url" content="http://yoursite.com/2020/06/27/%E5%85%B6%E4%BB%96/2_arduino/index.html">
+<meta property="og:site_name" content="Ashley&#39;s blog">
+<meta property="og:description" content="编程入门C\C++语言基础">
+<meta property="og:locale">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202407hn5028ql688082nn.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202658ek379kisa3pi3vzh.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202736q9kswuxis5nl825i.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202812i9v9k8tly9hwhvxl.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202849hnqjq8mqtntmj8zm.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202929l3to1oz4wtwf6chn.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201801/20/212948cbd22kta69immltw.jpg">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201803/05/210944q3dre8qok1daddvt.png">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201803/05/212142at6fw8a8rkx8n6ka.png">
+<meta property="og:image" content="https://www.arduino.cn/data/attachment/forum/201801/20/210906pl8cbzbqyeiq8ill.jpg">
+<meta property="article:published_time" content="2020-06-27T12:41:20.000Z">
+<meta property="article:modified_time" content="2023-10-14T16:59:02.238Z">
+<meta property="article:author" content="Ashley">
+<meta property="article:tag" content="Arduino">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://www.arduino.cn/data/attachment/forum/201704/15/202407hn5028ql688082nn.jpg">
+
+<link rel="canonical" href="http://yoursite.com/2020/06/27/%E5%85%B6%E4%BB%96/2_arduino/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+
+  <title>Arduino基础 | Ashley's blog</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Ashley's blog</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">玛丽玛丽呼</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">9</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">26</span></a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">14</span></a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/06/27/%E5%85%B6%E4%BB%96/2_arduino/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Ashley">
+      <meta itemprop="description" content="宇宙无敌美少女战士">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ashley's blog">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Arduino基础
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-27 05:41:20" itemprop="dateCreated datePublished" datetime="2020-06-27T05:41:20-07:00">2020-06-27</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2023-10-14 09:59:02" itemprop="dateModified" datetime="2023-10-14T09:59:02-07:00">2023-10-14</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Arduino/" itemprop="url" rel="index"><span itemprop="name">Arduino</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="编程入门"><a href="#编程入门" class="headerlink" title="编程入门"></a>编程入门</h1><h2 id="C-C-语言基础"><a href="#C-C-语言基础" class="headerlink" title="C\C++语言基础"></a>C\C++语言基础</h2><span id="more"></span>
+
+<ul>
+<li>浮点型数据的运算，速度较慢且可能有精度丢失。通常我们会把浮点型转换为整型来处理相关运算。如9.8cm，我们通常把换算为98mm来计算</li>
+<li>存储字符时，字符需要用单引号引用，如<code>char col=’C’;</code> </li>
+<li>相较于数组形式的定义方法，使用String类型定义字符串会占用更多的存储空间</li>
+<li>Switch后的表达式结果只能是整形或字符型。如果要使用其他类型，则必须使用if语句</li>
+</ul>
+<h2 id="常用电子元件"><a href="#常用电子元件" class="headerlink" title="常用电子元件"></a>常用电子元件</h2><h4 id="面包板"><a href="#面包板" class="headerlink" title="面包板"></a>面包板</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202407hn5028ql688082nn.jpg" alt="面包内部、.jpg"></p>
+<h4 id="电阻"><a href="#电阻" class="headerlink" title="电阻"></a>电阻</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202658ek379kisa3pi3vzh.jpg" alt="1.jpg"></p>
+<p>下拉电阻：将某节点通过电阻接地的做法，叫做下拉，这个电阻叫做下拉电阻</p>
+<p>上拉电阻：同下拉电阻一样，可以稳定I&#x2F;O口电平，不同的是电阻连接到VCC，将引脚稳定在高电位。</p>
+<p>​					可以用<code>pinMode(buttonPin,INPUT_PULLUP)</code>或者物理连接实现</p>
+<h4 id="电容"><a href="#电容" class="headerlink" title="电容"></a>电容</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202736q9kswuxis5nl825i.jpg" alt="2.jpg"></p>
+<p>电容也有很多作用，如去耦、滤波、储能等</p>
+<h4 id="二极管"><a href="#二极管" class="headerlink" title="二极管"></a>二极管</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202812i9v9k8tly9hwhvxl.jpg" alt="3.jpg"></p>
+<p>二极管在电路中使用广泛，作用众多，如整流、稳压、电路保护等</p>
+<h4 id="LED（发光二极管"><a href="#LED（发光二极管" class="headerlink" title="LED（发光二极管"></a>LED（发光二极管</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202849hnqjq8mqtntmj8zm.jpg" alt="4.jpg"></p>
+<p>一般LED的最大能承受的电流为25mA</p>
+<h4 id="三极管"><a href="#三极管" class="headerlink" title="三极管"></a>三极管</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201704/15/202929l3to1oz4wtwf6chn.jpg" alt="5.jpg"></p>
+<p>三极管，能起放大、开关等作用的元件。<br>有发射极（emitter,E）、基极（base,B）和集电极（collector,C）三级，<br>有pnp和npn 两种类型的三极管。</p>
+<h4 id="按键"><a href="#按键" class="headerlink" title="按键"></a>按键</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201801/20/212948cbd22kta69immltw.jpg" alt="img"></p>
+<h4 id="电位器"><a href="#电位器" class="headerlink" title="电位器"></a>电位器</h4><p><img src="https://www.arduino.cn/data/attachment/forum/201803/05/210944q3dre8qok1daddvt.png" alt="img"></p>
+<p>电位器是一个可调电阻</p>
+<h4 id="光敏电阻"><a href="#光敏电阻" class="headerlink" title="光敏电阻"></a>光敏电阻</h4><h4 id=""><a href="#" class="headerlink" title=""></a><img src="https://www.arduino.cn/data/attachment/forum/201803/05/212142at6fw8a8rkx8n6ka.png" alt="img" style="zoom:67%;" /></h4><p>电阻值随照射光强度增加而下降的电阻</p>
+<h1 id="编程基础"><a href="#编程基础" class="headerlink" title="编程基础"></a>编程基础</h1><p><img src="https://www.arduino.cn/data/attachment/forum/201801/20/210906pl8cbzbqyeiq8ill.jpg" alt="img"></p>
+<h2 id="数字I-O的使用"><a href="#数字I-O的使用" class="headerlink" title="数字I&#x2F;O的使用"></a>数字I&#x2F;O的使用</h2><ol>
+<li><p>新建变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define LED 13</span><br><span class="line">int led = 13;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>配置引脚模式</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pinMode(pin, mode); </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>可使用的三种模式:</p>
+<ul>
+<li><strong>INPUT</strong>     输入模式</li>
+<li><strong>OUTPUT</strong>     输出模式</li>
+<li><strong>INPUT_PULLUP</strong>     输入上拉模式</li>
+</ul>
+</blockquote>
+</li>
+<li><p>输出高低电平</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">digitalWrite(pin, value); //value= HIGH/LOW </span><br></pre></td></tr></table></figure>
+</li>
+<li><p>读取外部输入的数字信号</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int value = digitalRead(pin) </span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>Arduino UNO会将大于3V的输入电压视为高电平，小于1.5V的电压视为低电平。超过5V的输入电压可能会损坏Arduino UN</p>
+</blockquote>
+</li>
+</ol>
+<p><em>在Arduino核心库中，OUTPUT被定义等于1，INPUT被定义等于0，HIGH被定义等于1，LOW被定义等于0，所以可以写成<code>pinMode(13,1);</code> <code> digitalWrite(13,1)</code>。但是不建议，因为可读性变差</em></p>
+<ol start="5">
+<li><p>延时函数。在写程序的时候要注意写delay()</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">delay() ; //ms</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="模拟I-O的使用"><a href="#模拟I-O的使用" class="headerlink" title="模拟I&#x2F;O的使用"></a>模拟I&#x2F;O的使用</h2><ol>
+<li><p>编号带“A”的引脚是模拟输入引脚。读取引脚上输入的电压大小。Arduino UNO上，可以接受0～5V的模拟信号。Arduino 模拟输入功能有10位精度，即可以将0～5V的电压信号转换为0～1023的整数形式表示</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">int value = analogRead(pin)</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>模拟输出功能。以脉冲宽度调制（PWM）来达到输出近似模拟值的效果。这里仅仅是得到了近似模拟值输出的效果，如果要输出真正的模拟值，还需要加上外围滤波电路</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">analogWrite(pin,value)</span><br></pre></td></tr></table></figure>
+
+<p>value指定是PWM的脉冲宽度，范围为0～255。</p>
+</li>
+</ol>
+<h2 id="串口的使用"><a href="#串口的使用" class="headerlink" title="串口的使用"></a>串口的使用</h2><p>Arduino与计算机通信最常用的方式就是串口通信。串口通信时，Arduino控制器上的标有RX&#x2F;TX的两LED灯会闪烁提示，接收数据时，RX灯会点亮；发送数据时，TX灯会点亮。</p>
+<ol>
+<li><p>使用串口与计算机通信，需要先使用Serial. Begin() 初始化Arduino的串口通信功能</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Serial.begin(speed);</span><br></pre></td></tr></table></figure>
+
+<p>peed是指串口通信波特率,<strong>波特率</strong>是衡量通信速度的参数，表示每秒钟传送的bit的个数。串口通信的双方必须使用同样的波特率，方能正常进行通信。</p>
+</li>
+<li><p>串口输出。使用Serial. Print() 或Serial.println() 向计算机发送各种类型的信息</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Serial.print(val);</span><br><span class="line">Serial.println(val);  <span class="comment">//回车换行</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>串口监视器是Arduino IDE自带的一个小工具，可以查看到串口传来的信息，也可以向连接的设备发送信息</p>
+</li>
+<li><p>缓冲区。在使用串口时，Arduino Uno会在SRAM中开辟一段大小为256 bytes的空间，串口接收到的数据都会被暂时存放进这个空间中，这个存储空间，我们称之为缓冲区。当你调用Serial. Read()语句时，Arduino便会从缓冲区取出一个字节的数据</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Serial.available(); <span class="comment">//缓冲区中接收到的数据字节数</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>串口输入</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">erial.read(); <span class="comment">//每次都会返回一个字节的数据</span></span><br></pre></td></tr></table></figure>
+
+<p>当缓冲区中没有可读数据时，read()函数会返回int型值-1，而int型-1对应的char型数据是乱码。所以要先判断缓冲区是否有数据。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">if( Serial.available() &gt; 0 ) </span><br><span class="line">while( Serial.available() &gt; 0 )</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>特殊用法。等待串口监视器开启，开启串口监视器后，!Serial将为假</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">while (!Serial) &#123; &#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/Arduino/" rel="tag"><i class="fa fa-tag"></i>
+
+ Arduino</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/20/git/1_1_git-cheatsheet/" rel="prev" title="git命令">
+      <i class="fa fa-chevron-left"></i> git命令
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/27/%E5%85%B6%E4%BB%96/2_arduino-code/" rel="next" title="Arduino_代码">
+      Arduino_代码 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%85%A5%E9%97%A8"><span class="nav-number">1.</span> <span class="nav-text">编程入门</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#C-C-%E8%AF%AD%E8%A8%80%E5%9F%BA%E7%A1%80"><span class="nav-number">1.1.</span> <span class="nav-text">C\C++语言基础</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E7%94%B5%E5%AD%90%E5%85%83%E4%BB%B6"><span class="nav-number">1.2.</span> <span class="nav-text">常用电子元件</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E9%9D%A2%E5%8C%85%E6%9D%BF"><span class="nav-number">1.2.0.1.</span> <span class="nav-text">面包板</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E9%98%BB"><span class="nav-number">1.2.0.2.</span> <span class="nav-text">电阻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E5%AE%B9"><span class="nav-number">1.2.0.3.</span> <span class="nav-text">电容</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">1.2.0.4.</span> <span class="nav-text">二极管</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#LED%EF%BC%88%E5%8F%91%E5%85%89%E4%BA%8C%E6%9E%81%E7%AE%A1"><span class="nav-number">1.2.0.5.</span> <span class="nav-text">LED（发光二极管</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%9E%81%E7%AE%A1"><span class="nav-number">1.2.0.6.</span> <span class="nav-text">三极管</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%8C%89%E9%94%AE"><span class="nav-number">1.2.0.7.</span> <span class="nav-text">按键</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%94%B5%E4%BD%8D%E5%99%A8"><span class="nav-number">1.2.0.8.</span> <span class="nav-text">电位器</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%85%89%E6%95%8F%E7%94%B5%E9%98%BB"><span class="nav-number">1.2.0.9.</span> <span class="nav-text">光敏电阻</span></a></li><li class="nav-item nav-level-4"><a class="nav-link"><span class="nav-number">1.2.0.10.</span> <span class="nav-text"></span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80"><span class="nav-number">2.</span> <span class="nav-text">编程基础</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%95%B0%E5%AD%97I-O%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">数字I&#x2F;O的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%A8%A1%E6%8B%9FI-O%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">模拟I&#x2F;O的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%B2%E5%8F%A3%E7%9A%84%E4%BD%BF%E7%94%A8"><span class="nav-number">2.3.</span> <span class="nav-text">串口的使用</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Ashley"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Ashley</p>
+  <div class="site-description" itemprop="description">宇宙无敌美少女战士</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">26</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">14</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/Ashley37sky" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;Ashley37sky" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:893822928@qq.com" title="E-Mail → mailto:893822928@qq.com" rel="noopener" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2023</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Ashley</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> 强力驱动
+  </div>
+<dr>
+
+<br>
+  <span class="post-count">博客全站共38.7k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
