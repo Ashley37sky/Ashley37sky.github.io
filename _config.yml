@@ -4,12 +4,12 @@
 
 # Site
 title: Ashley's blog
-subtitle: '话痨'
-description: '胡言乱语zzzz'
+subtitle: '玛丽玛丽呼'
+description: '宇宙无敌美少女战士'
 keywords: life;thinking;study;J.A.R.V.I.S.
 author: Ashley
 language: zh-Hans
-timezone:  Asia/Shanghai
+timezone: America/Los_Angeles
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
