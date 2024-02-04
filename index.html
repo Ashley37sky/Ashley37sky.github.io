@@ -187,7 +187,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229%20numpy/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -201,7 +201,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229/" class="post-title-link" itemprop="url">cs229-numpy</a>
+            <a href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229%20numpy/" class="post-title-link" itemprop="url">cs229-numpy</a>
         </h2>
 
         <div class="post-meta">
@@ -210,10 +210,16 @@
                 <i class="far fa-calendar"></i>
               </span>
               <span class="post-meta-item-text">发表于</span>
-              
 
-              <time title="创建时间：2024-01-25 11:00:46 / 修改时间：11:03:31" itemprop="dateCreated datePublished" datetime="2024-01-25T11:00:46-08:00">2024-01-25</time>
+              <time title="创建时间：2024-01-25 11:00:46" itemprop="dateCreated datePublished" datetime="2024-01-25T11:00:46-08:00">2024-01-25</time>
             </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2024-02-03 16:46:29" itemprop="dateModified" datetime="2024-02-03T16:46:29-08:00">2024-02-03</time>
+              </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
                 <i class="far fa-folder"></i>
@@ -235,10 +241,18 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <h1 id="cs229-numpy-matplotlib"><a href="#cs229-numpy-matplotlib" class="headerlink" title="cs229 numpy &amp; matplotlib"></a>cs229 numpy &amp; matplotlib</h1>
+          <h1 id="cs229-coding"><a href="#cs229-coding" class="headerlink" title="cs229 coding"></a>cs229 coding</h1><h2 id="python"><a href="#python" class="headerlink" title="python"></a>python</h2><ul>
+<li>data structure<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">my_list = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)]</span><br><span class="line">my_set = &#123;i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)&#125;</span><br><span class="line">my_dict = &#123;i: i ** <span class="number">2</span> <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>)&#125;</span><br></pre></td></tr></table></figure></li>
+<li>range<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">5</span>):</span><br><span class="line">  <span class="built_in">print</span>(i) <span class="comment"># 0-4</span></span><br></pre></td></tr></table></figure></li>
+<li>enumerate 在iterate过程中获得索引<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">my_list = [<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>, <span class="number">50</span>]</span><br><span class="line"><span class="keyword">for</span> index, value <span class="keyword">in</span> <span class="built_in">enumerate</span>(my_list):</span><br></pre></td></tr></table></figure></li>
+<li>slicing: 前闭后开<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">print</span>(long_list)       <span class="comment"># [0, 1, 2, -1, -2, 5, 6]</span></span><br><span class="line"><span class="built_in">print</span>(long_list[:<span class="number">5</span>])   <span class="comment"># [0, 1, 2, -1, -2]</span></span><br><span class="line"><span class="built_in">print</span>(long_list[:-<span class="number">1</span>])  <span class="comment"># [0, 1, 2, -1, -2, 5]</span></span><br><span class="line"><span class="built_in">print</span>(long_list[<span class="number">4</span>:-<span class="number">1</span>]) <span class="comment"># [-2, 5]</span></span><br></pre></td></tr></table></figure></li>
+<li>zip <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">a = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">b = [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">c = []</span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> ai, bi <span class="keyword">in</span> <span class="built_in">zip</span>(a,b):</span><br><span class="line">    c.append(ai+bi)</span><br><span class="line"></span><br><span class="line"><span class="comment"># 推荐：List Comprehension</span></span><br><span class="line">c = [ai+bi <span class="keyword">for</span> (ai, bi) <span class="keyword">in</span> <span class="built_in">zip</span>(a,b)]</span><br></pre></td></tr></table></figure></li>
+<li>sort<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">a.sort() <span class="comment"># only list</span></span><br><span class="line">b = <span class="built_in">sorted</span>(a) <span class="comment"># all iterables</span></span><br><span class="line"></span><br><span class="line"><span class="comment">################################</span></span><br><span class="line"><span class="comment"># 自定义排序</span></span><br><span class="line"><span class="built_in">sorted</span>(data, key=<span class="keyword">lambda</span> x: x % <span class="number">3</span>) <span class="comment"># 根据元素取模3的结果进行排序</span></span><br><span class="line"></span><br><span class="line">data = [(<span class="string">&quot;Alice&quot;</span>, <span class="number">30</span>), (<span class="string">&quot;Bob&quot;</span>, <span class="number">25</span>), (<span class="string">&quot;Charlie&quot;</span>, <span class="number">35</span>), (<span class="string">&quot;David&quot;</span>, <span class="number">28</span>)]</span><br><span class="line"><span class="built_in">sorted</span>(data, key=<span class="keyword">lambda</span> x: -x[<span class="number">1</span>]）<span class="comment"># (name, age) 年龄大到小</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 字典</span></span><br><span class="line">my_dict = &#123;<span class="string">&#x27;Bob&#x27;</span>: <span class="number">25</span>, <span class="string">&#x27;Alice&#x27;</span>: <span class="number">30</span>, <span class="string">&#x27;Charlie&#x27;</span>: <span class="number">35</span>, <span class="string">&#x27;David&#x27;</span>: <span class="number">28</span>&#125;</span><br><span class="line">sorted_dict_by_key = <span class="built_in">dict</span>(<span class="built_in">sorted</span>(my_dict.items()))</span><br><span class="line">sorted_dict_by_value = <span class="built_in">dict</span>(<span class="built_in">sorted</span>(my_dict.items(), key=<span class="keyword">lambda</span> item: item[<span class="number">1</span>]))</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="numpy"><a href="#numpy" class="headerlink" title="numpy"></a>numpy</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br></pre></td></tr></table></figure>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229/#more" rel="contents">
+              <a class="btn" href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs229%20numpy/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -262,7 +276,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-Hans">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246%20spark/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.png">
@@ -276,7 +290,7 @@
       <header class="post-header">
         <h2 class="post-title" itemprop="name headline">
           
-            <a href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246/" class="post-title-link" itemprop="url">cs246-spark</a>
+            <a href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246%20spark/" class="post-title-link" itemprop="url">cs246-spark</a>
         </h2>
 
         <div class="post-meta">
@@ -313,7 +327,7 @@
           <h1 id="spark"><a href="#spark" class="headerlink" title="spark"></a>spark</h1><h2 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h2>
           <!--noindex-->
             <div class="post-button">
-              <a class="btn" href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246/#more" rel="contents">
+              <a class="btn" href="/2024/01/25/%E8%AF%BE%E7%A8%8B/cs246%20spark/#more" rel="contents">
                 阅读全文 &raquo;
               </a>
             </div>
@@ -1151,7 +1165,7 @@
 <dr>
 
 <br>
-  <span class="post-count">博客全站共41.7k字</span>
+  <span class="post-count">博客全站共42.9k字</span>
 </div>
 
         
